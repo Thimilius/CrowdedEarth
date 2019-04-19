@@ -48,8 +48,13 @@ public class WorldCamera : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            m_RotationVelocityX += m_RotationXSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
-            m_RotationVelocityY += m_RotationYSpeed * Input.GetAxis("Mouse Y") * Time.deltaTime;
+            m_RotationVelocityX += m_RotationXSpeed * Input.GetAxis("Mouse X") * Input.GetAxis("Horizontal") * Time.deltaTime;
+            m_RotationVelocityY += m_RotationYSpeed * Input.GetAxis("Mouse Y") * Input.GetAxis("Vertical") * Time.deltaTime;
+        }
+        else
+        {
+            m_RotationVelocityX += m_RotationXSpeed * -Input.GetAxis("Horizontal") * Time.deltaTime;
+            m_RotationVelocityY += m_RotationYSpeed * -Input.GetAxis("Vertical") * Time.deltaTime;
         }
 
         m_RotationYAxis += m_RotationVelocityX;
@@ -57,7 +62,7 @@ public class WorldCamera : MonoBehaviour
         m_RotationXAxis = ClampAngle(m_RotationXAxis, m_RotationMinLimitY, m_RotationMaxLimitY);
         Quaternion rotation = Quaternion.Euler(m_RotationXAxis, m_RotationYAxis, 0);
 
-        m_ZoomTarget -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * m_ZoomSpeed;
+        m_ZoomTarget -= Input.GetAxis("Zoom") * Time.deltaTime * m_ZoomSpeed;
         m_ZoomTarget = Mathf.Clamp(m_ZoomTarget, m_ZoomMin, m_ZoomMax);
         m_Zoom = Mathf.Lerp(m_Zoom, m_ZoomTarget, Time.deltaTime * m_ZoomAcceleration);
 
