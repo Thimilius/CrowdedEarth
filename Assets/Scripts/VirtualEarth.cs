@@ -8,6 +8,7 @@ namespace CrowdedEarth {
     public class VirtualEarth : MonoBehaviour {
         [SerializeField] private float m_Latitude;
         [SerializeField] private float m_Longitude;
+        [SerializeField] private GameObject m_Prefab;
 
         private void Start() {
             ICitiesAPI citiesAPI = new CitiesAPI();
@@ -26,9 +27,7 @@ namespace CrowdedEarth {
             //    }
             //});
 
-            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            go.transform.position = Coordinates.ToCartesian(m_Latitude, m_Longitude);
-            go.transform.rotation = Coordinates.LookFrom(m_Latitude, m_Longitude);
+            GameObject go = Instantiate(m_Prefab, Coordinates.ToCartesian(m_Latitude, m_Longitude), Coordinates.LookFrom(m_Latitude, m_Longitude));
         }
 
         private void OnDrawGizmos() {
