@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace CrowdedEarth {
@@ -14,6 +15,7 @@ namespace CrowdedEarth {
         [SerializeField] private float m_ZoomAcceleration;
         [SerializeField] private float m_ZoomMin;
         [SerializeField] private float m_ZoomMax;
+        [SerializeField] private float m_ZoomStart;
 
         private Camera m_Camera;
         private Transform m_Transform;
@@ -26,22 +28,35 @@ namespace CrowdedEarth {
         private float m_RotationVelocityX;
         private float m_RotationVelocityY;
 
+        private bool m_AnimatingRotation;
+        private Quaternion m_AnimatedRotation;
+        private Coroutine m_RotationCoroutine;
+
         private void Start() {
             m_Camera = Camera.main;
             m_Transform = m_Camera.transform;
-            m_ZoomTarget = m_Transform.position.x;
-            m_Zoom = m_ZoomTarget;
+            m_ZoomTarget = m_ZoomStart;
+            m_Zoom = m_Transform.position.x;
 
             Vector3 angles = m_Transform.eulerAngles;
             m_RotationYAxis = angles.y;
             m_RotationXAxis = angles.x;
+            m_AnimatedRotation = Quaternion.Euler(angles);
         }
 
         private void Update() {
             UpdateRotationAndZoom();
+            UpdateClickToRotate();
         }
 
         private void UpdateRotationAndZoom() {
+            if (m_AnimatingRotation && Input.GetKeyDown(KeyCode.Mouse1)) {
+                if (m_RotationCoroutine != null) {
+                    m_AnimatingRotation = false;
+                    StopCoroutine(m_RotationCoroutine);
+                    SetLookRotation(m_AnimatedRotation);
+                }
+            }
             if (Input.GetKey(KeyCode.Mouse1)) {
                 m_RotationVelocityX += m_RotationXSpeed * Input.GetAxis("Mouse X") * Time.deltaTime;
                 m_RotationVelocityY += m_RotationYSpeed * Input.GetAxis("Mouse Y") * Time.deltaTime;
@@ -61,10 +76,57 @@ namespace CrowdedEarth {
 
             Vector3 position = rotation * new Vector3(0, 0, -m_Zoom);
 
-            transform.rotation = rotation;
-            transform.position = position;
+            m_Transform.rotation = rotation;
+            m_Transform.position = position;
             m_RotationVelocityX = Mathf.Lerp(m_RotationVelocityX, 0, Time.deltaTime * m_RotationSmoothing);
             m_RotationVelocityY = Mathf.Lerp(m_RotationVelocityY, 0, Time.deltaTime * m_RotationSmoothing);
+        }
+
+        private void UpdateClickToRotate() {
+            if (Input.GetKeyDown(KeyCode.Mouse2)) {
+                if (m_RotationCoroutine != null) {
+                    StopCoroutine(m_RotationCoroutine);
+                    if (m_AnimatingRotation) {
+                        SetLookRotation(m_AnimatedRotation);
+                    }
+                    m_AnimatingRotation = false;
+                }
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Coordinates.Intersect(ray, out RaycastHit hit)) {
+                    m_RotationCoroutine = StartCoroutine(AnimateRotation(Quaternion.LookRotation(-hit.point), 1));
+                }
+            }
+        }
+
+        private IEnumerator AnimateRotation(Quaternion targetRotation, float time) {
+            m_AnimatingRotation = true;
+            Quaternion startRotation = m_Transform.rotation;
+            float timer = 0.0f;
+            float rate = 1.0f / time;
+            while (timer < 1.0) {
+                timer += Time.deltaTime * rate;
+                float step = Mathf.SmoothStep(0.0f, 1.0f, timer);
+                m_AnimatedRotation = Quaternion.Slerp(startRotation, targetRotation, step);
+                Vector3 position = m_AnimatedRotation * new Vector3(0, 0, -m_Zoom);
+                m_Transform.rotation = m_AnimatedRotation;
+                m_Transform.position = position;
+                yield return null;
+            }
+
+            m_AnimatingRotation = false;
+            SetLookRotation(targetRotation);
+        }
+
+        private void SetLookRotation(Quaternion rotation) {
+            m_Transform.rotation = rotation;
+            m_Transform.position = rotation * new Vector3(0, 0, -m_Zoom);
+
+            Vector3 eulerAngles = rotation.eulerAngles;
+            if (eulerAngles.x > 180.0f) {
+                eulerAngles.x -= 360.0f;
+            }
+            m_RotationXAxis = eulerAngles.x;
+            m_RotationYAxis = eulerAngles.y;
         }
 
         private float ClampAngle(float angle, float min, float max) {

@@ -6,7 +6,6 @@ using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth {
     public class VirtualEarth : MonoBehaviour {
-        [SerializeField] private float m_Radius;
         [SerializeField] private float m_Latitude;
         [SerializeField] private float m_Longitude;
 
@@ -19,28 +18,21 @@ namespace CrowdedEarth {
             //        m_Longitude = response.Longitude;
             //    }
             //});
-            citiesAPI.GetCities(10000000, (response, success) => {
-                if (success) {
-                    foreach (ICity city in response) {
-                        Debug.Log($"{city.ID}");
-                    }
-                }
-            });
+            //citiesAPI.GetCities(10000000, (response, success) => {
+            //    if (success) {
+            //        foreach (ICity city in response) {
+            //            Debug.Log($"{city.ID}");
+            //        }
+            //    }
+            //});
+
+            GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            go.transform.position = Coordinates.ToCartesian(m_Latitude, m_Longitude);
+            go.transform.rotation = Coordinates.LookFrom(m_Latitude, m_Longitude);
         }
 
         private void OnDrawGizmos() {
-            Debug.DrawLine(Vector3.zero, ToCartesian(m_Latitude, m_Longitude), Color.red);
-        }
-
-        private Vector3 ToCartesian(float latitude, float longitude) {
-            latitude *= Mathf.Deg2Rad;
-            longitude *= Mathf.Deg2Rad;
-
-            float x = m_Radius * Mathf.Cos(latitude) * Mathf.Cos(longitude);
-            float y = m_Radius * Mathf.Cos(latitude) * Mathf.Sin(longitude);
-            float z = m_Radius * Mathf.Sin(latitude);
-
-            return new Vector3(x, z, y);
+            Debug.DrawLine(Vector3.zero, Coordinates.ToCartesian(m_Latitude, m_Longitude), Color.red);
         }
     }
 }
