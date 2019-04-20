@@ -38,6 +38,22 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: Zoom
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: '-'
+    positiveButton: =
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 3
+    dead: 0.001
+    sensitivity: 0.1
+    snap: 1
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -153,7 +169,7 @@ InputManager:
     m_Name: Zoom
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: equals
+    negativeButton: 
     positiveButton: 
     altNegativeButton: 
     altPositiveButton: 
