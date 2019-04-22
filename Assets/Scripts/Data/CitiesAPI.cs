@@ -25,6 +25,9 @@ namespace CrowdedEarth.Data {
 
         private class City : ICity {
             public int ID { get; set; }
+            public string Name { get; set; }
+            public float Latitude { get; set; }
+            public float Longitude { get; set; }
         }
 
         private class CityDetails : ICityDetails {
@@ -39,8 +42,27 @@ namespace CrowdedEarth.Data {
 
         private const string BASE_URL = "http://geodb-free-service.wirefreethought.com";
 
-        public void GetCities(int maxPopulation, GetCitiesHandler callback) {
-            MakeRequest<List<City>>("/v1/geo/cities?limit=5&offset=0&minPopulation=10000000", (response, success) => callback?.Invoke(response.Data, success));
+        public void GetCities(int minPopulation, GetCitiesHandler callback) {
+            List<City> cities = new List<City>();
+
+            void DoRequest(string url) {
+                MakeRequest<List<City>>(url, (response, success) => {
+                    if (success) {
+                        cities.AddRange(response.Data);
+
+                        ResponseLink link = response.Links.Find(l => l.Rel == "next");
+                        if (link != null) {
+                            DoRequest(link.Href);
+                        } else {
+                            callback?.Invoke(cities, success); 
+                        }
+                    } else {
+                        callback?.Invoke(cities, success);
+                    }
+                });
+            }
+
+            DoRequest($"/v1/geo/cities?limit=5&offset=0&minPopulation={minPopulation}");
         }
 
         public void GetCityDetails(int cityID, GetCityDetailsHandler callback) {

@@ -407,4 +407,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Latitude: -34.55724
   m_Longitude: -58.425632
-  m_Prefab: {fileID: 13920104168596694, guid: 00683899c0697c34c8b652ac0322d4c3, type: 3}
+  m_PillarPrefab: {fileID: 13920104168596694, guid: 00683899c0697c34c8b652ac0322d4c3,
+    type: 3}

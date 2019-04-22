@@ -8,7 +8,7 @@ namespace CrowdedEarth {
     public class VirtualEarth : MonoBehaviour {
         [SerializeField] private float m_Latitude;
         [SerializeField] private float m_Longitude;
-        [SerializeField] private GameObject m_Prefab;
+        [SerializeField] private GameObject m_PillarPrefab;
 
         private void Start() {
             ICitiesAPI citiesAPI = new CitiesAPI();
@@ -19,15 +19,18 @@ namespace CrowdedEarth {
             //        m_Longitude = response.Longitude;
             //    }
             //});
-            //citiesAPI.GetCities(10000000, (response, success) => {
-            //    if (success) {
-            //        foreach (ICity city in response) {
-            //            Debug.Log($"{city.ID}");
-            //        }
-            //    }
-            //});
+            citiesAPI.GetCities(10000000, (response, success) => {
+                if (success) {
+                    foreach (ICity city in response) {
+                        Debug.Log($"{city.Name}");
+                        MakePillar(city.Latitude, city.Longitude);
+                    }
+                }
+            });
+        }
 
-            GameObject go = Instantiate(m_Prefab, Coordinates.ToCartesian(m_Latitude, m_Longitude), Coordinates.LookFrom(m_Latitude, m_Longitude));
+        private void MakePillar(float latitude, float longitude) {
+            Instantiate(m_PillarPrefab, Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
         }
 
         private void OnDrawGizmos() {
