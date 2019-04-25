@@ -49,6 +49,18 @@ namespace CrowdedEarth {
             UpdateClickToRotate();
         }
 
+        public void RotateTo(float latitude, float longitude) {
+            // HACK: Cut and paste
+            if (m_RotationCoroutine != null) {
+                StopCoroutine(m_RotationCoroutine);
+                if (m_AnimatingRotation) {
+                    SetLookRotation(m_AnimatedRotation);
+                }
+                m_AnimatingRotation = false;
+            }
+            m_RotationCoroutine = StartCoroutine(AnimateRotation(Coordinates.LookAt(latitude, longitude), 1));
+        }
+
         private void UpdateRotationAndZoom() {
             if (m_AnimatingRotation && Input.GetKeyDown(KeyCode.Mouse1)) {
                 if (m_RotationCoroutine != null) {

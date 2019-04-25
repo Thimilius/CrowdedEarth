@@ -34,7 +34,7 @@ namespace CrowdedEarth.Data {
         private const string BASE_URL = "https://nominatim.openstreetmap.org/search/";
         private static readonly string DATA_PATH = Path.Combine(Application.dataPath, "Data");
 
-        public static void GetCities(GetCountriesHandler callback) {
+        public static void GetCountries(GetCountriesHandler callback) {
             string path = Path.Combine(DATA_PATH, "country_population_1990-2017.csv");
             const int historySize = 28;
             using (var reader = new StreamReader(path)) {
