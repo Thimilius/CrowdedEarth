@@ -3,8 +3,6 @@
 public static class Coordinates {
     private const float RADIUS = 20.2f;
 
-    private static readonly BoundingSphere BOUNDING_SPHERE = new BoundingSphere(Vector3.zero, RADIUS);
-
     public static Vector3 ToCartesian(float latitude, float longitude) {
         latitude *= Mathf.Deg2Rad;
         longitude *= Mathf.Deg2Rad;
@@ -49,11 +47,9 @@ public static class Coordinates {
             hit.point = ray.GetPoint(t1);
         } else if (t0 < 0 && t1 > 0) {
             // Here we are inside the sphere
-            //System.out.println("Inside sphere");
             hit.point = ray.GetPoint(t1);
         } else if (t1 < 0 && t0 > 0) {
             // Here we are inside the sphere
-            //System.out.println("Inside sphere");
             hit.point = ray.GetPoint(t0);
         } else {
             return false;

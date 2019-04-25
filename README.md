@@ -7,5 +7,8 @@
 - Add more details on zoom into area
 
 # TODO
-- Try static data from https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#
 - Make it look nicer
+
+# RESOURCES
+- https://wiki.openstreetmap.org/wiki/Nominatim
+- https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#
