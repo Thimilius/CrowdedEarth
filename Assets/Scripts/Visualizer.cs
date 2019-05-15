@@ -8,6 +8,10 @@ namespace CrowdedEarth {
     public class Visualizer : MonoBehaviour {
         [SerializeField] private WorldCamera m_WorldCamera;
         [SerializeField] private GameObject m_VisualObjectPrefab;
+        [Header("Earth Visualization")]
+        [SerializeField] private MeshRenderer m_EarthRenderer;
+        [SerializeField] private Material m_InfoMaterial;
+        [SerializeField] private Material m_RealMaterial;
 
         private void Start() {
             DataLoader.GetCountries((country, success) => {
@@ -20,17 +24,36 @@ namespace CrowdedEarth {
         }
 
         private void Update() {
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit hit)) {
-                    if (hit.transform.CompareTag("CountryObject")) {
-                        // HACK: Hardcoded visual object type parameter
-                        var co = hit.transform.GetComponent<CountryObject>();
-                        ICountry country = co.Country;
-                        Debug.Log($"{country.Name} - {country.Population[country.Population.Count - 1]}");
-                        m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
+                if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out RaycastHit hit)) {
+                        if (hit.transform.CompareTag("CountryObject")) {
+                            // HACK: Hardcoded visual object type parameter
+                            var co = hit.transform.GetComponent<CountryObject>();
+                            ICountry country = co.Country;
+                            Debug.Log($"{country.Name} - {country.Population[country.Population.Count - 1]}");
+                            m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
+                        }
                     }
                 }
+            }
+        }
+
+        public void SetVisualizationMode(VisualizationMode mode) {
+            switch (mode) {
+                case VisualizationMode.Info:
+                    m_EarthRenderer.material = m_InfoMaterial;
+                    m_WorldCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
+                    RenderSettings.ambientSkyColor = new Color(0.5f, 0.5f, 0.5f);
+                    break;
+                case VisualizationMode.Real:
+                    m_EarthRenderer.material = m_RealMaterial;
+                    m_WorldCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+                    RenderSettings.ambientSkyColor = new Color(0.2f, 0.2f, 0.2f);
+                    break;
+                default:
+                    break;
             }
         }
 
