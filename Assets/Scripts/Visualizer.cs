@@ -88,15 +88,15 @@ namespace CrowdedEarth {
         }
 
         private IEnumerator PlayAnimation() {
-            // Starts out at 1991 and 1990 is the current year
-            for (int year = 1; year < 28; year++) {
+            // Starts out at 1960 and  is the current year
+            for (int year = 1; year < 57; year++) {
                 yield return StartCoroutine(PlayAnimationForYear(year));
                 Debug.Log($"Year: {year}");
             }
         }
 
         private IEnumerator PlayAnimationForYear(int year) {
-            const float time = 1;
+            const float time = 0.1f;
             foreach (var co in m_CountryObjects) {
                 float population = co.Country.Population[year];
                 float scale = population / 20000000f;

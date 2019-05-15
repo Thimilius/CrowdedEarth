@@ -9,6 +9,7 @@
 
 # TODO
 - Make it look nicer
+- Develop tool for data processing that puts langitude and longitude into the static data
 
 # RESOURCES
 - https://databank.worldbank.org/data/reports.aspx?source=2&series=SP.POP.TOTL&country=#
