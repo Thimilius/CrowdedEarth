@@ -14,6 +14,7 @@ namespace CrowdedEarth {
         [SerializeField] private Material m_RealMaterial;
 
         private List<CountryObject> m_CountryObjects;
+        private int m_Year;
 
         private void Start() {
             m_CountryObjects = new List<CountryObject>();
@@ -70,6 +71,20 @@ namespace CrowdedEarth {
             }
         }
 
+        public void SetYear(int year) {
+            m_Year = year;
+
+            int index = YearToIndex(year); 
+            foreach (var co in m_CountryObjects) {
+                float population = co.Country.Population[index];
+                float scale = population / 20000000f;
+
+                Vector3 localScale = co.transform.localScale;
+                localScale.z = scale;
+                co.transform.localScale = localScale;
+            }
+        }
+
         private T MakeVisualObject<T>(float latitude, float longitude, float scale, string name) where T : VisualObject {
             // HACK: Hardcoded prefab
             GameObject go = Instantiate(m_VisualObjectPrefab, Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
@@ -107,6 +122,12 @@ namespace CrowdedEarth {
                 iTween.ScaleTo(co.gameObject, localScale, time);
             }
             yield return new WaitForSeconds(time);
+        }
+
+        private int YearToIndex(int year) {
+            // HACK: Hardcoded!
+            year = Mathf.Clamp(year, 1960, 2017);
+            return year - 1960;
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CrowdedEarth.UI {
-    public class VisualizationUI : MonoBehaviour {
+    public class VisualizationModeUI : MonoBehaviour {
         [SerializeField] private Visualizer m_Visualizer;
         [SerializeField] private Dropdown m_VisualizationDropdown;
 
