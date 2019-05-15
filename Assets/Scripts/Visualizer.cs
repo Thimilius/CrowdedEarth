@@ -21,7 +21,8 @@ namespace CrowdedEarth {
             DataLoader.GetCountries((country, success) => {
                 if (success) {
                     float population = country.Population[0];
-                    var co = MakeVisualObject<CountryObject>(country.Latitude, country.Longitude, population / 20000000f);
+                    float scale = population / 20000000f;
+                    var co = MakeVisualObject<CountryObject>(country.Latitude, country.Longitude, scale, $"Country: {country.Name}");
                     co.Country = country;
 
                     m_CountryObjects.Add(co);
@@ -34,12 +35,14 @@ namespace CrowdedEarth {
                 if (Input.GetKeyDown(KeyCode.Mouse0)) {
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out RaycastHit hit)) {
-                        if (hit.transform.CompareTag("CountryObject")) {
-                            // HACK: Hardcoded visual object type parameter
-                            var co = hit.transform.GetComponent<CountryObject>();
-                            ICountry country = co.Country;
-                            Debug.Log($"{country.Name} - {country.Population[country.Population.Count - 1]}");
-                            m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
+                        var vo = hit.transform.GetComponent<VisualObject>();
+                        if (vo != null) {
+                            if (vo.Type == VisualObjectType.Country) {
+                                CountryObject co = (CountryObject)vo;
+                                ICountry country = co.Country;
+                                Debug.Log($"{country.Name} - {country.Population[country.Population.Count - 1]}");
+                                m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
+                            }
                         }
                     }
                 }
@@ -67,10 +70,11 @@ namespace CrowdedEarth {
             }
         }
 
-        private T MakeVisualObject<T>(float latitude, float longitude, float scale) where T : VisualObject {
+        private T MakeVisualObject<T>(float latitude, float longitude, float scale, string name) where T : VisualObject {
             // HACK: Hardcoded prefab
             GameObject go = Instantiate(m_VisualObjectPrefab, Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
-            go.tag = "CountryObject";
+            go.tag = tag;
+            go.name = name;
 
             Vector3 localScale = go.transform.localScale;
             localScale.z = scale;
