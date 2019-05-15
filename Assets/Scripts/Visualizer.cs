@@ -13,12 +13,18 @@ namespace CrowdedEarth {
         [SerializeField] private Material m_InfoMaterial;
         [SerializeField] private Material m_RealMaterial;
 
+        private List<CountryObject> m_CountryObjects;
+
         private void Start() {
+            m_CountryObjects = new List<CountryObject>();
+
             DataLoader.GetCountries((country, success) => {
                 if (success) {
-                    float population = country.Population[country.Population.Count - 1];
+                    float population = country.Population[0];
                     var co = MakeVisualObject<CountryObject>(country.Latitude, country.Longitude, population / 20000000f);
                     co.Country = country;
+
+                    m_CountryObjects.Add(co);
                 }
             });
         }
@@ -37,6 +43,10 @@ namespace CrowdedEarth {
                         }
                     }
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                StartCoroutine(PlayAnimation());
             }
         }
 
@@ -71,6 +81,28 @@ namespace CrowdedEarth {
             vo.Longitude = longitude;
 
             return vo;
+        }
+
+        private IEnumerator PlayAnimation() {
+            // Starts out at 1991 and 1990 is the current year
+            for (int year = 1; year < 28; year++) {
+                yield return StartCoroutine(PlayAnimationForYear(year));
+                Debug.Log($"Year: {year}");
+            }
+        }
+
+        private IEnumerator PlayAnimationForYear(int year) {
+            const float time = 1;
+            foreach (var co in m_CountryObjects) {
+                float population = co.Country.Population[year];
+                float scale = population / 20000000f;
+
+                Vector3 localScale = co.transform.localScale;
+                localScale.z = scale;
+
+                iTween.ScaleTo(co.gameObject, localScale, time);
+            }
+            yield return new WaitForSeconds(time);
         }
     }
 }
