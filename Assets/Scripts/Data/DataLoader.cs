@@ -101,7 +101,7 @@ namespace CrowdedEarth.Data {
             const int historySize = 28;
             using (var reader = new StreamReader(path)) {
                 using (var csv = new CsvReader(reader)) {
-                    // NOTE: The whole processing of the data could probably be prettier and faster
+                    csv.Configuration.Delimiter = ",";
                     var entries = csv.GetRecords<CountryPopulationEntry>();
 
                     var properties = entries.First().GetType().GetProperties().Where(p => p.Name.StartsWith("Population"));
@@ -141,6 +141,11 @@ namespace CrowdedEarth.Data {
         private static void MakeRequest<T>(string query, Action<T, bool> callback) {
             UnityWebRequest request = UnityWebRequest.Get($"{BASE_URL}{query}?format=json");
             request.SendWebRequest().completed += operation => {
+                // Prevent callbacks from being called after we already quit play mode
+                if (!Application.isPlaying) {
+                    return;
+                }
+
                 if (request.isHttpError || request.isNetworkError) {
                     Debug.LogError($"[DataLoader] - Request failed with error ({request.responseCode}): {request.error}");
                     callback?.Invoke(default, false);
