@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using CrowdedEarth.Visualization;
 
 namespace CrowdedEarth.UI {
     public class VisualizationModeUI : MonoBehaviour {

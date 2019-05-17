@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using CrowdedEarth.Visualization;
 
 namespace CrowdedEarth.UI {
     public class TimelineUI : MonoBehaviour {

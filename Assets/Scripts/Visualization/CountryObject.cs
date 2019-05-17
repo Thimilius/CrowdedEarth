@@ -1,6 +1,6 @@
 ﻿using CrowdedEarth.Data.Model;
 
-namespace CrowdedEarth {
+namespace CrowdedEarth.Visualization {
     public class CountryObject : VisualObject {
         public override VisualObjectType Type => VisualObjectType.Country;
 

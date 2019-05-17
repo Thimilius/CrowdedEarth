@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CrowdedEarth {
+namespace CrowdedEarth.Visualization {
     public abstract class VisualObject : MonoBehaviour {
         public abstract VisualObjectType Type { get; }
 

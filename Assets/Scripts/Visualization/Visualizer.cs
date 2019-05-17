@@ -4,7 +4,7 @@ using UnityEngine;
 using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
 
-namespace CrowdedEarth {
+namespace CrowdedEarth.Visualization {
     public class Visualizer : MonoBehaviour {
         [SerializeField] private WorldCamera m_WorldCamera;
         [SerializeField] private GameObject m_VisualObjectPrefab;
