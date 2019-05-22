@@ -17,10 +17,13 @@ namespace CrowdedEarth.Data {
         //       - Eritrea
         //       - Serbia
         //       - Sint Maarten (Dutch part)
+        //       - Sint Maarten (French part)
         //       - West Bank and Gaza
         //       - Kuwait
         //       - Micronesia
         //       - Macao SAR, China
+        //       - Greenland
+        //       - Bermuda
         private class CountryPopulationEntry {
             [Index(2)]  public string Country { get; set; }
             [Index(4)]  public int Population1960 { get; set; }
@@ -81,6 +84,39 @@ namespace CrowdedEarth.Data {
             [Index(59)] public int Population2015 { get; set; }
             [Index(60)] public int Population2016 { get; set; }
             [Index(61)] public int Population2017 { get; set; }
+            [Index(62)] public int Population2018 { get; set; }
+            [Index(63)] public int Population2019 { get; set; }
+            [Index(64)] public int Population2020 { get; set; }
+            [Index(65)] public int Population2021 { get; set; }
+            [Index(66)] public int Population2022 { get; set; }
+            [Index(67)] public int Population2023 { get; set; }
+            [Index(68)] public int Population2024 { get; set; }
+            [Index(69)] public int Population2025 { get; set; }
+            [Index(70)] public int Population2026 { get; set; }
+            [Index(71)] public int Population2027 { get; set; }
+            [Index(72)] public int Population2028 { get; set; }
+            [Index(73)] public int Population2029 { get; set; }
+            [Index(74)] public int Population2030 { get; set; }
+            [Index(75)] public int Population2031 { get; set; }
+            [Index(76)] public int Population2032 { get; set; }
+            [Index(77)] public int Population2033 { get; set; }
+            [Index(78)] public int Population2034 { get; set; }
+            [Index(79)] public int Population2035 { get; set; }
+            [Index(80)] public int Population2036 { get; set; }
+            [Index(81)] public int Population2037 { get; set; }
+            [Index(82)] public int Population2038 { get; set; }
+            [Index(83)] public int Population2039 { get; set; }
+            [Index(84)] public int Population2040 { get; set; }
+            [Index(85)] public int Population2041 { get; set; }
+            [Index(86)] public int Population2042 { get; set; }
+            [Index(87)] public int Population2043 { get; set; }
+            [Index(88)] public int Population2044 { get; set; }
+            [Index(89)] public int Population2045 { get; set; }
+            [Index(90)] public int Population2046 { get; set; }
+            [Index(91)] public int Population2047 { get; set; }
+            [Index(92)] public int Population2048 { get; set; }
+            [Index(93)] public int Population2049 { get; set; }
+            [Index(94)] public int Population2050 { get; set; }
         }
         
         private class Location {
@@ -105,7 +141,7 @@ namespace CrowdedEarth.Data {
         private static readonly string DATA_PATH = Path.Combine(Application.dataPath, "Data");
 
         public static void GetCountries(GetCountriesHandler callback) {
-            string populationPath = Path.Combine(DATA_PATH, "population.csv");
+            string populationPath = Path.Combine(DATA_PATH, "population_total.csv");
             string locationPath = Path.Combine(DATA_PATH, "locations.csv");
 
             List<Location> locations = new List<Location>();

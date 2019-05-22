@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.00004327564, g: 0.00010623085, b: 0.00004327564,
+  m_IndirectSpecularColor: {r: 0.000043681564, g: 0.00010623085, b: 0.000043681564,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -1857,7 +1857,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1515153614}
   m_Direction: 0
   m_MinValue: 1960
-  m_MaxValue: 2017
+  m_MaxValue: 2050
   m_WholeNumbers: 1
   m_Value: 1960
   m_OnValueChanged:

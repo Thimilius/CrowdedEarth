@@ -41,16 +41,12 @@ namespace CrowdedEarth.Visualization {
                             if (vo.Type == VisualObjectType.Country) {
                                 CountryObject co = (CountryObject)vo;
                                 ICountry country = co.Country;
-                                Debug.Log($"{country.Name} - {country.Population[country.Population.Count - 1]}");
+                                Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
                                 m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
                             }
                         }
                     }
                 }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                StartCoroutine(PlayAnimation());
             }
         }
 
@@ -102,31 +98,9 @@ namespace CrowdedEarth.Visualization {
             return vo;
         }
 
-        private IEnumerator PlayAnimation() {
-            // Starts out at 1960 and  is the current year
-            for (int year = 1; year < 57; year++) {
-                yield return StartCoroutine(PlayAnimationForYear(year));
-                Debug.Log($"Year: {year}");
-            }
-        }
-
-        private IEnumerator PlayAnimationForYear(int year) {
-            const float time = 0.1f;
-            foreach (var co in m_CountryObjects) {
-                float population = co.Country.Population[year];
-                float scale = population / 20000000f;
-
-                Vector3 localScale = co.transform.localScale;
-                localScale.z = scale;
-
-                iTween.ScaleTo(co.gameObject, localScale, time);
-            }
-            yield return new WaitForSeconds(time);
-        }
-
         private int YearToIndex(int year) {
             // HACK: Hardcoded!
-            year = Mathf.Clamp(year, 1960, 2017);
+            year = Mathf.Clamp(year, 1960, 2050);
             return year - 1960;
         }
     }
