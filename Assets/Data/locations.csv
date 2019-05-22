@@ -34,7 +34,7 @@ Name,Latitude,Longitude
 "Cameroon",4.612552,13.15358
 "Cayman Islands",19.54172,-80.56671
 "Central African Republic",7.03236,19.99812
-"Channel Islands",60.61679,-145.7997
+"Channel Islands",49.433333,-2.316667
 "Comoros",-12.20452,44.28329
 "Cambodia",13.50664,104.8694
 "China",35.00007,104.9999
@@ -64,7 +64,7 @@ Name,Latitude,Longitude
 "Ethiopia",10.21167,38.65212
 "Finland",63.24678,25.92092
 "Fiji",-18.12397,179.0123
-"Georgia",32.32938,-83.11374
+"Georgia",42.315407,43.356892
 "El Salvador",13.80004,-88.91407
 "Estonia",58.75238,25.33191
 "Gambia, The",13.47006,-15.49005
@@ -104,7 +104,7 @@ Name,Latitude,Longitude
 "Lithuania",55.35,23.75
 "Kenya",1.441968,38.4314
 "Libya",26.82345,18.12367
-"Lao PDR",17.97014,102.6332
+"Lao PDR",19.85627,102.495496
 "Lebanon",33.87506,35.84341
 "Liechtenstein",47.14163,9.553153
 "Liberia",5.749972,-9.365852
@@ -124,7 +124,7 @@ Name,Latitude,Longitude
 "Monaco",43.73114,7.419757
 "Montenegro",42.77285,19.24086
 "Iraq",33.09558,44.17498
-"Myanmar",17.17505,95.99996
+"Myanmar",21.913965,95.956223
 "Namibia",-23.23355,17.32311
 "Mozambique",-19.30223,34.9145
 "Morocco",31.17282,-7.336248
@@ -143,7 +143,7 @@ Name,Latitude,Longitude
 "Pakistan",30.33084,71.2475
 "Oman",21.00003,57.00369
 "Panama",8.309607,-81.30663
-"Nepal",28.10839,84.09171
+"Nepal",28.394857,84.124008
 "Papua New Guinea",-5.681607,144.2489
 "Russian Federation",64.68631,97.74531
 "Sao Tome and Principe",0.8875498,6.964872
@@ -199,7 +199,7 @@ Name,Latitude,Longitude
 "Uzbekistan",41.32373,63.95281
 "Vietnam",13.2904,108.4265
 "Zambia",-14.51862,27.55992
-"Venezuela, RB",-34.8931,-56.18935
+"Venezuela, RB",6.42375,-66.58973
 "Zimbabwe",-18.4555,29.74684
 "Congo, Rep.",-0.228021,15.827659
 "Egypt, Arab Rep.",26.820553,30.802498
