@@ -19,6 +19,8 @@ namespace CrowdedEarth.Data {
         //       - Sint Maarten (Dutch part)
         //       - West Bank and Gaza
         //       - Kuwait
+        //       - Micronesia
+        //       - Macao SAR, China
         private class CountryPopulationEntry {
             [Index(2)]  public string Country { get; set; }
             [Index(4)]  public int Population1960 { get; set; }
@@ -80,6 +82,12 @@ namespace CrowdedEarth.Data {
             [Index(60)] public int Population2016 { get; set; }
             [Index(61)] public int Population2017 { get; set; }
         }
+        
+        private class Location {
+            public string Name { get; set; }
+            public float Latitude { get; set; }
+            public float Longitude { get; set; }
+        }
 
         private class Country : ICountry {
             public string Name { get; set; }
@@ -97,9 +105,19 @@ namespace CrowdedEarth.Data {
         private static readonly string DATA_PATH = Path.Combine(Application.dataPath, "Data");
 
         public static void GetCountries(GetCountriesHandler callback) {
-            string path = Path.Combine(DATA_PATH, "population.csv");
+            string populationPath = Path.Combine(DATA_PATH, "population.csv");
+            string locationPath = Path.Combine(DATA_PATH, "locations.csv");
+
+            List<Location> locations = new List<Location>();
+            using (var reader = new StreamReader(locationPath)) {
+                using (var csv = new CsvReader(reader)) {
+                    var entries = csv.GetRecords<Location>();
+                    locations.AddRange(entries);
+                }
+            }
+
             const int historySize = 28;
-            using (var reader = new StreamReader(path)) {
+            using (var reader = new StreamReader(populationPath)) {
                 using (var csv = new CsvReader(reader)) {
                     csv.Configuration.Delimiter = ",";
                     var entries = csv.GetRecords<CountryPopulationEntry>();
@@ -119,14 +137,24 @@ namespace CrowdedEarth.Data {
                             country.Population.Add(population);
                         }
 
+                        Location location = locations.Find(l => l.Name == country.Name);
+                        if (location != null) {
+                            country.Latitude = location.Latitude;
+                            country.Longitude = location.Longitude;
+                            callback?.Invoke(country, true);
+                            continue;
+                        }
+
                         MakeRequest<List<Response>>($"{name}", (responses, success) => {
                             if (success) {
                                 if (responses.Count < 1) {
+                                    Debug.LogError($"Failed to get location for: {country.Name}");
                                     callback?.Invoke(null, false);
                                 } else {
                                     Response response = responses[0];
                                     country.Latitude = float.Parse(response.Lat);
                                     country.Longitude = float.Parse(response.Lon);
+                                    Debug.Log($"\"{country.Name}\",{country.Latitude},{country.Longitude}");
                                     callback?.Invoke(country, true);
                                 }
                             } else {
