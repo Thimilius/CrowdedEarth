@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.Visualization {
-    public abstract class VisualObject : MonoBehaviour {
-        public abstract VisualObjectType Type { get; }
+    public class VisualObject : MonoBehaviour {
+        public VisualObjectType Type { get; set; }
 
         public float Latitude { get; set; }
         public float Longitude { get; set; }
+
+        public ICountry Country { get; set; }
     }
 }

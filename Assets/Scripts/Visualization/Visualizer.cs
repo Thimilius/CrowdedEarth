@@ -6,6 +6,8 @@ using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.Visualization {
     public class Visualizer : MonoBehaviour {
+        private float SCALE_NORMALIZATION = 20000000.0f;
+
         [SerializeField] private WorldCamera m_WorldCamera;
         [SerializeField] private GameObject m_VisualObjectPrefab;
         [Header("Earth Visualization")]
@@ -13,20 +15,17 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Material m_InfoMaterial;
         [SerializeField] private Material m_RealMaterial;
 
-        private List<CountryObject> m_CountryObjects;
+        private List<VisualObject> m_VisualObjects;
         private int m_Year;
 
         private void Start() {
-            m_CountryObjects = new List<CountryObject>();
+            m_VisualObjects = new List<VisualObject>();
 
             DataLoader.GetCountries((country, success) => {
                 if (success) {
                     float population = country.Population[0];
-                    float scale = population / 20000000f;
-                    var co = MakeVisualObject<CountryObject>(country.Latitude, country.Longitude, scale, $"Country: {country.Name}");
-                    co.Country = country;
-
-                    m_CountryObjects.Add(co);
+                    VisualObject co = MakeVisualObject(VisualObjectType.Pillar, country);
+                    m_VisualObjects.Add(co);
                 }
             });
         }
@@ -38,12 +37,9 @@ namespace CrowdedEarth.Visualization {
                     if (Physics.Raycast(ray, out RaycastHit hit)) {
                         var vo = hit.transform.GetComponent<VisualObject>();
                         if (vo != null) {
-                            if (vo.Type == VisualObjectType.Country) {
-                                CountryObject co = (CountryObject)vo;
-                                ICountry country = co.Country;
-                                Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
-                                m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
-                            }
+                            ICountry country = vo.Country;
+                            Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
+                            m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
                         }
                     }
                 }
@@ -71,31 +67,45 @@ namespace CrowdedEarth.Visualization {
             m_Year = year;
 
             int index = YearToIndex(year); 
-            foreach (var co in m_CountryObjects) {
-                float population = co.Country.Population[index];
-                float scale = population / 20000000f;
-
-                Vector3 localScale = co.transform.localScale;
-                localScale.z = scale;
-                co.transform.localScale = localScale;
+            foreach (var vo in m_VisualObjects) {
+                Vector3 localScale = vo.transform.localScale;
+                localScale.z = GetScale(vo.Country.Population[index]);
+                vo.transform.localScale = localScale;
             }
         }
 
-        private T MakeVisualObject<T>(float latitude, float longitude, float scale, string name) where T : VisualObject {
-            // HACK: Hardcoded prefab
-            GameObject go = Instantiate(m_VisualObjectPrefab, Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
+        private VisualObject MakeVisualObject(VisualObjectType type, ICountry country) {
+            float latitude = country.Latitude;
+            float longitude = country.Longitude;
+
+            GameObject parent = new GameObject();
+            parent.transform.SetParent(transform);
+            parent.name = $"Country: {country.Name}";
+
+            GameObject go = Instantiate(GetPrefabForType(type), Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
             go.tag = tag;
-            go.name = name;
+            go.name = $"Country: {country.Name}";
 
             Vector3 localScale = go.transform.localScale;
-            localScale.z = scale;
+            localScale.z = GetScale(country.Population[0]);
             go.transform.localScale = localScale;
 
-            var vo = go.AddComponent<T>();
-            vo.Latitude = latitude;
-            vo.Longitude = longitude;
+            VisualObject vo = go.AddComponent<VisualObject>();
+            vo.Type = type;
+            vo.Country = country;
 
             return vo;
+        }
+
+        private GameObject GetPrefabForType(VisualObjectType type) {
+            switch (type) {
+                case VisualObjectType.Pillar: return m_VisualObjectPrefab;
+                default: return null;
+            }
+        }
+
+        private float GetScale(int population) {
+            return population / SCALE_NORMALIZATION;
         }
 
         private int YearToIndex(int year) {

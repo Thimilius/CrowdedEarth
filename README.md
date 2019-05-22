@@ -1,17 +1,14 @@
 # Crowded Earth
 
-# IDEAS
-- Show population data (history) of metropolitan areas as pillars
-- Show population data (history) of countries as pillars
-- Let the area be picked -> Can be focused and be more detailed
-- Add more details on zoom into area
-- Think about alternatives to pillars
+# Todo
+- Add info graphic when hovering over country that includes
+	- Population density
+	- Age groups
+	- Proportion of female/male
+- Pillars should have a subtle gradient effect depending on scale
+- Try highlighting country borders/shapes
 
-# TODO
-- Make it look nicer
-- Develop tool for data processing that puts langitude and longitude into the static data
-
-# RESOURCES
+# Resources
 - https://databank.worldbank.org/data/reports.aspx?source=2&series=SP.POP.TOTL&country=#
 - https://wiki.openstreetmap.org/wiki/Nominatim
 - https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#
