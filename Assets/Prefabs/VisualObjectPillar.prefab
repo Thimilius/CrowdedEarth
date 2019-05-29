@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 338604090971255028}
   - component: {fileID: 9182256751408038731}
   - component: {fileID: 8970526633859693961}
+  - component: {fileID: -2200549549096049465}
   m_Layer: 0
-  m_Name: VisualObject
+  m_Name: VisualObjectPillar
   m_TagString: CountryObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,3 +92,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 1}
   m_Center: {x: 0, y: 0, z: 0.5}
+--- !u!114 &-2200549549096049465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13920104168596694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c60043c99d3adf438fb68b5a42e71dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HighlightColor: {r: 0, g: 1, b: 0, a: 1}

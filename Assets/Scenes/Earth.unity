@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.00004327564, g: 0.00010623085, b: 0.00004327564,
+  m_IndirectSpecularColor: {r: 0.000043681564, g: 0.00010623085, b: 0.000043681564,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -849,6 +849,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -944,6 +945,22 @@ MonoBehaviour:
   m_ZoomMin: 25
   m_ZoomMax: 75
   m_ZoomStart: 50
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -768656878, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &1065709878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WorldCamera: {fileID: 963194229}
-  m_VisualObjectPrefab: {fileID: 13920104168596694, guid: 00683899c0697c34c8b652ac0322d4c3,
+  m_VisualObjectPillarPrefab: {fileID: -2200549549096049465, guid: 00683899c0697c34c8b652ac0322d4c3,
     type: 3}
   m_EarthRenderer: {fileID: 1085000262}
   m_InfoMaterial: {fileID: 2100000, guid: b2e96d75718199045abbc793167e1a1d, type: 2}

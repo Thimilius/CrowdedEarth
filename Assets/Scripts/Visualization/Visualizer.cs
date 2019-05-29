@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
 
@@ -9,7 +10,8 @@ namespace CrowdedEarth.Visualization {
         private float SCALE_NORMALIZATION = 20000000.0f;
 
         [SerializeField] private WorldCamera m_WorldCamera;
-        [SerializeField] private GameObject m_VisualObjectPrefab;
+        [Header("Visual Objects")]
+        [SerializeField] private VisualObject m_VisualObjectPillarPrefab;
         [Header("Earth Visualization")]
         [SerializeField] private MeshRenderer m_EarthRenderer;
         [SerializeField] private Material m_InfoMaterial;
@@ -31,17 +33,17 @@ namespace CrowdedEarth.Visualization {
         }
 
         private void Update() {
-            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) {
-                if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    if (Physics.Raycast(ray, out RaycastHit hit)) {
-                        var vo = hit.transform.GetComponent<VisualObject>();
-                        if (vo != null) {
-                            ICountry country = vo.Country;
-                            Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
-                            m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
-                        }
-                    }
+            if (EventSystem.current.IsPointerOverGameObject()) {
+                return;
+            }
+
+            VisualObject vo = GetVisualObjectUnderMouse();
+
+            if (Input.GetKeyDown(KeyCode.Mouse0)) {
+                if (vo != null) {
+                    ICountry country = vo.Country;
+                    Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
+                    m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
                 }
             }
         }
@@ -78,28 +80,35 @@ namespace CrowdedEarth.Visualization {
             float latitude = country.Latitude;
             float longitude = country.Longitude;
 
-            GameObject parent = new GameObject();
-            parent.transform.SetParent(transform);
-            parent.name = $"Country: {country.Name}";
+            Vector3 position = Coordinates.ToCartesian(latitude, longitude);
+            Quaternion rotation = Coordinates.LookFrom(latitude, longitude);
+            VisualObject vo = Instantiate(GetPrefabForType(type), position, rotation, transform);
+            vo.tag = tag;
+            vo.name = $"Country: {country.Name}";
 
-            GameObject go = Instantiate(GetPrefabForType(type), Coordinates.ToCartesian(latitude, longitude), Coordinates.LookFrom(latitude, longitude), transform);
-            go.tag = tag;
-            go.name = $"Country: {country.Name}";
-
-            Vector3 localScale = go.transform.localScale;
+            Vector3 localScale = vo.transform.localScale;
             localScale.z = GetScale(country.Population[0]);
-            go.transform.localScale = localScale;
+            vo.transform.localScale = localScale;
 
-            VisualObject vo = go.AddComponent<VisualObject>();
             vo.Type = type;
             vo.Country = country;
+            vo.SetColor(Color.yellow);
 
             return vo;
         }
 
-        private GameObject GetPrefabForType(VisualObjectType type) {
+        private VisualObject GetVisualObjectUnderMouse() {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit)) {
+                return hit.transform.GetComponent<VisualObject>();
+            } else {
+                return null;
+            }
+        }
+
+        private VisualObject GetPrefabForType(VisualObjectType type) {
             switch (type) {
-                case VisualObjectType.Pillar: return m_VisualObjectPrefab;
+                case VisualObjectType.Pillar: return m_VisualObjectPillarPrefab;
                 default: return null;
             }
         }
