@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using CrowdedEarth.Data.Model;
 using UnityEngine.EventSystems;
+using System;
 
 namespace CrowdedEarth.Visualization {
     public class VisualObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
@@ -12,6 +13,9 @@ namespace CrowdedEarth.Visualization {
         public float Longitude { get; set; }
 
         public ICountry Country { get; set; }
+
+        public event Action OnPointerEntered;
+        public event Action OnPointerExited;
 
         private Renderer m_Renderer;
         private Color m_NormalColor;
@@ -27,10 +31,12 @@ namespace CrowdedEarth.Visualization {
 
         public void OnPointerEnter(PointerEventData eventData) {
             m_Renderer.material.color = m_HighlightColor;
+            OnPointerEntered?.Invoke();
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             m_Renderer.material.color = m_NormalColor;
+            OnPointerExited?.Invoke();
         }
     }
 }

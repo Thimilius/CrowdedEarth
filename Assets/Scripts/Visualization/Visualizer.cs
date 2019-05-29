@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,7 +7,7 @@ using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.Visualization {
     public class Visualizer : MonoBehaviour {
-        private float SCALE_NORMALIZATION = 20000000.0f;
+        private const float SCALE_NORMALIZATION = 20000000.0f;
 
         [SerializeField] private WorldCamera m_WorldCamera;
         [Header("Visual Objects")]
@@ -16,6 +16,8 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private MeshRenderer m_EarthRenderer;
         [SerializeField] private Material m_InfoMaterial;
         [SerializeField] private Material m_RealMaterial;
+
+        public event Action<VisualObject> OnVisualObjectCreated;
 
         private List<VisualObject> m_VisualObjects;
         private int m_Year;
@@ -26,7 +28,7 @@ namespace CrowdedEarth.Visualization {
             DataLoader.GetCountries((country, success) => {
                 if (success) {
                     float population = country.Population[0];
-                    VisualObject co = MakeVisualObject(VisualObjectType.Pillar, country);
+                    VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                     m_VisualObjects.Add(co);
                 }
             });
@@ -42,7 +44,7 @@ namespace CrowdedEarth.Visualization {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (vo != null) {
                     ICountry country = vo.Country;
-                    Debug.Log($"{country.Name} - {country.Population[YearToIndex(m_Year)]}");
+                    Debug.Log($"{country.Name} - {country.Population[GetYearIndex()]}");
                     m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
                 }
             }
@@ -68,7 +70,7 @@ namespace CrowdedEarth.Visualization {
         public void SetYear(int year) {
             m_Year = year;
 
-            int index = YearToIndex(year); 
+            int index = GetYearIndex(); 
             foreach (var vo in m_VisualObjects) {
                 Vector3 localScale = vo.transform.localScale;
                 localScale.z = GetScale(vo.Country.Population[index]);
@@ -76,7 +78,13 @@ namespace CrowdedEarth.Visualization {
             }
         }
 
-        private VisualObject MakeVisualObject(VisualObjectType type, ICountry country) {
+        public int GetYearIndex() {
+            // HACK: Hardcoded!
+            int year = Mathf.Clamp(m_Year, 1960, 2050);
+            return year - 1960;
+        }
+
+        private VisualObject CreateVisualObject(VisualObjectType type, ICountry country) {
             float latitude = country.Latitude;
             float longitude = country.Longitude;
 
@@ -93,6 +101,8 @@ namespace CrowdedEarth.Visualization {
             vo.Type = type;
             vo.Country = country;
             vo.SetColor(Color.yellow);
+
+            OnVisualObjectCreated?.Invoke(vo);
 
             return vo;
         }
@@ -115,12 +125,6 @@ namespace CrowdedEarth.Visualization {
 
         private float GetScale(int population) {
             return population / SCALE_NORMALIZATION;
-        }
-
-        private int YearToIndex(int year) {
-            // HACK: Hardcoded!
-            year = Mathf.Clamp(year, 1960, 2050);
-            return year - 1960;
         }
     }
 }
