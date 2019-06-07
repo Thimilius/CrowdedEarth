@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using UnityEngine;
 using CsvHelper;
 using System.Linq;
@@ -23,58 +24,75 @@ namespace CrowdedEarth.Data {
     public static class DataLoader {
         private class Country : ICountry {
             public string Name { get; set; }
-            public List<int> Population { get; set; }
+            public IList<int> Population { get; set; }
             public float Latitude { get; set; }
             public float Longitude { get; set; }
         }
 
+        private class ReadDataResult<T> {
+            public IDictionary<string, T> Data { get; set; }
+            public IEnumerable<PropertyInfo> Properties { get; set; }
+        }
+
         private static readonly string DATA_PATH = Path.Combine(Application.dataPath, "Data");
+        private static readonly string LOCATION_PATH = Path.Combine(DATA_PATH, "locations.csv");
+        private static readonly string POPULATION_TOTAL_PATH = Path.Combine(DATA_PATH, "population_total.csv");
+        private static readonly string POPULATION_FEMALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_female_percentage.csv");
+        private static readonly string POPULATION_MALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_male_percentage.csv");
 
         public static void GetCountries(GetCountriesHandler callback) {
-            string populationPath = Path.Combine(DATA_PATH, "population_total.csv");
-            string locationPath = Path.Combine(DATA_PATH, "locations.csv");
+            // HACK: We have a constant for how many years the data contains
+            const int YEAR_COUNT = 90;
 
-            List<Location> locations = new List<Location>();
-            using (var reader = new StreamReader(locationPath)) {
-                using (var csv = new CsvReader(reader)) {
-                    var entries = csv.GetRecords<Location>();
-                    locations.AddRange(entries);
+            // Load locations (latitude and longitude)
+            ReadDataResult<LocationLayout> locations = ReadData<LocationLayout>(LOCATION_PATH);
+
+            // Load population gender percentages
+            ReadDataResult<PopulationPercentageLayout> populationFemalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_FEMALE_PERCENTAGE_PATH);
+            ReadDataResult<PopulationPercentageLayout> populationMalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_MALE_PERCENTAGE_PATH);
+
+            // Load total population
+            ReadDataResult<PopulationAbsoluteLayout> populationTotal = ReadDataWithProperties<PopulationAbsoluteLayout>(POPULATION_TOTAL_PATH);
+
+            foreach (PopulationAbsoluteLayout entry in populationTotal.Data.Values) {
+                string name = entry.Country;
+                var country = new Country() {
+                    Name = name,
+                    Population = new List<int>(YEAR_COUNT)
+                };
+
+                foreach (var property in populationTotal.Properties) {
+                    int population = (int)property.GetValue(entry);
+                    country.Population.Add(population);
+                }
+
+                if (locations.Data.ContainsKey(name) == false) {
+                    Debug.LogError($"[DataLoader] - Failed to get location for country: {name}!");
+                } else {
+                    LocationLayout location = locations.Data[name];
+                    country.Latitude = location.Latitude;
+                    country.Longitude = location.Longitude;
+                    callback?.Invoke(country, true);
                 }
             }
+        }
 
-            const int historySize = 28;
-            using (var reader = new StreamReader(populationPath)) {
+        private static ReadDataResult<T> ReadData<T>(string path) where T : DataLayout {
+            using (var reader = new StreamReader(path)) {
                 using (var csv = new CsvReader(reader)) {
                     csv.Configuration.Delimiter = ",";
-                    var entries = csv.GetRecords<CountryPopulationLayout>();
-
-                    var properties = entries.First().GetType().GetProperties().Where(p => p.Name.StartsWith("Population"));
-
-                    foreach (CountryPopulationLayout entry in entries) {
-                        string name = entry.Country;
-                        var country = new Country() {
-                            Name = name,
-                            Population = new List<int>(historySize)
-                        };
-
-                        foreach (var property in properties) {
-                            // HACK
-                            int population = (int)property.GetValue(entry);
-                            country.Population.Add(population);
-                        }
-
-                        Location location = locations.Find(l => l.Name == country.Name);
-                        if (location == null) {
-                            Debug.LogError($"[DataLoader] - Failed to get location for country: {name}!");
-                            continue;
-                        }
-
-                        country.Latitude = location.Latitude;
-                        country.Longitude = location.Longitude;
-                        callback?.Invoke(country, true);
-                    }
+                    var entries = csv.GetRecords<T>();
+                    var data = entries.ToDictionary(l => l.Country);
+                    return new ReadDataResult<T>() { Data = data };
                 }
             }
+        }
+
+        private static ReadDataResult<T> ReadDataWithProperties<T>(string path) where T : DataLayout {
+            ReadDataResult<T> result = ReadData<T>(path);
+            var properties = result.Data.First().Value.GetType().GetProperties().Where(p => p.Name.StartsWith("Value"));
+            result.Properties = properties;
+            return result;
         }
     }
 }

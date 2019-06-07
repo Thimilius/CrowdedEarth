@@ -1,4 +1,4 @@
-Name,Latitude,Longitude
+Country,Latitude,Longitude
 "Antigua and Barbuda",17.07913,-61.82225
 "American Samoa",-14.30063,-170.696
 "Angola",-11.87758,17.56912
@@ -89,9 +89,7 @@ Name,Latitude,Longitude
 "Isle of Man",54.23582,-4.514599
 "Jamaica",18.18505,-77.39477
 "Japan",36.57484,139.2394
-"Japan",36.57484,139.2394
 "Italy",42.63843,12.6743
-"Jordan",31.1667,36.94163
 "Jordan",31.1667,36.94163
 "Indonesia",-2.495998,120.2002
 "Kiribati",0.4483283,-171.6645
@@ -210,3 +208,4 @@ Name,Latitude,Longitude
 "Yemen, Rep.",15.552727,48.516388
 "Hong Kong SAR, China",22.396428,114.109497
 "Virgin Islands (U.S.)",18.335765,-64.896335
+"Afghanistan",33.93911,67.709953
