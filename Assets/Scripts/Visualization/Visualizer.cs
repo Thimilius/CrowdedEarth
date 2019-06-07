@@ -27,7 +27,6 @@ namespace CrowdedEarth.Visualization {
 
             DataLoader.GetCountries((country, success) => {
                 if (success) {
-                    float population = country.Population[0];
                     VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                     m_VisualObjects.Add(co);
                 }
@@ -44,7 +43,7 @@ namespace CrowdedEarth.Visualization {
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (vo != null) {
                     ICountry country = vo.Country;
-                    Debug.Log($"{country.Name} - {country.Population[GetYearIndex()]}");
+                    Debug.Log($"{country.Name} - {country.PopulationInfo[GetYearIndex()]}");
                     m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
                 }
             }
@@ -73,7 +72,7 @@ namespace CrowdedEarth.Visualization {
             int index = GetYearIndex(); 
             foreach (var vo in m_VisualObjects) {
                 Vector3 localScale = vo.transform.localScale;
-                localScale.z = GetScale(vo.Country.Population[index]);
+                localScale.z = GetScale(vo.Country.PopulationInfo[index].TotalPopulation);
                 vo.transform.localScale = localScale;
             }
         }
@@ -95,7 +94,7 @@ namespace CrowdedEarth.Visualization {
             vo.name = $"Country: {country.Name}";
 
             Vector3 localScale = vo.transform.localScale;
-            localScale.z = GetScale(country.Population[0]);
+            localScale.z = GetScale(country.PopulationInfo[0].TotalPopulation);
             vo.transform.localScale = localScale;
 
             vo.Type = type;

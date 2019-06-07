@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.000043681564, g: 0.00010623085, b: 0.000043681564,
+  m_IndirectSpecularColor: {r: 0.00004327564, g: 0.00010623085, b: 0.00004327564,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -897,7 +897,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2047521486}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1660,6 +1660,11 @@ MonoBehaviour:
   m_InfoPanel: {fileID: 1528874985}
   m_CountryText: {fileID: 1682924176}
   m_PopulationText: {fileID: 1696551518}
+  m_MaleFemalePercentageInfo: {fileID: 2047521485}
+  m_MalePercentageText: {fileID: 70948714}
+  m_FemalePercentageText: {fileID: 1358673149}
+  m_MalePercentageImage: {fileID: 1572453248}
+  m_FemalePercentageImage: {fileID: 634965564}
 --- !u!1 &1288627855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,7 +1905,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2047521486}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2379,7 +2384,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2047521486}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3219,7 +3224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2047521486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3232,9 +3237,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 70948713}
+  - {fileID: 1358673148}
   - {fileID: 634965563}
   - {fileID: 1572453247}
-  - {fileID: 1358673148}
   m_Father: {fileID: 1528874986}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
