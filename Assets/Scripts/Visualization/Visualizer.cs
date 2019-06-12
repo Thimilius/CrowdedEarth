@@ -18,6 +18,7 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Material m_RealMaterial;
 
         public event Action<VisualObject> OnVisualObjectCreated;
+        public VisualizationMode VisualizationMode { get; private set; }
 
         private List<VisualObject> m_VisualObjects;
         private int m_Year;
@@ -50,6 +51,8 @@ namespace CrowdedEarth.Visualization {
         }
 
         public void SetVisualizationMode(VisualizationMode mode) {
+            VisualizationMode = mode;
+
             switch (mode) {
                 case VisualizationMode.Info:
                     m_EarthRenderer.material = m_InfoMaterial;
@@ -69,7 +72,8 @@ namespace CrowdedEarth.Visualization {
         public void SetYear(int year) {
             m_Year = year;
 
-            int index = GetYearIndex(); 
+            int index = GetYearIndex();
+            Debug.Log(index);
             foreach (var vo in m_VisualObjects) {
                 Vector3 localScale = vo.transform.localScale;
                 localScale.z = GetScale(vo.Country.PopulationInfo[index].TotalPopulation);
@@ -78,9 +82,12 @@ namespace CrowdedEarth.Visualization {
         }
 
         public int GetYearIndex() {
+            const int YEAR_LIMIT_MIN = 1960;
+            const int YEAR_LIMIT_MAX = 2050 - 1;
+
             // HACK: Hardcoded!
-            int year = Mathf.Clamp(m_Year, 1960, 2050);
-            return year - 1960;
+            int year = Mathf.Clamp(m_Year, YEAR_LIMIT_MIN, YEAR_LIMIT_MAX);
+            return year - YEAR_LIMIT_MIN;
         }
 
         private VisualObject CreateVisualObject(VisualObjectType type, ICountry country) {
