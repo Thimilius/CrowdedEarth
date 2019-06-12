@@ -5,6 +5,7 @@
 	- Population density
 	- Age groups
 	- Proportion of female/male
+- Add country flags
 - Pillars should have a subtle gradient effect depending on scale
 - Try highlighting country borders/shapes
 - Make detail mode where the camera zooms in on country to display more viusally like urban and rural population
