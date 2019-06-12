@@ -29,7 +29,6 @@ namespace CrowdedEarth.UI {
         private void OnPointerEntered(VisualObject vo) {
             m_InfoPanel.SetActive(true);
 
-
             IPopulationInfo info = vo.Country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
             m_CountryText.text = vo.Country.Name;

@@ -104,4 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c60043c99d3adf438fb68b5a42e71dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HighlightColor: {r: 0, g: 1, b: 0, a: 1}
+  m_HighlightColor: {r: 0.18752226, g: 0.6317423, b: 0.8113208, a: 1}
+  m_HighlightEmissionColor: {r: 0.08259169, g: 0.45360258, b: 0.6037736, a: 1}

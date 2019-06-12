@@ -12,6 +12,8 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private WorldCamera m_WorldCamera;
         [Header("Visual Objects")]
         [SerializeField] private VisualObject m_VisualObjectPillarPrefab;
+        [SerializeField] private Color m_ScaleMinColor;
+        [SerializeField] private Color m_ScaleMaxColor;
         [Header("Earth Visualization")]
         [SerializeField] private MeshRenderer m_EarthRenderer;
         [SerializeField] private Material m_InfoMaterial;
@@ -40,6 +42,8 @@ namespace CrowdedEarth.Visualization {
             }
 
             VisualObject vo = GetVisualObjectUnderMouse();
+
+            // TODO: We should implement the hover effect here
 
             if (Input.GetKeyDown(KeyCode.Mouse0)) {
                 if (vo != null) {
@@ -105,7 +109,7 @@ namespace CrowdedEarth.Visualization {
 
             vo.Type = type;
             vo.Country = country;
-            vo.SetColor(Color.yellow);
+            vo.SetColor(Color.yellow, new Color(0.5f, 0.5f, 0));
 
             OnVisualObjectCreated?.Invoke(vo);
 

@@ -519,6 +519,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138830294}
+  - component: {fileID: 138830296}
+  - component: {fileID: 138830295}
   m_Layer: 5
   m_Name: Timeline
   m_TagString: Untagged
@@ -547,6 +549,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 90}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &138830295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138830293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &138830296
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138830293}
+  m_CullTransparentMesh: 0
 --- !u!1 &505304135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1778,7 @@ MonoBehaviour:
   m_InfoPanel: {fileID: 505304135}
   m_InfoButton: {fileID: 2003706360}
   m_InfoButtonText: {fileID: 733767442}
-  m_IsOpenColor: {r: 0.24705882, g: 0.43137255, b: 0.5058824, a: 1}
+  m_IsOpenColor: {r: 0.1882353, g: 0.6313726, b: 0.8117647, a: 1}
 --- !u!1001 &1085000259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1838,6 +1877,8 @@ MonoBehaviour:
   m_WorldCamera: {fileID: 963194229}
   m_VisualObjectPillarPrefab: {fileID: -2200549549096049465, guid: 00683899c0697c34c8b652ac0322d4c3,
     type: 3}
+  m_ScaleMinColor: {r: 0.24705882, g: 0.43137255, b: 0.5058824, a: 1}
+  m_ScaleMaxColor: {r: 0.24705882, g: 0.43137255, b: 0.5058824, a: 1}
   m_EarthRenderer: {fileID: 1085000262}
   m_InfoMaterial: {fileID: 2100000, guid: b2e96d75718199045abbc793167e1a1d, type: 2}
   m_RealMaterial: {fileID: 2100000, guid: 9129bad9aad7f394aa91b2eb46de21c8, type: 2}
@@ -2522,7 +2563,7 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.1882353, g: 0.6313726, b: 0.8117647, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
