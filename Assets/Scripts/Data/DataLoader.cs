@@ -67,7 +67,7 @@ namespace CrowdedEarth.Data {
                     PopulationInfo = new List<IPopulationInfo>(YEAR_COUNT)
                 };
 
-                for (int i = 0; i < YEAR_COUNT; i++) {
+                for (int i = 0; i <= YEAR_COUNT; i++) {
                     int total = (int)populationTotal.Properties[i].GetValue(entry);
 
                     float malePercentage = -1;

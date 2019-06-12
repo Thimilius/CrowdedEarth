@@ -73,7 +73,6 @@ namespace CrowdedEarth.Visualization {
             m_Year = year;
 
             int index = GetYearIndex();
-            Debug.Log(index);
             foreach (var vo in m_VisualObjects) {
                 Vector3 localScale = vo.transform.localScale;
                 localScale.z = GetScale(vo.Country.PopulationInfo[index].TotalPopulation);
@@ -83,7 +82,7 @@ namespace CrowdedEarth.Visualization {
 
         public int GetYearIndex() {
             const int YEAR_LIMIT_MIN = 1960;
-            const int YEAR_LIMIT_MAX = 2050 - 1;
+            const int YEAR_LIMIT_MAX = 2050;
 
             // HACK: Hardcoded!
             int year = Mathf.Clamp(m_Year, YEAR_LIMIT_MIN, YEAR_LIMIT_MAX);
