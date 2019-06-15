@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using Newtonsoft.Json;
 using CsvHelper;
-using System.Linq;
 using CrowdedEarth.Data.Model;
 using CrowdedEarth.Data.Layout;
 
@@ -24,9 +25,14 @@ namespace CrowdedEarth.Data {
     public static class DataLoader {
         private class Country : ICountry {
             public string Name { get; set; }
-            public IList<IPopulationInfo> PopulationInfo { get; set; }
+            public string NameGerman { get; set; }
+
             public float Latitude { get; set; }
             public float Longitude { get; set; }
+
+            public IList<IPopulationInfo> PopulationInfo { get; set; }
+
+            public string Flag { get; set; }
         }
 
         private class PopulationInfo : IPopulationInfo {
@@ -40,8 +46,8 @@ namespace CrowdedEarth.Data {
             public IList<PropertyInfo> Properties { get; set; }
         }
 
-        private static readonly string DATA_PATH = Path.Combine(Application.dataPath, "Data");
-        private static readonly string LOCATION_PATH = Path.Combine(DATA_PATH, "locations.csv");
+        private static readonly string DATA_PATH = "Data";
+        private static readonly string COUNTRIES_PATH = Path.Combine(DATA_PATH, "countries.json");
         private static readonly string POPULATION_TOTAL_PATH = Path.Combine(DATA_PATH, "population_total.csv");
         private static readonly string POPULATION_FEMALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_female_percentage.csv");
         private static readonly string POPULATION_MALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_male_percentage.csv");
@@ -50,8 +56,9 @@ namespace CrowdedEarth.Data {
             // HACK: We have a constant for how many years the data contains
             const int YEAR_COUNT = 90;
 
-            // Load locations (latitude and longitude)
-            ReadDataResult<LocationLayout> locations = ReadData<LocationLayout>(LOCATION_PATH);
+            // Load city information
+            string json = File.ReadAllText(COUNTRIES_PATH);
+            List<Country> countries = JsonConvert.DeserializeObject<List<Country>>(json);
 
             // Load total population
             ReadDataResult<PopulationAbsoluteLayout> populationTotal = ReadDataWithProperties<PopulationAbsoluteLayout>(POPULATION_TOTAL_PATH);
@@ -60,28 +67,34 @@ namespace CrowdedEarth.Data {
             ReadDataResult<PopulationPercentageLayout> populationMalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_MALE_PERCENTAGE_PATH);
             ReadDataResult<PopulationPercentageLayout> populationFemalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_FEMALE_PERCENTAGE_PATH);
 
-            foreach (PopulationAbsoluteLayout entry in populationTotal.Data.Values) {
-                string name = entry.Country;
-                var country = new Country() {
-                    Name = name,
-                    PopulationInfo = new List<IPopulationInfo>(YEAR_COUNT)
-                };
+            foreach (var country in countries) {
+                string name = country.Name;
+                country.PopulationInfo = new List<IPopulationInfo>();
 
+                if (populationTotal.Data.ContainsKey(name) == false) {
+                    Debug.Log(name);
+                    continue;
+                }
+                PopulationAbsoluteLayout population = populationTotal.Data[name];
                 for (int i = 0; i <= YEAR_COUNT; i++) {
-                    int total = (int)populationTotal.Properties[i].GetValue(entry);
+                    // Get total population
+                    int total = (int)populationTotal.Properties[i].GetValue(population);
 
+                    // Get male percentage if existent
                     float malePercentage = -1;
                     if (populationMalePercentage.Data.ContainsKey(name)) {
                         PopulationPercentageLayout percentageEntry = populationMalePercentage.Data[name];
                         malePercentage = (float)populationMalePercentage.Properties[i].GetValue(percentageEntry);
                     }
 
+                    // Get female percentage if existent
                     float femalePercentage = -1;
                     if (populationFemalePercentage.Data.ContainsKey(name)) {
                         PopulationPercentageLayout percentageEntry = populationFemalePercentage.Data[name];
                         femalePercentage = (float)populationFemalePercentage.Properties[i].GetValue(percentageEntry);
                     }
 
+                    // Add the population info 
                     country.PopulationInfo.Add(new PopulationInfo() {
                         TotalPopulation = total,
                         MalePercentage = malePercentage,
@@ -89,14 +102,7 @@ namespace CrowdedEarth.Data {
                     });
                 }
 
-                if (locations.Data.ContainsKey(name) == false) {
-                    Debug.LogError($"[DataLoader] - Failed to get location for country: {name}!");
-                } else {
-                    LocationLayout location = locations.Data[name];
-                    country.Latitude = location.Latitude;
-                    country.Longitude = location.Longitude;
-                    callback?.Invoke(country, true);
-                }
+                callback?.Invoke(country, true);
             }
         }
 

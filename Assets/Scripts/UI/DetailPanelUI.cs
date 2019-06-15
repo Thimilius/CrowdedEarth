@@ -31,7 +31,7 @@ namespace CrowdedEarth.UI {
 
             IPopulationInfo info = vo.Country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
-            m_CountryText.text = vo.Country.Name;
+            m_CountryText.text = vo.Country.NameGerman;
             m_PopulationText.text = $"Population: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
 
             if (info.MalePercentage > 0 && info.FemalePercentage > 0) {
