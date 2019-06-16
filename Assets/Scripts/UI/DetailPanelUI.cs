@@ -11,6 +11,7 @@ namespace CrowdedEarth.UI {
         [SerializeField] private GameObject m_InfoPanel;
         [Header("General Info")]
         [SerializeField] private TMP_Text m_CountryText;
+        [SerializeField] private Image m_CountryFlag;
         [SerializeField] private TMP_Text m_PopulationText;
         [Header("Male/Female Info")]
         [SerializeField] private GameObject m_MaleFemalePercentageInfo;
@@ -31,8 +32,12 @@ namespace CrowdedEarth.UI {
 
             IPopulationInfo info = vo.Country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
+            // Set the flag with correct aspect ratio
+            Sprite flag = Resources.Load<Sprite>("Flags/" + vo.Country.Flag);
+            m_CountryFlag.sprite = flag;
+
             m_CountryText.text = vo.Country.NameGerman;
-            m_PopulationText.text = $"Population: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
+            m_PopulationText.text = $"Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
 
             if (info.MalePercentage > 0 && info.FemalePercentage > 0) {
                 m_MaleFemalePercentageInfo.SetActive(true);
