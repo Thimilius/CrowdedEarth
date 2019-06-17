@@ -28,11 +28,9 @@ namespace CrowdedEarth.Visualization {
         private void Start() {
             m_VisualObjects = new List<VisualObject>();
 
-            DataLoader.GetCountries((country, success) => {
-                if (success) {
-                    VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
-                    m_VisualObjects.Add(co);
-                }
+            DataLoader.GetCountries(country => {
+                VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
+                m_VisualObjects.Add(co);
             });
         }
 
@@ -99,7 +97,7 @@ namespace CrowdedEarth.Visualization {
 
             Vector3 position = Coordinates.ToCartesian(latitude, longitude);
             Quaternion rotation = Coordinates.LookFrom(latitude, longitude);
-            VisualObject vo = Instantiate(GetPrefabForType(type), position, rotation, transform);
+            VisualObject vo = Instantiate(GetPrefabForType(type), position, rotation, m_EarthRenderer.transform);
             vo.tag = tag;
             vo.name = $"Country: {country.Name}";
 

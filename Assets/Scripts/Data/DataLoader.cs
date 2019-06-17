@@ -9,7 +9,7 @@ using CrowdedEarth.Data.Model;
 using CrowdedEarth.Data.Layout;
 
 namespace CrowdedEarth.Data {
-    public delegate void GetCountriesHandler(ICountry country, bool success);
+    public delegate void GetCountriesHandler(ICountry country);
 
     // NOTE: Countries that need to be stripped from the file because of insufficient data:
     //       - Eritrea
@@ -102,7 +102,7 @@ namespace CrowdedEarth.Data {
                     });
                 }
 
-                callback?.Invoke(country, true);
+                callback?.Invoke(country);
             }
         }
 
