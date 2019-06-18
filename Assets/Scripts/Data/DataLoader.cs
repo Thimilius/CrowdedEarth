@@ -22,15 +22,17 @@ namespace CrowdedEarth.Data {
     //       - Bermuda
     public static class DataLoader {
         private class Country : ICountry {
+            public string ID { get; set; }
             public string Name { get; set; }
-            public string NameGerman { get; set; }
 
             public float Latitude { get; set; }
             public float Longitude { get; set; }
 
-            public IList<IPopulationInfo> PopulationInfo { get; set; }
+            public int Size { get; set; }
 
             public string Flag { get; set; }
+
+            public IList<IPopulationInfo> PopulationInfo { get; set; }
         }
 
         private class PopulationInfo : IPopulationInfo {
@@ -84,7 +86,7 @@ namespace CrowdedEarth.Data {
             ReadDataResult<PopulationPercentageLayout> populationUrbanPercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_URBAN_PERCENTAGE_PATH);
 
             foreach (var country in countries) {
-                string name = country.Name;
+                string name = country.ID;
                 country.PopulationInfo = new List<IPopulationInfo>();
 
                 if (populationTotal.Data.ContainsKey(name) == false) {

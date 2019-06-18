@@ -13,6 +13,9 @@ namespace CrowdedEarth.UI {
         [Header("General Info")]
         [SerializeField] private Image m_CountryFlag;
         [SerializeField] private TMP_Text m_CountryNameText;
+        [Header("Size")]
+        [SerializeField] private TMP_Text m_SizeText;
+        [SerializeField] private TMP_Text m_DensityText;
         [Header("Male/Female Info")]
         [SerializeField] private GameObject m_MaleFemalePercentageInfo;
         [SerializeField] private TMP_Text m_MalePercentageText;
@@ -43,7 +46,10 @@ namespace CrowdedEarth.UI {
             ICountry country = m_Visualizer.Country;
             IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
-            m_CountryNameText.text = $"{country.NameGerman} - Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
+            m_CountryNameText.text = $"{country.Name} - Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
+
+            m_SizeText.text = $"Größe in km²: {country.Size.ToString("N0", new CultureInfo("de-DE"))}";
+            m_DensityText.text = $"Einwohner pro km²: {(info.TotalPopulation / country.Size).ToString("0")}";
 
             // Set male/female percentage
             if (info.MalePercentage > 0 && info.FemalePercentage > 0) {

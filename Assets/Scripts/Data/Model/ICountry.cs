@@ -2,14 +2,16 @@
 
 namespace CrowdedEarth.Data.Model {
     public interface ICountry {
+        string ID { get; }
         string Name { get; }
-        string NameGerman { get; }
 
         float Latitude { get; }
         float Longitude { get; }
 
-        IList<IPopulationInfo> PopulationInfo { get; }
+        int Size { get; }
 
         string Flag { get; }
+
+        IList<IPopulationInfo> PopulationInfo { get; }
     }
 }

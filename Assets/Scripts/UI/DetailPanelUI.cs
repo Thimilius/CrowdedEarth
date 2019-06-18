@@ -13,7 +13,7 @@ namespace CrowdedEarth.UI {
         [SerializeField] private TMP_Text m_CountryText;
         [SerializeField] private Image m_CountryFlag;
         [SerializeField] private TMP_Text m_PopulationText;
-        
+        [SerializeField] private TMP_Text m_DensityText;
 
         private void Awake() {
             m_Visualizer.OnVisualObjectCreated += vo => {
@@ -25,15 +25,15 @@ namespace CrowdedEarth.UI {
         private void OnPointerEntered(VisualObject vo) {
             m_InfoPanel.SetActive(true);
 
-            IPopulationInfo info = vo.Country.PopulationInfo[m_Visualizer.GetYearIndex()];
+            ICountry country = vo.Country;
+            IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
             // Set the flag with correct aspect ratio
-            m_CountryFlag.sprite = SpriteManager.GetFlag(vo.Country.Flag);
+            m_CountryFlag.sprite = SpriteManager.GetFlag(country.Flag);
 
-            m_CountryText.text = vo.Country.NameGerman;
+            m_CountryText.text = country.Name;
             m_PopulationText.text = $"Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
-
-            
+            m_DensityText.text = $"Einwohner pro km²: {(info.TotalPopulation / country.Size).ToString("0")}";
         }
 
         private void OnPointerExited(VisualObject vo) {

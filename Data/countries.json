@@ -1,1318 +1,1506 @@
 [
   {
+    "ID": "Afghanistan",
     "Name": "Afghanistan",
-    "NameGerman": "Afghanistan",
     "Latitude": 33.93911,
     "Longitude": 67.70995,
+	"Size": 652860,
     "Flag": "afghanistan-flag-large"
   },
   {
-    "Name": "Albania",
-    "NameGerman": "Albanien",
+    "ID": "Albania",
+    "Name": "Albanien",
     "Latitude": 41.00003,
     "Longitude": 19.99996,
+	"Size": 27400,
     "Flag": "albania-flag-large"
   },
   {
-    "Name": "Algeria",
-    "NameGerman": "Algerien",
+    "ID": "Algeria",
+    "Name": "Algerien",
     "Latitude": 28.00003,
     "Longitude": 2.999983,
+	"Size": 2381740,
     "Flag": "algeria-flag-large"
   },
   {
+    "ID": "Andorra",
     "Name": "Andorra",
-    "NameGerman": "Andorra",
     "Latitude": 42.54072,
     "Longitude": 1.573203,
+	"Size": 470,
     "Flag": "andorra-flag-large"
   },
   {
+    "ID": "Angola",
     "Name": "Angola",
-    "NameGerman": "Angola",
     "Latitude": -11.87758,
     "Longitude": 17.56912,
+	"Size": 1246700,
     "Flag": "angola-flag-large"
   },
   {
-    "Name": "Antigua and Barbuda",
-    "NameGerman": "Antigua und Barbuda",
+    "ID": "Antigua and Barbuda",
+    "Name": "Antigua und Barbuda",
     "Latitude": 17.07913,
     "Longitude": -61.82225,
+	"Size": 440,
     "Flag": "antigua-and-barbuda-flag-large"
   },
   {
-    "Name": "Argentina",
-    "NameGerman": "Argentinien",
+    "ID": "Argentina",
+    "Name": "Argentinien",
     "Latitude": -34.9965,
     "Longitude": -64.96729,
+	"Size": 2736690,
     "Flag": "argentina-flag-large"
   },
   {
-    "Name": "Armenia",
-    "NameGerman": "Armenien",
+    "ID": "Armenia",
+    "Name": "Armenien",
     "Latitude": 40.76963,
     "Longitude": 44.67366,
+	"Size": 28470,
     "Flag": "armenia-flag-large"
   },
   {
-    "Name": "Australia",
-    "NameGerman": "Australien",
+    "ID": "Australia",
+    "Name": "Australien",
     "Latitude": -24.77611,
     "Longitude": 134.755,
+	"Size": 7692020,
     "Flag": "australia-flag-large"
   },
   {
-    "Name": "Austria",
-    "NameGerman": "Österreich",
+    "ID": "Austria",
+    "Name": "Österreich",
     "Latitude": 47.20004,
     "Longitude": 13.19996,
+	"Size": 82523,
     "Flag": "austria-flag-large"
   },
   {
-    "Name": "Azerbaijan",
-    "NameGerman": "Aserbaidschan",
+    "ID": "Azerbaijan",
+    "Name": "Aserbaidschan",
     "Latitude": 40.39363,
     "Longitude": 47.78725,
+	"Size": 82670,
     "Flag": "azerbaijan-flag-large"
   },
   {
-    "Name": "Bahamas, The",
-    "NameGerman": "Bahamas",
+    "ID": "Bahamas, The",
+    "Name": "Bahamas",
     "Latitude": 24.77365,
     "Longitude": -78.00005,
+	"Size": 10010,
     "Flag": "bahamas-flag-large"
   },
   {
+    "ID": "Bahrain",
     "Name": "Bahrain",
-    "NameGerman": "Bahrain",
     "Latitude": 26.15512,
     "Longitude": 50.53446,
+	"Size": 778,
     "Flag": "bahrain-flag-large"
   },
   {
-    "Name": "Bangladesh",
-    "NameGerman": "Bangladesch",
+    "ID": "Bangladesh",
+    "Name": "Bangladesch",
     "Latitude": 24.47686,
     "Longitude": 90.29323,
+	"Size": 130170,
     "Flag": "bangladesh-flag-large"
   },
   {
+    "ID": "Barbados",
     "Name": "Barbados",
-    "NameGerman": "Barbados",
     "Latitude": 13.15003,
     "Longitude": -59.52503,
+	"Size": 430,
     "Flag": "barbados-flag-large"
   },
   {
-    "Name": "Belarus",
-    "NameGerman": "Weißrussland",
+    "ID": "Belarus",
+    "Name": "Weißrussland",
     "Latitude": 53.42506,
     "Longitude": 27.69714,
+	"Size": 202988,
     "Flag": "belarus-flag-large"
   },
   {
-    "Name": "Belgium",
-    "NameGerman": "Belgien",
+    "ID": "Belgium",
+    "Name": "Belgien",
     "Latitude": 50.64028,
     "Longitude": 4.666715,
+	"Size": 30280,
     "Flag": "belgium-flag-large"
   },
   {
+    "ID": "Belize",
     "Name": "Belize",
-    "NameGerman": "Belize",
     "Latitude": 16.82598,
     "Longitude": -88.76009,
+	"Size": 22810,
     "Flag": "belize-flag-large"
   },
   {
+    "ID": "Benin",
     "Name": "Benin",
-    "NameGerman": "Benin",
     "Latitude": 9.529347,
     "Longitude": 2.258441,
+	"Size": 112760,
     "Flag": "benin-flag-large"
   },
   {
+    "ID": "Bhutan",
     "Name": "Bhutan",
-    "NameGerman": "Bhutan",
     "Latitude": 27.54951,
     "Longitude": 90.51192,
+	"Size": 38144,
     "Flag": "bhutan-flag-large"
   },
   {
-    "Name": "Bolivia",
-    "NameGerman": "Bolivien",
+    "ID": "Bolivia",
+    "Name": "Bolivien",
     "Latitude": -17.05687,
     "Longitude": -64.99123,
+	"Size": 1083300,
     "Flag": "bolivia-flag-large"
   },
   {
-    "Name": "Bosnia and Herzegovina",
-    "NameGerman": "Bosnien und Herzegowina",
+    "ID": "Bosnia and Herzegovina",
+    "Name": "Bosnien und Herzegowina",
     "Latitude": 44.30535,
     "Longitude": 17.59615,
+	"Size": 51200,
     "Flag": "bosnia-and-herzegovina-flag-large"
   },
   {
+    "ID": "Botswana",
     "Name": "Botswana",
-    "NameGerman": "Botswana",
     "Latitude": -23.16818,
     "Longitude": 24.59287,
+	"Size": 566730,
     "Flag": "botswana-flag-large"
   },
   {
-    "Name": "Brazil",
-    "NameGerman": "Brasilien",
+    "ID": "Brazil",
+    "Name": "Brasilien",
     "Latitude": -10.33333,
     "Longitude": -53.2,
+	"Size": 8358140,
     "Flag": "brazil-flag-large"
   },
   {
-    "Name": "Brunei Darussalam",
-    "NameGerman": "Brunei",
+    "ID": "Brunei Darussalam",
+    "Name": "Brunei",
     "Latitude": 4.413715,
     "Longitude": 114.5654,
+	"Size": 5270,
     "Flag": "brunei-flag-large"
   },
   {
-    "Name": "Bulgaria",
-    "NameGerman": "Bulgarien",
+    "ID": "Bulgaria",
+    "Name": "Bulgarien",
     "Latitude": 42.6074,
     "Longitude": 25.48566,
+	"Size": 108560,
     "Flag": "bulgaria-flag-large"
   },
   {
+    "ID": "Burkina Faso",
     "Name": "Burkina Faso",
-    "NameGerman": "Burkina Faso",
     "Latitude": 12.07531,
     "Longitude": -1.688031,
+	"Size": 273600,
     "Flag": "burkina-faso-flag-large"
   },
   {
+    "ID": "Burundi",
     "Name": "Burundi",
-    "NameGerman": "Burundi",
     "Latitude": -3.363436,
     "Longitude": 29.88706,
+	"Size": 25680,
     "Flag": "burundi-flag-large"
   },
   {
-    "Name": "Cabo Verde",
-    "NameGerman": "Kap Verde",
+    "ID": "Cabo Verde",
+    "Name": "Kap Verde",
     "Latitude": 16.00006,
     "Longitude": -24.00839,
+	"Size": 4030,
     "Flag": "cape-verde-flag-large"
   },
   {
-    "Name": "Cambodia",
-    "NameGerman": "Kambodscha",
+    "ID": "Cambodia",
+    "Name": "Kambodscha",
     "Latitude": 13.50664,
     "Longitude": 104.8694,
+	"Size": 176520,
     "Flag": "cambodia-flag-large"
   },
   {
-    "Name": "Cameroon",
-    "NameGerman": "Kamerun",
+    "ID": "Cameroon",
+    "Name": "Kamerun",
     "Latitude": 4.612552,
     "Longitude": 13.15358,
+	"Size": 472710,
     "Flag": "cameroon-flag-large"
   },
   {
-    "Name": "Canada",
-    "NameGerman": "Kanada",
+    "ID": "Canada",
+    "Name": "Kanada",
     "Latitude": 62.50634,
     "Longitude": -102.3022,
+	"Size": 9093510,
     "Flag": "canada-flag-large"
   },
   {
-    "Name": "Central African Republic",
-    "NameGerman": "Zentralafrikanische Republik",
+    "ID": "Central African Republic",
+    "Name": "Zentralafrikanische Republik",
     "Latitude": 7.03236,
     "Longitude": 19.99812,
+	"Size": 622980,
     "Flag": "central-african-republic-flag-large"
   },
   {
-    "Name": "Chad",
-    "NameGerman": "Tschad",
+    "ID": "Chad",
+    "Name": "Tschad",
     "Latitude": 15.61341,
     "Longitude": 19.01562,
+	"Size": 1259200,
     "Flag": "chad-flag-large"
   },
   {
+    "ID": "Chile",
     "Name": "Chile",
-    "NameGerman": "Chile",
     "Latitude": -31.76134,
     "Longitude": -71.31877,
+	"Size": 743532,
     "Flag": "chile-flag-large"
   },
   {
+    "ID": "China",
     "Name": "China",
-    "NameGerman": "China",
     "Latitude": 35.00007,
     "Longitude": 104.9999,
+	"Size": 9388210,
     "Flag": "china-flag-large"
   },
   {
-    "Name": "Colombia",
-    "NameGerman": "Kolumbien",
+    "ID": "Colombia",
+    "Name": "Kolumbien",
     "Latitude": 2.889443,
     "Longitude": -73.78389,
+	"Size": 1109500,
     "Flag": "colombia-flag-large"
   },
   {
-    "Name": "Comoros",
-    "NameGerman": "Komoren",
+    "ID": "Comoros",
+    "Name": "Komoren",
     "Latitude": -12.20452,
     "Longitude": 44.28329,
+	"Size": 1861,
     "Flag": "comoros-flag-large"
   },
   {
-    "Name": "Congo, Dem. Rep.",
-    "NameGerman": "Demokratische Republik Kongo",
+    "ID": "Congo, Dem. Rep.",
+    "Name": "Demokratische Republik Kongo",
     "Latitude": -4.038333,
     "Longitude": 21.7586632,
+	"Size": 22670050,
     "Flag": "congo-democratic-republic-of-the-flag-large"
   },
   {
-    "Name": "Congo, Rep.",
-    "NameGerman": "Republik Kongo",
+    "ID": "Congo, Rep.",
+    "Name": "Republik Kongo",
     "Latitude": -0.228021,
     "Longitude": 15.8276587,
+	"Size": 341500,
     "Flag": "congo-republic-of-the-flag-large"
   },
   {
+    "ID": "Costa Rica",
     "Name": "Costa Rica",
-    "NameGerman": "Costa Rica",
     "Latitude": 10.27356,
     "Longitude": -84.07391,
+	"Size": 51060,
     "Flag": "costa-rica-flag-large"
   },
   {
-    "Name": "Cote d'Ivoire",
-    "NameGerman": "Elfenbeinküste",
+    "ID": "Cote d'Ivoire",
+    "Name": "Elfenbeinküste",
     "Latitude": 7.989737,
     "Longitude": -5.567946,
+	"Size": 318000,
     "Flag": "cote-d-ivoire-flag-large"
   },
   {
-    "Name": "Croatia",
-    "NameGerman": "Kroatien",
+    "ID": "Croatia",
+    "Name": "Kroatien",
     "Latitude": 45.56434,
     "Longitude": 17.0119,
+	"Size": 55960,
     "Flag": "croatia-flag-large"
   },
   {
-    "Name": "Cuba",
-    "NameGerman": "Kuba",
+    "ID": "Cuba",
+    "Name": "Kuba",
     "Latitude": 23.01313,
     "Longitude": -80.83288,
+	"Size": 104020,
     "Flag": "cuba-flag-large"
   },
   {
-    "Name": "Cyprus",
-    "NameGerman": "Zypern",
+    "ID": "Cyprus",
+    "Name": "Zypern",
     "Latitude": 34.9823,
     "Longitude": 33.14513,
+	"Size": 9240,
     "Flag": "cyprus-flag-large"
   },
   {
-    "Name": "Czech Republic",
-    "NameGerman": "Tschechische Republik",
+    "ID": "Czech Republic",
+    "Name": "Tschechische Republik",
     "Latitude": 49.8167,
     "Longitude": 15.47495,
+	"Size": 77220,
     "Flag": "czech-republic-flag-large"
   },
   {
-    "Name": "Denmark",
-    "NameGerman": "Dänemark",
+    "ID": "Denmark",
+    "Name": "Dänemark",
     "Latitude": 55.67025,
     "Longitude": 10.33333,
+	"Size": 41990,
     "Flag": "denmark-flag-large"
   },
   {
-    "Name": "Djibouti",
-    "NameGerman": "Dschibuti",
+    "ID": "Djibouti",
+    "Name": "Dschibuti",
     "Latitude": 11.85678,
     "Longitude": 42.75779,
+	"Size": 23180,
     "Flag": "djibouti-flag-large"
   },
   {
+    "ID": "Dominica",
     "Name": "Dominica",
-    "NameGerman": "Dominica",
     "Latitude": 15.41131,
     "Longitude": -61.36536,
+	"Size": 750,
     "Flag": "dominica-flag-large"
   },
   {
-    "Name": "Dominican Republic",
-    "NameGerman": "Dominikanische Republik",
+    "ID": "Dominican Republic",
+    "Name": "Dominikanische Republik",
     "Latitude": 19.0974,
     "Longitude": -70.3028,
+	"Size": 48310,
     "Flag": "dominican-republic-flag-large"
   },
   {
+    "ID": "Ecuador",
     "Name": "Ecuador",
-    "NameGerman": "Ecuador",
     "Latitude": -1.339767,
     "Longitude": -79.3667,
+	"Size": 248360,
     "Flag": "ecuador-flag-large"
   },
   {
-    "Name": "Egypt, Arab Rep.",
-    "NameGerman": "Ägypten",
+    "ID": "Egypt, Arab Rep.",
+    "Name": "Ägypten",
     "Latitude": 26.8205528,
     "Longitude": 30.8024979,
+	"Size": 995450,
     "Flag": "egypt-flag-large"
   },
   {
+    "ID": "El Salvador",
     "Name": "El Salvador",
-    "NameGerman": "El Salvador",
     "Latitude": 13.80004,
     "Longitude": -88.91407,
+	"Size": 20720,
     "Flag": "el-salvador-flag-large"
   },
   {
-    "Name": "Equatorial Guinea",
-    "NameGerman": "Äquatorialguinea",
+    "ID": "Equatorial Guinea",
+    "Name": "Äquatorialguinea",
     "Latitude": 1.613172,
     "Longitude": 10.51704,
+	"Size": 28050,
     "Flag": "equatorial-guinea-flag-large"
   },
   {
-    "Name": "Estonia",
-    "NameGerman": "Estland",
+    "ID": "Estonia",
+    "Name": "Estland",
     "Latitude": 58.75238,
     "Longitude": 25.33191,
+	"Size": 43470,
     "Flag": "estonia-flag-large"
   },
   {
-    "Name": "Eswatini",
-    "NameGerman": "Swasiland",
+    "ID": "Eswatini",
+    "Name": "Swasiland",
     "Latitude": -26.56248,
     "Longitude": 31.39913,
+	"Size": 17200,
     "Flag": "swaziland-flag-large"
   },
   {
-    "Name": "Ethiopia",
-    "NameGerman": "Äthiopien",
+    "ID": "Ethiopia",
+    "Name": "Äthiopien",
     "Latitude": 10.21167,
     "Longitude": 38.65212,
+	"Size": 1000000,
     "Flag": "ethiopia-flag-large"
   },
   {
-    "Name": "Fiji",
-    "NameGerman": "Fidschi",
+    "ID": "Fiji",
+    "Name": "Fidschi",
     "Latitude": -18.12397,
     "Longitude": 179.0123,
+	"Size": 18270,
     "Flag": "fiji-flag-large"
   },
   {
-    "Name": "Finland",
-    "NameGerman": "Finnland",
+    "ID": "Finland",
+    "Name": "Finnland",
     "Latitude": 63.24678,
     "Longitude": 25.92092,
+	"Size": 303910,
     "Flag": "finland-flag-large"
   },
   {
-    "Name": "France",
-    "NameGerman": "Frankreich",
+    "ID": "France",
+    "Name": "Frankreich",
     "Latitude": 46.60336,
     "Longitude": 1.888334,
+	"Size": 547557,
     "Flag": "france-flag-large"
   },
   {
-    "Name": "Gabon",
-    "NameGerman": "Gabun",
+    "ID": "Gabon",
+    "Name": "Gabun",
     "Latitude": -0.8999695,
     "Longitude": 11.68997,
+	"Size": 257670,
     "Flag": "gabon-flag-large"
   },
   {
-    "Name": "Gambia, The",
-    "NameGerman": "Gambia",
+    "ID": "Gambia, The",
+    "Name": "Gambia",
     "Latitude": 13.47006,
     "Longitude": -15.49005,
+	"Size": 10120,
     "Flag": "gambia-flag-large"
   },
   {
-    "Name": "Georgia",
-    "NameGerman": "Georgien",
+    "ID": "Georgia",
+    "Name": "Georgien",
     "Latitude": 42.3154068,
     "Longitude": 43.35689,
+	"Size": 69490,
     "Flag": "georgia-flag-large"
   },
   {
-    "Name": "Germany",
-    "NameGerman": "Deutschland",
+    "ID": "Germany",
+    "Name": "Deutschland",
     "Latitude": 51.08342,
     "Longitude": 10.42345,
+	"Size": 349360,
     "Flag": "germany-flag-large"
   },
   {
+    "ID": "Ghana",
     "Name": "Ghana",
-    "NameGerman": "Ghana",
     "Latitude": 8.030028,
     "Longitude": -1.080027,
+	"Size": 227540,
     "Flag": "ghana-flag-large"
   },
   {
-    "Name": "Greece",
-    "NameGerman": "Griechenland",
+    "ID": "Greece",
+    "Name": "Griechenland",
     "Latitude": 38.99537,
     "Longitude": 21.98771,
+	"Size": 128900,
     "Flag": "greece-flag-large"
   },
   {
+    "ID": "Grenada",
     "Name": "Grenada",
-    "NameGerman": "Grenada",
     "Latitude": 12.13604,
     "Longitude": -61.6904,
+	"Size": 340,
     "Flag": "grenada-flag-large"
   },
   {
+    "ID": "Guatemala",
     "Name": "Guatemala",
-    "NameGerman": "Guatemala",
     "Latitude": 15.63561,
     "Longitude": -89.89881,
+	"Size": 107160,
     "Flag": "guatemala-flag-large"
   },
   {
+    "ID": "Guinea",
     "Name": "Guinea",
-    "NameGerman": "Guinea",
     "Latitude": 10.72262,
     "Longitude": -10.70836,
+	"Size": 245720,
     "Flag": "guinea-flag-large"
   },
   {
+    "ID": "Guinea-Bissau",
     "Name": "Guinea-Bissau",
-    "NameGerman": "Guinea-Bissau",
     "Latitude": 12.10003,
     "Longitude": -14.90002,
+	"Size": 28120,
     "Flag": "guinea-bissau-flag-large"
   },
   {
+    "ID": "Guyana",
     "Name": "Guyana",
-    "NameGerman": "Guyana",
     "Latitude": 4.84171,
     "Longitude": -58.64169,
+	"Size": 196850,
     "Flag": "guyana-flag-large"
   },
   {
+    "ID": "Haiti",
     "Name": "Haiti",
-    "NameGerman": "Haiti",
     "Latitude": 19.14,
     "Longitude": -72.35709,
+	"Size": 27560,
     "Flag": "haiti-flag-large"
   },
   {
+    "ID": "Honduras",
     "Name": "Honduras",
-    "NameGerman": "Honduras",
     "Latitude": 15.25724,
     "Longitude": -86.07552,
+	"Size": 111890,
     "Flag": "honduras-flag-large"
   },
   {
-    "Name": "Hungary",
-    "NameGerman": "Ungarn",
+    "ID": "Hungary",
+    "Name": "Ungarn",
     "Latitude": 47.18176,
     "Longitude": 19.50609,
+	"Size": 90530,
     "Flag": "hungary-flag-large"
   },
   {
-    "Name": "Iceland",
-    "NameGerman": "Island",
+    "ID": "Iceland",
+    "Name": "Island",
     "Latitude": 64.98418,
     "Longitude": -18.1059,
+	"Size": 100250,
     "Flag": "iceland-flag-large"
   },
   {
-    "Name": "India",
-    "NameGerman": "Indien",
+    "ID": "India",
+    "Name": "Indien",
     "Latitude": 22.35111,
     "Longitude": 78.66774,
+	"Size": 2973190,
     "Flag": "india-flag-large"
   },
   {
-    "Name": "Indonesia",
-    "NameGerman": "Indonesien",
+    "ID": "Indonesia",
+    "Name": "Indonesien",
     "Latitude": -2.495998,
     "Longitude": 120.2002,
+	"Size": 1811570,
     "Flag": "indonesia-flag-large"
   },
   {
-    "Name": "Iran, Islamic Rep.",
-    "NameGerman": "Iran",
+    "ID": "Iran, Islamic Rep.",
+    "Name": "Iran",
     "Latitude": 32.42791,
     "Longitude": 53.6880455,
+	"Size": 1628760,
     "Flag": "iran-flag-large"
   },
   {
+    "ID": "Iraq",
     "Name": "Iraq",
-    "NameGerman": "Iraq",
     "Latitude": 33.09558,
     "Longitude": 44.17498,
+	"Size": 434128,
     "Flag": "iraq-flag-large"
   },
   {
-    "Name": "Ireland",
-    "NameGerman": "Irland",
+    "ID": "Ireland",
+    "Name": "Irland",
     "Latitude": 52.8652,
     "Longitude": -7.97946,
+	"Size": 68890,
     "Flag": "ireland-flag-large"
   },
   {
+    "ID": "Israel",
     "Name": "Israel",
-    "NameGerman": "Israel",
     "Latitude": 30.87603,
     "Longitude": 35.00152,
+	"Size": 21640,
     "Flag": "israel-flag-large"
   },
   {
-    "Name": "Italy",
-    "NameGerman": "Italien",
+    "ID": "Italy",
+    "Name": "Italien",
     "Latitude": 42.63843,
     "Longitude": 12.6743,
+	"Size": 294140,
     "Flag": "italy-flag-large"
   },
   {
-    "Name": "Jamaica",
-    "NameGerman": "Jamaika",
+    "ID": "Jamaica",
+    "Name": "Jamaika",
     "Latitude": 18.18505,
     "Longitude": -77.39477,
+	"Size": 10830,
     "Flag": "jamaica-flag-large"
   },
   {
+    "ID": "Japan",
     "Name": "Japan",
-    "NameGerman": "Japan",
     "Latitude": 36.57484,
     "Longitude": 139.2394,
+	"Size": 364560,
     "Flag": "japan-flag-large"
   },
   {
+    "ID": "Jordan",
     "Name": "Jordan",
-    "NameGerman": "Jordan",
     "Latitude": 31.1667,
     "Longitude": 36.94163,
+	"Size": 88780,
     "Flag": "jordan-flag-large"
   },
   {
-    "Name": "Kazakhstan",
-    "NameGerman": "Kasachstan",
+    "ID": "Kazakhstan",
+    "Name": "Kasachstan",
     "Latitude": 47.22861,
     "Longitude": 65.20932,
+	"Size": 2699700,
     "Flag": "kazakhstan-flag-large"
   },
   {
-    "Name": "Kenya",
-    "NameGerman": "Kenia",
+    "ID": "Kenya",
+    "Name": "Kenia",
     "Latitude": 1.441968,
     "Longitude": 38.4314,
+	"Size": 569140,
     "Flag": "kenya-flag-large"
   },
   {
+    "ID": "Kiribati",
     "Name": "Kiribati",
-    "NameGerman": "Kiribati",
     "Latitude": 0.4483283,
     "Longitude": -171.6645,
+	"Size": 810,
     "Flag": "kiribati-flag-large"
   },
   {
-    "Name": "Korea, Dem. People’s Rep.",
-    "NameGerman": "Südkorea",
+    "ID": "Korea, Dem. People’s Rep.",
+    "Name": "Südkorea",
     "Latitude": 35.9077568,
     "Longitude": 127.766922,
+	"Size": 120410,
     "Flag": "south-korea-flag-large"
   },
   {
-    "Name": "Korea, Rep.",
-    "NameGerman": "Nordkorea",
+    "ID": "Korea, Rep.",
+    "Name": "Nordkorea",
     "Latitude": 40.33985,
     "Longitude": 127.510094,
+	"Size": 97489,
     "Flag": "north-korea-flag-large"
   },
   {
+    "ID": "Kosovo",
     "Name": "Kosovo",
-    "NameGerman": "Kosovo",
     "Latitude": 42.58696,
     "Longitude": 20.90212,
+	"Size": 10908,
     "Flag": "kosovo-flag-large"
   },
   {
-    "Name": "Lao PDR",
-    "NameGerman": "Laos",
+    "ID": "Lao PDR",
+    "Name": "Laos",
     "Latitude": 19.85627,
     "Longitude": 102.4955,
+	"Size": 230800,
     "Flag": "laos-flag-large"
   },
   {
-    "Name": "Latvia",
-    "NameGerman": "Lettland",
+    "ID": "Latvia",
+    "Name": "Lettland",
     "Latitude": 56.84065,
     "Longitude": 24.75377,
+	"Size": 62180,
     "Flag": "latvia-flag-large"
   },
   {
-    "Name": "Lebanon",
-    "NameGerman": "Libanon",
+    "ID": "Lebanon",
+    "Name": "Libanon",
     "Latitude": 33.87506,
     "Longitude": 35.84341,
+	"Size": 10230,
     "Flag": "lebanon-flag-large"
   },
   {
+    "ID": "Lesotho",
     "Name": "Lesotho",
-    "NameGerman": "Lesotho",
     "Latitude": -29.60393,
     "Longitude": 28.33502,
+	"Size": 30360,
     "Flag": "lesotho-flag-large"
   },
   {
+    "ID": "Liberia",
     "Name": "Liberia",
-    "NameGerman": "Liberia",
     "Latitude": 5.749972,
     "Longitude": -9.365852,
+	"Size": 96320,
     "Flag": "liberia-flag-large"
   },
   {
-    "Name": "Libya",
-    "NameGerman": "Libyen",
+    "ID": "Libya",
+    "Name": "Libyen",
     "Latitude": 26.82345,
     "Longitude": 18.12367,
+	"Size": 1759540,
     "Flag": "libya-flag-large"
   },
   {
+    "ID": "Liechtenstein",
     "Name": "Liechtenstein",
-    "NameGerman": "Liechtenstein",
     "Latitude": 47.14163,
     "Longitude": 9.553153,
+	"Size": 160,
     "Flag": "liechtenstein-flag-large"
   },
   {
-    "Name": "Lithuania",
-    "NameGerman": "Litauen",
+    "ID": "Lithuania",
+    "Name": "Litauen",
     "Latitude": 55.35,
     "Longitude": 23.75,
+	"Size": 62642,
     "Flag": "lithuania-flag-large"
   },
   {
-    "Name": "Luxembourg",
-    "NameGerman": "Luxemburg",
+    "ID": "Luxembourg",
+    "Name": "Luxemburg",
     "Latitude": 49.81587,
     "Longitude": 6.129675,
+	"Size": 2430,
     "Flag": "luxembourg-flag-large"
   },
   {
-    "Name": "Madagascar",
-    "NameGerman": "Madagaskar",
+    "ID": "Madagascar",
+    "Name": "Madagaskar",
     "Latitude": -18.92496,
     "Longitude": 46.44164,
+	"Size": 581800,
     "Flag": "madagascar-flag-large"
   },
   {
+    "ID": "Malawi",
     "Name": "Malawi",
-    "NameGerman": "Malawi",
     "Latitude": -13.26872,
     "Longitude": 33.93019,
+	"Size": 94280,
     "Flag": "malawi-flag-large"
   },
   {
+    "ID": "Malaysia",
     "Name": "Malaysia",
-    "NameGerman": "Malaysia",
     "Latitude": 2.392376,
     "Longitude": 112.8472,
+	"Size": 328550,
     "Flag": "malaysia-flag-large"
   },
   {
-    "Name": "Maldives",
-    "NameGerman": "Malediven",
+    "ID": "Maldives",
+    "Name": "Malediven",
     "Latitude": 4.706435,
     "Longitude": 73.32879,
+	"Size": 300,
     "Flag": "maldives-flag-large"
   },
   {
+    "ID": "Mali",
     "Name": "Mali",
-    "NameGerman": "Mali",
     "Latitude": 16.37004,
     "Longitude": -2.290024,
+	"Size": 1220190,
     "Flag": "mali-flag-large"
   },
   {
+    "ID": "Malta",
     "Name": "Malta",
-    "NameGerman": "Malta",
     "Latitude": 35.8886,
     "Longitude": 14.44769,
+	"Size": 320,
     "Flag": "malta-flag-large"
   },
   {
-    "Name": "Marshall Islands",
-    "NameGerman": "Marshallinseln",
+    "ID": "Marshall Islands",
+    "Name": "Marshallinseln",
     "Latitude": 6.951874,
     "Longitude": 170.9985,
+	"Size": 180,
     "Flag": "marshall-islands-flag-large"
   },
   {
-    "Name": "Mauritania",
-    "NameGerman": "Mauretanien",
+    "ID": "Mauritania",
+    "Name": "Mauretanien",
     "Latitude": 20.25404,
     "Longitude": -9.239926,
+	"Size": 1030700,
     "Flag": "mauritania-flag-large"
   },
   {
+    "ID": "Mauritius",
     "Name": "Mauritius",
-    "NameGerman": "Mauritius",
     "Latitude": -20.27595,
     "Longitude": 57.57036,
+	"Size": 2030,
     "Flag": "mauritius-flag-large"
   },
   {
-    "Name": "Mexico",
-    "NameGerman": "Mexiko",
+    "ID": "Mexico",
+    "Name": "Mexiko",
     "Latitude": 19.4326,
     "Longitude": -99.13334,
+	"Size": 1943950,
     "Flag": "mexico-flag-large"
   },
   {
-    "Name": "Moldova",
-    "NameGerman": "Moldawien",
+    "ID": "Moldova",
+    "Name": "Moldawien",
     "Latitude": 47.28675,
     "Longitude": 28.51102,
+	"Size": 32908,
     "Flag": "moldova-flag-large"
   },
   {
+    "ID": "Monaco",
     "Name": "Monaco",
-    "NameGerman": "Monaco",
     "Latitude": 43.73114,
     "Longitude": 7.419757,
+	"Size": 2,
     "Flag": "monaco-flag-large"
   },
   {
-    "Name": "Mongolia",
-    "NameGerman": "Mongolei",
+    "ID": "Mongolia",
+    "Name": "Mongolei",
     "Latitude": 46.82504,
     "Longitude": 103.85,
+	"Size": 1553560,
     "Flag": "mongolia-flag-large"
   },
   {
+    "ID": "Montenegro",
     "Name": "Montenegro",
-    "NameGerman": "Montenegro",
     "Latitude": 42.77285,
     "Longitude": 19.24086,
+	"Size": 13450,
     "Flag": "montenegro-flag-large"
   },
   {
-    "Name": "Morocco",
-    "NameGerman": "Marokko",
+    "ID": "Morocco",
+    "Name": "Marokko",
     "Latitude": 31.17282,
     "Longitude": -7.336248,
+	"Size": 446300,
     "Flag": "morocco-flag-large"
   },
   {
-    "Name": "Mozambique",
-    "NameGerman": "Mosambik",
+    "ID": "Mozambique",
+    "Name": "Mosambik",
     "Latitude": -19.30223,
     "Longitude": 34.9145,
+	"Size": 786380,
     "Flag": "mozambique-flag-large"
   },
   {
+    "ID": "Myanmar",
     "Name": "Myanmar",
-    "NameGerman": "Myanmar",
     "Latitude": 21.9139652,
     "Longitude": 95.95622,
+	"Size": 653080,
     "Flag": "myanmar-flag-large"
   },
   {
+    "ID": "Namibia",
     "Name": "Namibia",
-    "NameGerman": "Namibia",
     "Latitude": -23.23355,
     "Longitude": 17.32311,
+	"Size": 823290,
     "Flag": "namibia-flag-large"
   },
   {
+    "ID": "Nauru",
     "Name": "Nauru",
-    "NameGerman": "Nauru",
     "Latitude": -0.5252306,
     "Longitude": 166.9324,
+	"Size": 20,
     "Flag": "nauru-flag-large"
   },
   {
+    "ID": "Nepal",
     "Name": "Nepal",
-    "NameGerman": "Nepal",
     "Latitude": 28.3948574,
     "Longitude": 84.12401,
+	"Size": 143350,
     "Flag": "nepal-flag-large"
   },
   {
-    "Name": "Netherlands",
-    "NameGerman": "Niederlande",
+    "ID": "Netherlands",
+    "Name": "Niederlande",
     "Latitude": 52.24727,
     "Longitude": 5.541224,
+	"Size": 33690,
     "Flag": "netherlands-flag-large"
   },
   {
-    "Name": "New Zealand",
-    "NameGerman": "Neuseeland",
+    "ID": "New Zealand",
+    "Name": "Neuseeland",
     "Latitude": -41.50008,
     "Longitude": 172.8344,
+	"Size": 263310,
     "Flag": "new-zealand-flag-large"
   },
   {
+    "ID": "Nicaragua",
     "Name": "Nicaragua",
-    "NameGerman": "Nicaragua",
     "Latitude": 12.37249,
     "Longitude": -84.87003,
+	"Size": 120340,
     "Flag": "nicaragua-flag-large"
   },
   {
+    "ID": "Niger",
     "Name": "Niger",
-    "NameGerman": "Niger",
     "Latitude": 17.73562,
     "Longitude": 9.323843,
+	"Size": 1266700,
     "Flag": "niger-flag-large"
   },
   {
+    "ID": "Nigeria",
     "Name": "Nigeria",
-    "NameGerman": "Nigeria",
     "Latitude": 9.600036,
     "Longitude": 7.999972,
+	"Size": 910770,
     "Flag": "nigeria-flag-large"
   },
   {
-    "Name": "North Macedonia",
-    "NameGerman": "Nordmakedonien",
+    "ID": "North Macedonia",
+    "Name": "Nordmakedonien",
     "Latitude": 41.61712,
     "Longitude": 21.71684,
+	"Size": 460,
     "Flag": "macedonia-flag-large"
   },
   {
-    "Name": "Norway",
-    "NameGerman": "Norwegen",
+    "ID": "Norway",
+    "Name": "Norwegen",
     "Latitude": 64.57315,
     "Longitude": 11.52804,
+	"Size": 36513,
     "Flag": "norway-flag-large"
   },
   {
+    "ID": "Oman",
     "Name": "Oman",
-    "NameGerman": "Oman",
     "Latitude": 21.00003,
     "Longitude": 57.00369,
+	"Size": 309500,
     "Flag": "oman-flag-large"
   },
   {
+    "ID": "Pakistan",
     "Name": "Pakistan",
-    "NameGerman": "Pakistan",
     "Latitude": 30.33084,
     "Longitude": 71.2475,
+	"Size": 770880,
     "Flag": "pakistan-flag-large"
   },
   {
+    "ID": "Palau",
     "Name": "Palau",
-    "NameGerman": "Palau",
     "Latitude": 6.097367,
     "Longitude": 133.3136,
+	"Size": 460,
     "Flag": "palau-flag-large"
   },
   {
+    "ID": "Panama",
     "Name": "Panama",
-    "NameGerman": "Panama",
     "Latitude": 8.309607,
     "Longitude": -81.30663,
+	"Size": 74340,
     "Flag": "panama-flag-large"
   },
   {
-    "Name": "Papua New Guinea",
-    "NameGerman": "Papua Neu-Guinea",
+    "ID": "Papua New Guinea",
+    "Name": "Papua Neu-Guinea",
     "Latitude": -5.681607,
     "Longitude": 144.2489,
+	"Size": 452860,
     "Flag": "papua-new-guinea-flag-large"
   },
   {
+    "ID": "Paraguay",
     "Name": "Paraguay",
-    "NameGerman": "Paraguay",
     "Latitude": -23.31659,
     "Longitude": -58.16935,
+	"Size": 397300,
     "Flag": "paraguay-flag-large"
   },
   {
+    "ID": "Peru",
     "Name": "Peru",
-    "NameGerman": "Peru",
     "Latitude": -6.86997,
     "Longitude": -75.04585,
+	"Size": 1280000,
     "Flag": "peru-flag-large"
   },
   {
-    "Name": "Philippines",
-    "NameGerman": "Philippinen",
+    "ID": "Philippines",
+    "Name": "Philippinen",
     "Latitude": 12.75035,
     "Longitude": 122.7312,
+	"Size": 298170,
     "Flag": "philippines-flag-large"
   },
   {
-    "Name": "Poland",
-    "NameGerman": "Polen",
+    "ID": "Poland",
+    "Name": "Polen",
     "Latitude": 52.09772,
     "Longitude": 19.02582,
+	"Size": 306190,
     "Flag": "poland-flag-large"
   },
   {
+    "ID": "Portugal",
     "Name": "Portugal",
-    "NameGerman": "Portugal",
     "Latitude": 40.03326,
     "Longitude": -7.889627,
+	"Size": 91605,
     "Flag": "portugal-flag-large"
   },
   {
-    "Name": "Qatar",
-    "NameGerman": "Katar",
+    "ID": "Qatar",
+    "Name": "Katar",
     "Latitude": 25.3337,
     "Longitude": 51.22953,
+	"Size": 11610,
     "Flag": "qatar-flag-large"
   },
   {
-    "Name": "Romania",
-    "NameGerman": "Rumänien",
+    "ID": "Romania",
+    "Name": "Rumänien",
     "Latitude": 45.98521,
     "Longitude": 24.68592,
+	"Size": 230080,
     "Flag": "romania-flag-large"
   },
   {
-    "Name": "Russian Federation",
-    "NameGerman": "Russland",
+    "ID": "Russian Federation",
+    "Name": "Russland",
     "Latitude": 64.68631,
     "Longitude": 97.74531,
+	"Size": 16376870,
     "Flag": "russia-flag-large"
   },
   {
-    "Name": "Rwanda",
-    "NameGerman": "Ruanda",
+    "ID": "Rwanda",
+    "Name": "Ruanda",
     "Latitude": -1.964663,
     "Longitude": 30.06444,
+	"Size": 24670,
     "Flag": "rwanda-flag-large"
   },
   {
+    "ID": "Samoa",
     "Name": "Samoa",
-    "NameGerman": "Samoa",
     "Latitude": -13.76939,
     "Longitude": -172.1201,
+	"Size": 2830,
     "Flag": "samoa-flag-large"
   },
   {
+    "ID": "San Marino",
     "Name": "San Marino",
-    "NameGerman": "San Marino",
     "Latitude": 43.94586,
     "Longitude": 12.45831,
+	"Size": 60,
     "Flag": "san-marino-flag-large"
   },
   {
-    "Name": "Sao Tome and Principe",
-    "NameGerman": "Sao Tome und Principe",
+    "ID": "Sao Tome and Principe",
+    "Name": "Sao Tome und Principe",
     "Latitude": 0.8875498,
     "Longitude": 6.964872,
+	"Size": 960,
     "Flag": "sao-tome-and-principe-flag-large"
   },
   {
-    "Name": "Saudi Arabia",
-    "NameGerman": "Saudi Arabien",
+    "ID": "Saudi Arabia",
+    "Name": "Saudi Arabien",
     "Latitude": 25.62426,
     "Longitude": 42.35283,
+	"Size": 2149690,
     "Flag": "saudi-arabia-flag-large"
   },
   {
+    "ID": "Senegal",
     "Name": "Senegal",
-    "NameGerman": "Senegal",
     "Latitude": 14.47506,
     "Longitude": -14.45296,
+	"Size": 192530,
     "Flag": "senegal-flag-large"
   },
   {
-    "Name": "Seychelles",
-    "NameGerman": "Seychellen",
+    "ID": "Seychelles",
+    "Name": "Seychellen",
     "Latitude": -4.657498,
     "Longitude": 55.45401,
+	"Size": 460,
     "Flag": "seychelles-flag-large"
   },
   {
+    "ID": "Sierra Leone",
     "Name": "Sierra Leone",
-    "NameGerman": "Sierra Leone",
     "Latitude": 8.640035,
     "Longitude": -11.84003,
+	"Size": 72180,
     "Flag": "sierra-leone-flag-large"
   },
   {
-    "Name": "Singapore",
-    "NameGerman": "Singapur",
+    "ID": "Singapore",
+    "Name": "Singapur",
     "Latitude": 1.290475,
     "Longitude": 103.852,
+	"Size": 709,
     "Flag": "singapore-flag-large"
   },
   {
-    "Name": "Slovak Republic",
-    "NameGerman": "Slowakische Republik",
+    "ID": "Slovak Republic",
+    "Name": "Slowakische Republik",
     "Latitude": 48.74115,
     "Longitude": 19.45286,
+	"Size": 48080,
     "Flag": "slovakia-flag-large"
   },
   {
-    "Name": "Slovenia",
-    "NameGerman": "Slowenien",
+    "ID": "Slovenia",
+    "Name": "Slowenien",
     "Latitude": 45.81331,
     "Longitude": 14.48084,
+	"Size": 20142,
     "Flag": "slovenia-flag-large"
   },
   {
-    "Name": "Solomon Islands",
-    "NameGerman": "Salomon-Inseln",
+    "ID": "Solomon Islands",
+    "Name": "Salomon-Inseln",
     "Latitude": -9.735435,
     "Longitude": 162.8289,
+	"Size": 27990,
     "Flag": "solomon-islands-flag-large"
   },
   {
+    "ID": "Somalia",
     "Name": "Somalia",
-    "NameGerman": "Somalia",
     "Latitude": 8.367677,
     "Longitude": 49.08342,
+	"Size": 627340,
     "Flag": "somalia-flag-large"
   },
   {
-    "Name": "South Africa",
-    "NameGerman": "Südafrika",
+    "ID": "South Africa",
+    "Name": "Südafrika",
     "Latitude": -28.81662,
     "Longitude": 24.99164,
+	"Size": 1213090,
     "Flag": "south-africa-flag-large"
   },
   {
-    "Name": "South Sudan",
-    "NameGerman": "Südsudan",
+    "ID": "South Sudan",
+    "Name": "Südsudan",
     "Latitude": 7.869943,
     "Longitude": 29.66679,
+	"Size": 619745,
     "Flag": "south-sudan-flag-large"
   },
   {
-    "Name": "Spain",
-    "NameGerman": "Spanien",
+    "ID": "Spain",
+    "Name": "Spanien",
     "Latitude": 39.32623,
     "Longitude": -4.838065,
+	"Size": 499564,
     "Flag": "spain-flag-large"
   },
   {
+    "ID": "Sri Lanka",
     "Name": "Sri Lanka",
-    "NameGerman": "Sri Lanka",
     "Latitude": 7.555494,
     "Longitude": 80.71378,
+	"Size": 62710,
     "Flag": "sri-lanka-flag-large"
   },
   {
-    "Name": "St. Kitts and Nevis",
-    "NameGerman": "St. Kitts und Nevis",
+    "ID": "St. Kitts and Nevis",
+    "Name": "St. Kitts und Nevis",
     "Latitude": 17.34623,
     "Longitude": -62.76873,
+	"Size": 260,
     "Flag": "saint-kitts-and-nevis-flag-large"
   },
   {
+    "ID": "St. Lucia",
     "Name": "St. Lucia",
-    "NameGerman": "St. Lucia",
     "Latitude": 13.82505,
     "Longitude": -60.97504,
+	"Size": 610,
     "Flag": "saint-lucia-flag-large"
   },
   {
-    "Name": "St. Vincent and the Grenadines",
-    "NameGerman": "St. Vincent und die Grenadinen",
+    "ID": "St. Vincent and the Grenadines",
+    "Name": "St. Vincent und die Grenadinen",
     "Latitude": 12.90447,
     "Longitude": -61.27656,
+	"Size": 390,
     "Flag": "saint-vincent-and-the-grenadines-flag-large"
   },
   {
+    "ID": "Sudan",
     "Name": "Sudan",
-    "NameGerman": "Sudan",
     "Latitude": 14.58444,
     "Longitude": 29.49177,
+	"Size": 1886068,
     "Flag": "sudan-flag-large"
   },
   {
+    "ID": "Suriname",
     "Name": "Suriname",
-    "NameGerman": "Suriname",
     "Latitude": 4.141303,
     "Longitude": -56.07712,
+	"Size": 156000,
     "Flag": "suriname-flag-large"
   },
   {
-    "Name": "Sweden",
-    "NameGerman": "Schweden",
+    "ID": "Sweden",
+    "Name": "Schweden",
     "Latitude": 59.67497,
     "Longitude": 14.52086,
+	"Size": 407310,
     "Flag": "sweden-flag-large"
   },
   {
-    "Name": "Switzerland",
-    "NameGerman": "Schweiz",
+    "ID": "Switzerland",
+    "Name": "Schweiz",
     "Latitude": 46.79856,
     "Longitude": 8.231974,
+	"Size": 39516,
     "Flag": "switzerland-flag-large"
   },
   {
-    "Name": "Syrian Arab Republic",
-    "NameGerman": "Syrien",
+    "ID": "Syrian Arab Republic",
+    "Name": "Syrien",
     "Latitude": 34.64019,
     "Longitude": 39.04941,
+	"Size": 183630,
     "Flag": "syria-flag-large"
   },
   {
-    "Name": "Tajikistan",
-    "NameGerman": "Tadschikistan",
+    "ID": "Tajikistan",
+    "Name": "Tadschikistan",
     "Latitude": 38.62817,
     "Longitude": 70.81565,
+	"Size": 138790,
     "Flag": "tajikistan-flag-large"
   },
   {
-    "Name": "Tanzania",
-    "NameGerman": "Tansania",
+    "ID": "Tanzania",
+    "Name": "Tansania",
     "Latitude": -6.524712,
     "Longitude": 35.78785,
+	"Size": 885800,
     "Flag": "tanzania-flag-large"
   },
   {
+    "ID": "Thailand",
     "Name": "Thailand",
-    "NameGerman": "Thailand",
     "Latitude": 14.89719,
     "Longitude": 100.8327,
+	"Size": 510890,
     "Flag": "thailand-flag-large"
   },
   {
+    "ID": "Timor-Leste",
     "Name": "Timor-Leste",
-    "NameGerman": "Timor-Leste",
     "Latitude": -8.515198,
     "Longitude": 125.8376,
+	"Size": 14870,
     "Flag": "east-timor-flag-large"
   },
   {
+    "ID": "Togo",
     "Name": "Togo",
-    "NameGerman": "Togo",
     "Latitude": 8.780026,
     "Longitude": 1.019976,
+	"Size": 54390,
     "Flag": "togo-flag-large"
   },
   {
+    "ID": "Tonga",
     "Name": "Tonga",
-    "NameGerman": "Tonga",
     "Latitude": -19.91608,
     "Longitude": -175.2026,
+	"Size": 720,
     "Flag": "tonga-flag-large"
   },
   {
-    "Name": "Trinidad and Tobago",
-    "NameGerman": "Trinidad und Tobago",
+    "ID": "Trinidad and Tobago",
+    "Name": "Trinidad und Tobago",
     "Latitude": 10.86778,
     "Longitude": -60.98211,
+	"Size": 5130,
     "Flag": "trinidad-and-tobago-flag-large"
   },
   {
-    "Name": "Tunisia",
-    "NameGerman": "Tunesien",
+    "ID": "Tunisia",
+    "Name": "Tunesien",
     "Latitude": 33.84394,
     "Longitude": 9.400138,
+	"Size": 155360,
     "Flag": "tunisia-flag-large"
   },
   {
-    "Name": "Turkey",
-    "NameGerman": "Türkei",
+    "ID": "Turkey",
+    "Name": "Türkei",
     "Latitude": 38.95976,
     "Longitude": 34.92496,
+	"Size": 769630,
     "Flag": "turkey-flag-large"
   },
   {
+    "ID": "Turkmenistan",
     "Name": "Turkmenistan",
-    "NameGerman": "Turkmenistan",
     "Latitude": 39.37638,
     "Longitude": 59.39246,
+	"Size": 469930,
     "Flag": "turkmenistan-flag-large"
   },
   {
+    "ID": "Tuvalu",
     "Name": "Tuvalu",
-    "NameGerman": "Tuvalu",
     "Latitude": -7.768959,
     "Longitude": 178.1168,
+	"Size": 30,
     "Flag": "tuvalu-flag-large"
   },
   {
+    "ID": "Uganda",
     "Name": "Uganda",
-    "NameGerman": "Uganda",
     "Latitude": 1.533355,
     "Longitude": 32.21666,
+	"Size": 200520,
     "Flag": "uganda-flag-large"
   },
   {
+    "ID": "Ukraine",
     "Name": "Ukraine",
-    "NameGerman": "Ukraine",
     "Latitude": 49.4872,
     "Longitude": 31.27183,
+	"Size": 579290,
     "Flag": "ukraine-flag-large"
   },
   {
-    "Name": "United Arab Emirates",
-    "NameGerman": "Vereinigte Arabische Emirate",
+    "ID": "United Arab Emirates",
+    "Name": "Vereinigte Arabische Emirate",
     "Latitude": 24.00025,
     "Longitude": 53.99948,
+	"Size": 71020,
     "Flag": "united-arab-emirates-flag-large"
   },
   {
-    "Name": "United Kingdom",
-    "NameGerman": "Großbritannien",
+    "ID": "United Kingdom",
+    "Name": "Großbritannien",
     "Latitude": 54.70235,
     "Longitude": -3.276575,
+	"Size": 241930,
     "Flag": "united-kingdom-flag-large"
   },
   {
-    "Name": "United States",
-    "NameGerman": "Vereinigte Staaten",
+    "ID": "United States",
+    "Name": "Vereinigte Staaten",
     "Latitude": 39.78373,
     "Longitude": -100.4459,
+	"Size": 9147420,
     "Flag": "united-states-of-america-flag-large"
   },
   {
+    "ID": "Uruguay",
     "Name": "Uruguay",
-    "NameGerman": "Uruguay",
     "Latitude": -32.87555,
     "Longitude": -56.02015,
+	"Size": 175020,
     "Flag": "uruguay-flag-large"
   },
   {
-    "Name": "Uzbekistan",
-    "NameGerman": "Usbekistan",
+    "ID": "Uzbekistan",
+    "Name": "Usbekistan",
     "Latitude": 41.32373,
     "Longitude": 63.95281,
+	"Size": 425400,
     "Flag": "uzbekistan-flag-large"
   },
   {
-    "Name": "Venezuela, RB",
-    "NameGerman": "Venezuela",
+    "ID": "Venezuela, RB",
+    "Name": "Venezuela",
     "Latitude": 6.42375,
     "Longitude": -66.58973,
+	"Size": 882050,
     "Flag": "venezuela-flag-large"
   },
   {
+    "ID": "Vietnam",
     "Name": "Vietnam",
-    "NameGerman": "Vietnam",
     "Latitude": 13.2904,
     "Longitude": 108.4265,
+	"Size": 310070,
     "Flag": "vietnam-flag-large"
   },
   {
-    "Name": "Yemen, Rep.",
-    "NameGerman": "Jemen",
+    "ID": "Yemen, Rep.",
+    "Name": "Jemen",
     "Latitude": 15.5527267,
     "Longitude": 48.5163879,
+	"Size": 527970,
     "Flag": "yemen-flag-large"
   },
   {
-    "Name": "Zambia",
-    "NameGerman": "Sambia",
+    "ID": "Zambia",
+    "Name": "Sambia",
     "Latitude": -14.51862,
     "Longitude": 27.55992,
+	"Size": 743390,
     "Flag": "zambia-flag-large"
   },
   {
+    "ID": "Zimbabwe",
     "Name": "Zimbabwe",
-    "NameGerman": "Zimbabwe",
     "Latitude": -18.4555,
     "Longitude": 29.74684,
+	"Size": 386850,
     "Flag": "zimbabwe-flag-large"
   }
 ]

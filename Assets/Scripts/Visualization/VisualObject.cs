@@ -45,7 +45,9 @@ namespace CrowdedEarth.Visualization {
         }
 
         public void OnPointerClick(PointerEventData eventData) {
-            OnPointerClicked?.Invoke();
+            if (eventData.button == PointerEventData.InputButton.Left) {
+                OnPointerClicked?.Invoke();
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData) {

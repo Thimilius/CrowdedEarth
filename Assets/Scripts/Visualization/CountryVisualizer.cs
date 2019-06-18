@@ -9,7 +9,7 @@ namespace CrowdedEarth.Visualization {
         private void Start() {
             // This is just so we can start the scene normally
             if (s_Country == null) {
-                s_Country = DataLoader.GetCountries().Find(c => c.Name == "Germany");
+                s_Country = DataLoader.GetCountries().Find(c => c.ID == "Germany");
             }
         }
 

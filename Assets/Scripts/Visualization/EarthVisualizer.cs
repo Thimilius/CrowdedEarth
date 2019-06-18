@@ -51,7 +51,7 @@ namespace CrowdedEarth.Visualization {
             Quaternion rotation = Coordinates.LookFrom(latitude, longitude);
             VisualObject vo = Instantiate(GetPrefabForType(type), position, rotation, m_EarthRenderer.transform);
             vo.tag = tag;
-            vo.name = $"Country: {country.Name}";
+            vo.name = $"Country: {country.ID}";
 
             Vector3 localScale = vo.transform.localScale;
             localScale.z = GetScale(country);
