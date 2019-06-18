@@ -10,6 +10,9 @@ namespace CrowdedEarth.UI {
         [SerializeField] private TMP_Text m_TimelineYearText;
 
         private void Start() {
+            m_TimelineSlider.value = m_Visualizer.Year;
+            m_TimelineYearText.text = m_Visualizer.Year.ToString();
+
             m_TimelineSlider.onValueChanged.AddListener(value => {
                 int year = (int)value;
                 m_TimelineYearText.text = year.ToString();

@@ -5,10 +5,11 @@ namespace CrowdedEarth.Visualization {
     public abstract class Visualizer : MonoBehaviour {
         public event Action OnYearChanged;
 
-        private int m_Year;
+        private static int s_Year = 1960;
+        public int Year => s_Year;
 
         public virtual void SetYear(int year) {
-            m_Year = year;
+            s_Year = year;
 
             OnYearChanged?.Invoke();
         }
@@ -18,7 +19,7 @@ namespace CrowdedEarth.Visualization {
             const int YEAR_LIMIT_MAX = 2050;
 
             // HACK: Hardcoded!
-            int year = Mathf.Clamp(m_Year, YEAR_LIMIT_MIN, YEAR_LIMIT_MAX);
+            int year = Mathf.Clamp(s_Year, YEAR_LIMIT_MIN, YEAR_LIMIT_MAX);
             return year - YEAR_LIMIT_MIN;
         }
     }

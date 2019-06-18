@@ -36,10 +36,9 @@ namespace CrowdedEarth.Visualization {
         public override void SetYear(int year) {
             base.SetYear(year);
 
-            int index = GetYearIndex();
             foreach (var vo in m_VisualObjects) {
                 Vector3 localScale = vo.transform.localScale;
-                localScale.z = GetScale(vo.Country.PopulationInfo[index].TotalPopulation);
+                localScale.z = GetScale(vo.Country);
                 vo.transform.localScale = localScale;
             }
         }
@@ -55,7 +54,7 @@ namespace CrowdedEarth.Visualization {
             vo.name = $"Country: {country.Name}";
 
             Vector3 localScale = vo.transform.localScale;
-            localScale.z = GetScale(country.PopulationInfo[0].TotalPopulation);
+            localScale.z = GetScale(country);
             vo.transform.localScale = localScale;
 
             vo.Type = type;
@@ -79,8 +78,8 @@ namespace CrowdedEarth.Visualization {
             }
         }
 
-        private float GetScale(int population) {
-            return population / SCALE_NORMALIZATION;
+        private float GetScale(ICountry country) {
+            return country.PopulationInfo[GetYearIndex()].TotalPopulation / SCALE_NORMALIZATION;
         }
     }
 }
