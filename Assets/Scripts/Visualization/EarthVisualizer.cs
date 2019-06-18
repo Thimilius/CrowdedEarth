@@ -26,10 +26,11 @@ namespace CrowdedEarth.Visualization {
         private void Start() {
             m_VisualObjects = new List<VisualObject>();
 
-            DataLoader.GetCountries(country => {
+            List<ICountry> countries = DataLoader.GetCountries();
+            foreach (var country in countries) {
                 VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                 m_VisualObjects.Add(co);
-            });
+            }
         }
 
         public override void SetYear(int year) {
@@ -62,6 +63,7 @@ namespace CrowdedEarth.Visualization {
             vo.SetColor(Color.yellow, new Color(0.5f, 0.5f, 0));
 
             vo.OnPointerClicked += () => {
+                CountryVisualizer.SetCountry(country);
                 SceneManager.LoadScene(1);
             };
 

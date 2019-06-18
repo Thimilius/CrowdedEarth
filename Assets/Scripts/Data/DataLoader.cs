@@ -9,8 +9,6 @@ using CrowdedEarth.Data.Model;
 using CrowdedEarth.Data.Layout;
 
 namespace CrowdedEarth.Data {
-    public delegate void GetCountriesHandler(ICountry country);
-
     // NOTE: Countries that need to be stripped from the file because of insufficient data:
     //       - Eritrea
     //       - Serbia
@@ -52,7 +50,19 @@ namespace CrowdedEarth.Data {
         private static readonly string POPULATION_FEMALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_female_percentage.csv");
         private static readonly string POPULATION_MALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_male_percentage.csv");
 
-        public static void GetCountries(GetCountriesHandler callback) {
+        private static bool m_DataLoaded;
+        private static List<ICountry> m_Countries;
+
+        public static List<ICountry> GetCountries() {
+            if (!m_DataLoaded) {
+                LoadData();
+            }
+            return m_Countries;
+        }
+
+        private static void LoadData() {
+            m_Countries = new List<ICountry>();
+
             // HACK: We have a constant for how many years the data contains
             const int YEAR_COUNT = 90;
 
@@ -100,10 +110,13 @@ namespace CrowdedEarth.Data {
                         MalePercentage = malePercentage,
                         FemalePercentage = femalePercentage
                     });
+
                 }
 
-                callback?.Invoke(country);
+                m_Countries.Add(country);
             }
+
+            m_DataLoaded = true;
         }
 
         private static ReadDataResult<T> ReadData<T>(string path) where T : DataLayout {
