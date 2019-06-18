@@ -1,11 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace CrowdedEarth.Visualization {
     public abstract class Visualizer : MonoBehaviour {
+        public event Action OnYearChanged;
+
         private int m_Year;
 
         public virtual void SetYear(int year) {
             m_Year = year;
+
+            OnYearChanged?.Invoke();
         }
 
         public int GetYearIndex() {

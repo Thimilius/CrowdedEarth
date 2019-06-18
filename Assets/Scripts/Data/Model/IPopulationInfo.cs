@@ -3,5 +3,7 @@
         int TotalPopulation { get; }
         float MalePercentage { get; }
         float FemalePercentage { get; }
+        float RuralPercentage { get; }
+        float UrbanPercentage { get; }
     }
 }

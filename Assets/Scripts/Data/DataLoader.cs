@@ -37,6 +37,8 @@ namespace CrowdedEarth.Data {
             public int TotalPopulation { get; set; }
             public float MalePercentage { get; set; }
             public float FemalePercentage { get; set; }
+            public float RuralPercentage { get; set; }
+            public float UrbanPercentage { get; set; }
         }
 
         private class ReadDataResult<T> {
@@ -49,6 +51,8 @@ namespace CrowdedEarth.Data {
         private static readonly string POPULATION_TOTAL_PATH = Path.Combine(DATA_PATH, "population_total.csv");
         private static readonly string POPULATION_FEMALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_female_percentage.csv");
         private static readonly string POPULATION_MALE_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_male_percentage.csv");
+        private static readonly string POPULATION_RURAL_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_rural_percentage.csv");
+        private static readonly string POPULATION_URBAN_PERCENTAGE_PATH = Path.Combine(DATA_PATH, "population_urban_percentage.csv");
 
         private static bool m_DataLoaded;
         private static List<ICountry> m_Countries;
@@ -73,9 +77,11 @@ namespace CrowdedEarth.Data {
             // Load total population
             ReadDataResult<PopulationAbsoluteLayout> populationTotal = ReadDataWithProperties<PopulationAbsoluteLayout>(POPULATION_TOTAL_PATH);
 
-            // Load population gender percentages
+            // Load population specific data
             ReadDataResult<PopulationPercentageLayout> populationMalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_MALE_PERCENTAGE_PATH);
             ReadDataResult<PopulationPercentageLayout> populationFemalePercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_FEMALE_PERCENTAGE_PATH);
+            ReadDataResult<PopulationPercentageLayout> populationRuralPercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_RURAL_PERCENTAGE_PATH);
+            ReadDataResult<PopulationPercentageLayout> populationUrbanPercentage = ReadDataWithProperties<PopulationPercentageLayout>(POPULATION_URBAN_PERCENTAGE_PATH);
 
             foreach (var country in countries) {
                 string name = country.Name;
@@ -104,11 +110,27 @@ namespace CrowdedEarth.Data {
                         femalePercentage = (float)populationFemalePercentage.Properties[i].GetValue(percentageEntry);
                     }
 
+                    // Get rural percentag if existent
+                    float ruralPercentage = -1;
+                    if (populationRuralPercentage.Data.ContainsKey(name)) {
+                        PopulationPercentageLayout percentageEntry = populationRuralPercentage.Data[name];
+                        ruralPercentage = (float)populationRuralPercentage.Properties[i].GetValue(percentageEntry);
+                    }
+
+                    // Get urban percentag if existent
+                    float urbanPercentage = -1;
+                    if (populationUrbanPercentage.Data.ContainsKey(name)) {
+                        PopulationPercentageLayout percentageEntry = populationUrbanPercentage.Data[name];
+                        urbanPercentage = (float)populationUrbanPercentage.Properties[i].GetValue(percentageEntry);
+                    }
+
                     // Add the population info 
                     country.PopulationInfo.Add(new PopulationInfo() {
                         TotalPopulation = total,
                         MalePercentage = malePercentage,
-                        FemalePercentage = femalePercentage
+                        FemalePercentage = femalePercentage,
+                        RuralPercentage = ruralPercentage,
+                        UrbanPercentage = urbanPercentage
                     });
 
                 }
