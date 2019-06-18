@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 
 namespace CrowdedEarth.Visualization {
-    public class VisualObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public class VisualObject : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
         [SerializeField] private Color m_HighlightColor;
         [SerializeField] private Color m_HighlightEmissionColor;
 
@@ -16,6 +16,7 @@ namespace CrowdedEarth.Visualization {
         public ICountry Country { get; set; }
 
         public event Action OnPointerEntered;
+        public event Action OnPointerClicked;
         public event Action OnPointerExited;
 
         private Renderer m_Renderer;
@@ -41,6 +42,10 @@ namespace CrowdedEarth.Visualization {
             m_Renderer.material.color = m_HighlightColor;
             m_Renderer.material.SetColor(m_EmissionColorProperty, m_HighlightEmissionColor);
             OnPointerEntered?.Invoke();
+        }
+
+        public void OnPointerClick(PointerEventData eventData) {
+            OnPointerClicked?.Invoke();
         }
 
         public void OnPointerExit(PointerEventData eventData) {

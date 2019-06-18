@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.Visualization {
-    public class Visualizer : MonoBehaviour {
+    public class EarthVisualizer : MonoBehaviour {
         private const float SCALE_NORMALIZATION = 20000000.0f;
 
         [SerializeField] private WorldCamera m_WorldCamera;
@@ -32,24 +32,6 @@ namespace CrowdedEarth.Visualization {
                 VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                 m_VisualObjects.Add(co);
             });
-        }
-
-        private void Update() {
-            if (EventSystem.current.IsPointerOverGameObject()) {
-                return;
-            }
-
-            VisualObject vo = GetVisualObjectUnderMouse();
-
-            // TODO: We should implement the hover effect here
-
-            if (Input.GetKeyDown(KeyCode.Mouse0)) {
-                if (vo != null) {
-                    ICountry country = vo.Country;
-                    Debug.Log($"{country.Name} - {country.PopulationInfo[GetYearIndex()]}");
-                    m_WorldCamera.RotateTo(country.Latitude, country.Longitude);
-                }
-            }
         }
 
         public void SetVisualizationMode(VisualizationMode mode) {
@@ -109,18 +91,13 @@ namespace CrowdedEarth.Visualization {
             vo.Country = country;
             vo.SetColor(Color.yellow, new Color(0.5f, 0.5f, 0));
 
+            vo.OnPointerClicked += () => {
+                SceneManager.LoadScene(1);
+            };
+
             OnVisualObjectCreated?.Invoke(vo);
 
             return vo;
-        }
-
-        private VisualObject GetVisualObjectUnderMouse() {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit)) {
-                return hit.transform.GetComponent<VisualObject>();
-            } else {
-                return null;
-            }
         }
 
         private VisualObject GetPrefabForType(VisualObjectType type) {

@@ -7,7 +7,7 @@ using CrowdedEarth.Visualization;
 
 namespace CrowdedEarth.UI {
     public class TimelineUI : MonoBehaviour {
-        [SerializeField] private Visualizer m_Visualizer;
+        [SerializeField] private EarthVisualizer m_Visualizer;
         [SerializeField] private Slider m_TimelineSlider;
         [SerializeField] private TMP_Text m_TimelineYearText;
 

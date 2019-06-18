@@ -7,7 +7,7 @@ using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.UI {
     public class DetailPanelUI : MonoBehaviour {
-        [SerializeField] private Visualizer m_Visualizer;
+        [SerializeField] private EarthVisualizer m_Visualizer;
         [SerializeField] private GameObject m_InfoPanel;
         [Header("General Info")]
         [SerializeField] private TMP_Text m_CountryText;

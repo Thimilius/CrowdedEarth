@@ -6,7 +6,7 @@ using TMPro;
 
 namespace CrowdedEarth.UI {
     public class VisualizationModeUI : MonoBehaviour {
-        [SerializeField] private Visualizer m_Visualizer;
+        [SerializeField] private EarthVisualizer m_Visualizer;
         [SerializeField] private Button m_VisualizationButton;
         [SerializeField] private TMP_Text m_VisualizationButtonText;
 
