@@ -20,7 +20,6 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Material m_RealMaterial;
 
         public event Action<VisualObject> OnVisualObjectCreated;
-        public VisualizationMode VisualizationMode { get; private set; }
 
         private List<VisualObject> m_VisualObjects;
         private int m_Year;
@@ -32,25 +31,6 @@ namespace CrowdedEarth.Visualization {
                 VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                 m_VisualObjects.Add(co);
             });
-        }
-
-        public void SetVisualizationMode(VisualizationMode mode) {
-            VisualizationMode = mode;
-
-            switch (mode) {
-                case VisualizationMode.Info:
-                    m_EarthRenderer.material = m_InfoMaterial;
-                    m_WorldCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
-                    RenderSettings.ambientSkyColor = new Color(0.5f, 0.5f, 0.5f);
-                    break;
-                case VisualizationMode.Real:
-                    m_EarthRenderer.material = m_RealMaterial;
-                    m_WorldCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
-                    RenderSettings.ambientSkyColor = new Color(0.2f, 0.2f, 0.2f);
-                    break;
-                default:
-                    break;
-            }
         }
 
         public void SetYear(int year) {
