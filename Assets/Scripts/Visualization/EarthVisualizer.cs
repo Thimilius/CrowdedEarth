@@ -79,7 +79,7 @@ namespace CrowdedEarth.Visualization {
         }
 
         private float GetScale(ICountry country) {
-            return country.PopulationInfo[GetYearIndex()].TotalPopulation / SCALE_NORMALIZATION;
+            return country.PopulationInfo[GetYearIndex()].PopulationTotal / SCALE_NORMALIZATION;
         }
     }
 }

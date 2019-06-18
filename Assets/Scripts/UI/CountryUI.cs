@@ -46,10 +46,10 @@ namespace CrowdedEarth.UI {
             ICountry country = m_Visualizer.Country;
             IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
-            m_CountryNameText.text = $"{country.Name} - Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
+            m_CountryNameText.text = $"{country.Name} - Bevölkerung: {info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"))}";
 
             m_SizeText.text = $"Größe in km²: {country.Size.ToString("N0", new CultureInfo("de-DE"))}";
-            m_DensityText.text = $"Einwohner pro km²: {(info.TotalPopulation / country.Size).ToString("0")}";
+            m_DensityText.text = $"Einwohner pro km²: {(info.PopulationTotal / country.Size).ToString("0")}";
 
             // Set male/female percentage
             if (info.MalePercentage > 0 && info.FemalePercentage > 0) {
