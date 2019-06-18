@@ -13,12 +13,7 @@ namespace CrowdedEarth.UI {
         [SerializeField] private TMP_Text m_CountryText;
         [SerializeField] private Image m_CountryFlag;
         [SerializeField] private TMP_Text m_PopulationText;
-        [Header("Male/Female Info")]
-        [SerializeField] private GameObject m_MaleFemalePercentageInfo;
-        [SerializeField] private TMP_Text m_MalePercentageText;
-        [SerializeField] private TMP_Text m_FemalePercentageText;
-        [SerializeField] private Image m_MalePercentageImage;
-        [SerializeField] private Image m_FemalePercentageImage;
+        
 
         private void Awake() {
             m_Visualizer.OnVisualObjectCreated += vo => {
@@ -38,14 +33,7 @@ namespace CrowdedEarth.UI {
             m_CountryText.text = vo.Country.NameGerman;
             m_PopulationText.text = $"Bevölkerung: {info.TotalPopulation.ToString("N0", new CultureInfo("de-DE"))}";
 
-            if (info.MalePercentage > 0 && info.FemalePercentage > 0) {
-                m_MaleFemalePercentageInfo.SetActive(true);
-                m_MalePercentageText.text = $"{info.MalePercentage.ToString("0.00")} %";
-                m_FemalePercentageText.text = $"{info.FemalePercentage.ToString("0.00")} %";
-                m_MalePercentageImage.fillAmount = info.MalePercentage / 100.0f;
-            } else {
-                m_MaleFemalePercentageInfo.SetActive(false);
-            }
+            
         }
 
         private void OnPointerExited(VisualObject vo) {
