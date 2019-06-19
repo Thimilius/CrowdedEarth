@@ -56,12 +56,19 @@ namespace CrowdedEarth.Visualization {
 
             go.GetComponent<Renderer>().material = material;
 
-            SetScaleForPillar(go, age);
+            // Animate scaling
+            Vector3 scale = go.transform.localScale;
+            scale.z = GetScale(age);
+            iTween.ScaleTo(go, scale, 1.0f);
+            scale.z = 0;
+            go.transform.localScale = scale;
 
             return go;
         }
 
         private void SetScaleForPillars() {
+            iTween.Stop();
+
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
             SetScaleForPillar(m_Age0_14MalePillar, info.Age0_14MaleAbsolute);
