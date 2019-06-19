@@ -72,17 +72,13 @@ namespace CrowdedEarth.Data {
         private static readonly string POPULATION_AGE_15_64_FEMALE_ABSOLUTE_PATH = Path.Combine(DATA_PATH, "population_15-64_female_absolute.csv");
         private static readonly string POPULATION_AGE_65_ABOVE_FEMALE_ABSOLUTE_PATH = Path.Combine(DATA_PATH, "population_65-above_female_absolute.csv");
 
-        private static bool m_DataLoaded;
         private static List<ICountry> m_Countries;
 
         public static List<ICountry> GetCountries() {
-            if (!m_DataLoaded) {
-                LoadData();
-            }
             return m_Countries;
         }
 
-        private static void LoadData() {
+        public static void LoadCountries() {
             m_Countries = new List<ICountry>();
 
             // HACK: We have a constant for how many years the data contains
@@ -121,74 +117,28 @@ namespace CrowdedEarth.Data {
                     int total = (int)populationTotal.Properties[i].GetValue(population);
 
                     // Get male percentage if existent
-                    float malePercentage = -1;
-                    if (populationMalePercentage.Data.ContainsKey(name)) {
-                        PopulationPercentageLayout percentageEntry = populationMalePercentage.Data[name];
-                        malePercentage = (float)populationMalePercentage.Properties[i].GetValue(percentageEntry);
-                    }
-
+                    float malePercentage = GetPercentageDataResult(populationMalePercentage, name, i);
                     // Get female percentage if existent
-                    float femalePercentage = -1;
-                    if (populationFemalePercentage.Data.ContainsKey(name)) {
-                        PopulationPercentageLayout percentageEntry = populationFemalePercentage.Data[name];
-                        femalePercentage = (float)populationFemalePercentage.Properties[i].GetValue(percentageEntry);
-                    }
+                    float femalePercentage = GetPercentageDataResult(populationFemalePercentage, name, i);
 
                     // Get rural percentag if existent
-                    float ruralPercentage = -1;
-                    if (populationRuralPercentage.Data.ContainsKey(name)) {
-                        PopulationPercentageLayout percentageEntry = populationRuralPercentage.Data[name];
-                        ruralPercentage = (float)populationRuralPercentage.Properties[i].GetValue(percentageEntry);
-                    }
-
+                    float ruralPercentage = GetPercentageDataResult(populationRuralPercentage, name, i);
                     // Get urban percentag if existent
-                    float urbanPercentage = -1;
-                    if (populationUrbanPercentage.Data.ContainsKey(name)) {
-                        PopulationPercentageLayout percentageEntry = populationUrbanPercentage.Data[name];
-                        urbanPercentage = (float)populationUrbanPercentage.Properties[i].GetValue(percentageEntry);
-                    }
+                    float urbanPercentage = GetPercentageDataResult(populationUrbanPercentage, name, i);
 
                     // Get male age group 0-14
-                    int age0_14MaleAbsolute = -1;
-                    if (populationAge0_14MaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge0_14MaleAbsolute.Data[name];
-                        age0_14MaleAbsolute = (int)populationAge0_14MaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
-
+                    int age0_14MaleAbsolute = GetAbsoluteDataResult(populationAge0_14MaleAbsolute, name, i);
                     // Get male age group 15-64
-                    int age15_64MaleAbsolute = -1;
-                    if (populationAge15_64MaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge15_64MaleAbsolute.Data[name];
-                        age15_64MaleAbsolute = (int)populationAge15_64MaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
-
+                    int age15_64MaleAbsolute = GetAbsoluteDataResult(populationAge15_64MaleAbsolute, name, i);
                     // Get male age group 65-above
-                    int age65_AboveMaleAbsolute = -1;
-                    if (populationAge65_AboveMaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge65_AboveMaleAbsolute.Data[name];
-                        age65_AboveMaleAbsolute = (int)populationAge65_AboveMaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
+                    int age65_AboveMaleAbsolute = GetAbsoluteDataResult(populationAge65_AboveMaleAbsolute, name, i);
 
                     // Get female age group 0-14
-                    int age0_14FemaleAbsolute = -1;
-                    if (populationAge0_14FemaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge0_14FemaleAbsolute.Data[name];
-                        age0_14FemaleAbsolute = (int)populationAge0_14FemaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
-
+                    int age0_14FemaleAbsolute = GetAbsoluteDataResult(populationAge0_14FemaleAbsolute, name, i);
                     // Get female age group 15-64
-                    int age15_64FemaleAbsolute = -1;
-                    if (populationAge15_64FemaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge15_64FemaleAbsolute.Data[name];
-                        age15_64FemaleAbsolute = (int)populationAge15_64FemaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
-
+                    int age15_64FemaleAbsolute = GetAbsoluteDataResult(populationAge15_64FemaleAbsolute, name, i);
                     // Get female age group 65-above
-                    int age65_AboveFemaleAbsolute = -1;
-                    if (populationAge65_AboveMaleAbsolute.Data.ContainsKey(name)) {
-                        PopulationAbsoluteLayout absoluteEntry = populationAge65_AboveFemaleAbsolute.Data[name];
-                        age65_AboveFemaleAbsolute = (int)populationAge65_AboveFemaleAbsolute.Properties[i].GetValue(absoluteEntry);
-                    }
+                    int age65_AboveFemaleAbsolute = GetAbsoluteDataResult(populationAge65_AboveFemaleAbsolute, name, i);
 
                     // Add the population info 
                     country.PopulationInfo.Add(new PopulationInfo() {
@@ -212,8 +162,24 @@ namespace CrowdedEarth.Data {
 
                 m_Countries.Add(country);
             }
+        }
 
-            m_DataLoaded = true;
+        private static float GetPercentageDataResult(ReadDataResult<PopulationPercentageLayout> result, string name, int index) {
+            float value = -1;
+            if (result.Data.ContainsKey(name)) {
+                PopulationPercentageLayout entry = result.Data[name];
+                value = (float)result.Properties[index].GetValue(entry);
+            }
+            return value;
+        }
+
+        private static int GetAbsoluteDataResult(ReadDataResult<PopulationAbsoluteLayout> result, string name, int index) {
+            int value = -1;
+            if (result.Data.ContainsKey(name)) {
+                PopulationAbsoluteLayout entry = result.Data[name];
+                value = (int)result.Properties[index].GetValue(entry);
+            }
+            return value;
         }
 
         private static ReadDataResult<T> ReadData<T>(string path) where T : DataLayout {
