@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using CrowdedEarth.Data;
+﻿using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
 using UnityEngine;
 
@@ -29,12 +28,18 @@ namespace CrowdedEarth.Visualization {
             }
 
             CreateAgePillars();
-
-            OnYearChanged += SetScaleForPillars;
         }
 
         public static void SetCountry(ICountry country) {
             s_Country = country;
+        }
+
+        public override void SetYear(int year) {
+            base.SetYear(year);
+
+            iTween.Stop();
+
+            SetScaleForPillars();
         }
 
         private void CreateAgePillars() {
@@ -67,8 +72,6 @@ namespace CrowdedEarth.Visualization {
         }
 
         private void SetScaleForPillars() {
-            iTween.Stop();
-
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
             SetScaleForPillar(m_Age0_14MalePillar, info.Age0_14MaleAbsolute);

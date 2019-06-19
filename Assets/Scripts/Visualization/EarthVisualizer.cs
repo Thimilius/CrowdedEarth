@@ -12,8 +12,10 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private WorldCamera m_WorldCamera;
         [Header("Visual Objects")]
         [SerializeField] private VisualObject m_VisualObjectPillarPrefab;
-        [SerializeField] private Color m_ScaleMinColor;
-        [SerializeField] private Color m_ScaleMaxColor;
+        [SerializeField] private Color m_MinColor;
+        [SerializeField] private Color m_MaxColor;
+        [SerializeField] private Color m_MinEmissionColor;
+        [SerializeField] private Color m_MaxEmissionColor;
         [Header("Earth Visualization")]
         [SerializeField] private MeshRenderer m_EarthRenderer;
         [SerializeField] private Material m_InfoMaterial;
@@ -22,6 +24,8 @@ namespace CrowdedEarth.Visualization {
         public event Action<VisualObject> OnVisualObjectCreated;
 
         private List<VisualObject> m_VisualObjects;
+        private int m_MinPopulation;
+        private int m_MaxPopulation;
 
         private void Start() {
             m_VisualObjects = new List<VisualObject>();
@@ -31,15 +35,33 @@ namespace CrowdedEarth.Visualization {
                 VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
                 m_VisualObjects.Add(co);
             }
+
+            FindNewMinAndMaxPopulation();
+
+            // Set initial color
+            foreach (var vo in m_VisualObjects) {
+                // Set new color
+                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+                vo.SetColor(GetColor(population), GetEmissionColor(population));
+            }
         }
 
         public override void SetYear(int year) {
             base.SetYear(year);
 
+            FindNewMinAndMaxPopulation();
+
+            iTween.Stop();
+
             foreach (var vo in m_VisualObjects) {
+                // Set new scale
                 Vector3 localScale = vo.transform.localScale;
                 localScale.z = GetScale(vo.Country);
                 vo.transform.localScale = localScale;
+
+                // Set new color
+                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+                vo.SetColor(GetColor(population), GetEmissionColor(population));
             }
         }
 
@@ -53,13 +75,15 @@ namespace CrowdedEarth.Visualization {
             vo.tag = tag;
             vo.name = $"Country: {country.ID}";
 
-            Vector3 localScale = vo.transform.localScale;
-            localScale.z = GetScale(country);
-            vo.transform.localScale = localScale;
+            // Animate scaling
+            Vector3 scale = vo.transform.localScale;
+            scale.z = GetScale(country);
+            iTween.ScaleTo(vo.gameObject, scale, 2.0f);
+            scale.z = 0;
+            vo.transform.localScale = scale;
 
             vo.Type = type;
             vo.Country = country;
-            vo.SetColor(Color.yellow, new Color(0.5f, 0.5f, 0));
 
             vo.OnPointerClicked += () => {
                 CountryVisualizer.SetCountry(country);
@@ -80,6 +104,32 @@ namespace CrowdedEarth.Visualization {
 
         private float GetScale(ICountry country) {
             return country.PopulationInfo[GetYearIndex()].PopulationTotal / SCALE_NORMALIZATION;
+        }
+
+        private Color GetColor(int population) {
+            float t = Mathf.InverseLerp(m_MinPopulation, m_MaxPopulation, population);
+            return Color.Lerp(m_MinColor, m_MaxColor, t);
+        }
+
+        private Color GetEmissionColor(int population) {
+            float t = Mathf.InverseLerp(m_MinPopulation, m_MaxPopulation, population);
+            return Color.Lerp(m_MinEmissionColor, m_MaxEmissionColor, t);
+        }
+
+        private void FindNewMinAndMaxPopulation() {
+            m_MinPopulation = int.MaxValue;
+            m_MaxPopulation = int.MinValue;
+
+            // Find min and max population
+            foreach (var vo in m_VisualObjects) {
+                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+                if (population < m_MinPopulation) {
+                    m_MinPopulation = population;
+                }
+                if (population > m_MaxPopulation) {
+                    m_MaxPopulation = population;
+                }
+            }
         }
     }
 }
