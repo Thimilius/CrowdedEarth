@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 75}
+  m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7632644308094715711
 CanvasRenderer:
@@ -69,15 +69,17 @@ MonoBehaviour:
 
     Population Estimates and Projections,
 
-    World Bank Group (https://databank.worldbank.org)
+    World Bank Group
+
+    (https://databank.worldbank.org)
 
 
     Ressourcen:
 
     Country Flags (https://www.countryflags.com/)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f9dec0cc5178874bb20b806140786cb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 33f36a0924c833c4eb17b10b3ab201c4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 268f2abe74ffc6548ad33945effb536f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00f9947a569fd8b44aaee3284e698673, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -148,7 +150,7 @@ MonoBehaviour:
     spaceCount: 13
     wordCount: 19
     linkCount: 0
-    lineCount: 6
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -233,8 +235,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Ein Projekt im Modul Kommunikationsdesign
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f9dec0cc5178874bb20b806140786cb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 33f36a0924c833c4eb17b10b3ab201c4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 268f2abe74ffc6548ad33945effb536f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00f9947a569fd8b44aaee3284e698673, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -349,7 +351,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7632644309008347016}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -363,7 +365,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 250, y: 200}
+  m_SizeDelta: {x: 250, y: 225}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &7632644309008347012
 CanvasRenderer:
@@ -492,10 +494,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 2019@Jan Storm 735908
+  m_text: SS19 Jan Storm 735908
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f9dec0cc5178874bb20b806140786cb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 33f36a0924c833c4eb17b10b3ab201c4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 268f2abe74ffc6548ad33945effb536f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00f9947a569fd8b44aaee3284e698673, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -563,7 +565,7 @@ MonoBehaviour:
     textComponent: {fileID: 7632644309436254456}
     characterCount: 21
     spriteCount: 0
-    spaceCount: 2
+    spaceCount: 3
     wordCount: 4
     linkCount: 0
     lineCount: 1
@@ -651,8 +653,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Crowded Earth
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f9dec0cc5178874bb20b806140786cb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 33f36a0924c833c4eb17b10b3ab201c4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 268f2abe74ffc6548ad33945effb536f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00f9947a569fd8b44aaee3284e698673, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

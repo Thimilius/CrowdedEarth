@@ -403,8 +403,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 1960
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f9dec0cc5178874bb20b806140786cb, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 33f36a0924c833c4eb17b10b3ab201c4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 268f2abe74ffc6548ad33945effb536f, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 00f9947a569fd8b44aaee3284e698673, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
