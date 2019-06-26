@@ -14,6 +14,7 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Color m_MaleEmissonColor;
         [SerializeField] private Color m_FemaleNormalColor;
         [SerializeField] private Color m_FemaleEmissonColor;
+        [SerializeField] private MeshFilter m_MeshFilter;
 
         public ICountry Country => s_Country;
 
@@ -26,6 +27,8 @@ namespace CrowdedEarth.Visualization {
             if (s_Country == null) {
                 s_Country = DataLoader.GetCountries().Find(c => c.ID == "Germany");
             }
+
+            m_MeshFilter.mesh = MeshBuilder.BuildNewCylinder(0.5f);
 
             CreateAgeVisualObjects();
         }
@@ -42,6 +45,8 @@ namespace CrowdedEarth.Visualization {
             foreach (AgeVisualObject vo in m_AgeVisualObjects) {
                 SetScaleForVisualObject(vo);
             }
+
+            m_MeshFilter.mesh = MeshBuilder.BuildNewCylinder(s_Country.PopulationInfo[GetYearIndex()].UrbanPercentage / 100.0f);
         }
 
         private void CreateAgeVisualObjects() {
