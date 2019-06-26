@@ -712,7 +712,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 100
+  far clip plane: 250
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -763,10 +763,10 @@ MonoBehaviour:
   m_RotationMinLimitY: -90
   m_RotationMaxLimitY: 90
   m_RotationSmoothing: 10
-  m_ZoomSpeed: 1500
+  m_ZoomSpeed: 3000
   m_ZoomAcceleration: 5
   m_ZoomMin: 25
-  m_ZoomMax: 75
+  m_ZoomMax: 125
   m_ZoomStart: 50
 --- !u!114 &963194230
 MonoBehaviour:
