@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.000043681564, g: 0.00010623085, b: 0.000043681564,
+  m_IndirectSpecularColor: {r: 0.00004327564, g: 0.00010623085, b: 0.00004327564,
     a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_WorldCamera: {fileID: 963194229}
-  m_VisualObjectPillarPrefab: {fileID: -2200549549096049465, guid: 00683899c0697c34c8b652ac0322d4c3,
+  m_CountryVisualObjectPrefab: {fileID: -2200549549096049465, guid: 00683899c0697c34c8b652ac0322d4c3,
     type: 3}
   m_MinColor: {r: 1, g: 1, b: 0, a: 1}
   m_MaxColor: {r: 0.75, g: 0.75, b: 0, a: 1}

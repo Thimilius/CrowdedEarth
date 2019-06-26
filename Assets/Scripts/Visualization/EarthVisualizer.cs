@@ -11,7 +11,7 @@ namespace CrowdedEarth.Visualization {
 
         [SerializeField] private WorldCamera m_WorldCamera;
         [Header("Visual Objects")]
-        [SerializeField] private VisualObject m_VisualObjectPillarPrefab;
+        [SerializeField] private CountryVisualObject m_CountryVisualObjectPrefab;
         [SerializeField] private Color m_MinColor;
         [SerializeField] private Color m_MaxColor;
         [SerializeField] private Color m_MinEmissionColor;
@@ -21,27 +21,27 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Material m_InfoMaterial;
         [SerializeField] private Material m_RealMaterial;
 
-        public event Action<VisualObject> OnVisualObjectCreated;
+        public event Action<VisualObject<ICountry>> OnVisualObjectCreated;
 
-        private List<VisualObject> m_VisualObjects;
+        private List<CountryVisualObject> m_CountryVisualObjects;
         private int m_MinPopulation;
         private int m_MaxPopulation;
 
         private void Start() {
-            m_VisualObjects = new List<VisualObject>();
+            m_CountryVisualObjects = new List<CountryVisualObject>();
 
             List<ICountry> countries = DataLoader.GetCountries();
             foreach (var country in countries) {
-                VisualObject co = CreateVisualObject(VisualObjectType.Pillar, country);
-                m_VisualObjects.Add(co);
+                CountryVisualObject co = CreateCountryVisualObject(country);
+                m_CountryVisualObjects.Add(co);
             }
 
             FindNewMinAndMaxPopulation();
 
             // Set initial color
-            foreach (var vo in m_VisualObjects) {
+            foreach (var vo in m_CountryVisualObjects) {
                 // Set new color
-                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+                int population = vo.Data.PopulationInfo[GetYearIndex()].PopulationTotal;
                 vo.SetColor(GetColor(population), GetEmissionColor(population));
             }
         }
@@ -53,25 +53,25 @@ namespace CrowdedEarth.Visualization {
 
             iTween.Stop();
 
-            foreach (var vo in m_VisualObjects) {
+            foreach (var vo in m_CountryVisualObjects) {
                 // Set new scale
                 Vector3 localScale = vo.transform.localScale;
-                localScale.z = GetScale(vo.Country);
+                localScale.z = GetScale(vo.Data);
                 vo.transform.localScale = localScale;
 
                 // Set new color
-                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+                int population = vo.Data.PopulationInfo[GetYearIndex()].PopulationTotal;
                 vo.SetColor(GetColor(population), GetEmissionColor(population));
             }
         }
 
-        private VisualObject CreateVisualObject(VisualObjectType type, ICountry country) {
+        private CountryVisualObject CreateCountryVisualObject(ICountry country) {
             float latitude = country.Latitude;
             float longitude = country.Longitude;
 
             Vector3 position = Coordinates.ToCartesian(latitude, longitude);
             Quaternion rotation = Coordinates.LookFrom(latitude, longitude);
-            VisualObject vo = Instantiate(GetPrefabForType(type), position, rotation, m_EarthRenderer.transform);
+            CountryVisualObject vo = Instantiate(m_CountryVisualObjectPrefab, position, rotation, m_EarthRenderer.transform);
             vo.tag = tag;
             vo.name = $"Country: {country.ID}";
 
@@ -82,8 +82,7 @@ namespace CrowdedEarth.Visualization {
             scale.z = 0;
             vo.transform.localScale = scale;
 
-            vo.Type = type;
-            vo.Country = country;
+            vo.Data = country;
 
             vo.OnPointerClicked += () => {
                 CountryVisualizer.SetCountry(country);
@@ -93,13 +92,6 @@ namespace CrowdedEarth.Visualization {
             OnVisualObjectCreated?.Invoke(vo);
 
             return vo;
-        }
-
-        private VisualObject GetPrefabForType(VisualObjectType type) {
-            switch (type) {
-                case VisualObjectType.Pillar: return m_VisualObjectPillarPrefab;
-                default: return null;
-            }
         }
 
         private float GetScale(ICountry country) {
@@ -121,8 +113,8 @@ namespace CrowdedEarth.Visualization {
             m_MaxPopulation = int.MinValue;
 
             // Find min and max population
-            foreach (var vo in m_VisualObjects) {
-                int population = vo.Country.PopulationInfo[GetYearIndex()].PopulationTotal;
+            foreach (var vo in m_CountryVisualObjects) {
+                int population = vo.Data.PopulationInfo[GetYearIndex()].PopulationTotal;
                 if (population < m_MinPopulation) {
                     m_MinPopulation = population;
                 }

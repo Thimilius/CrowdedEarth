@@ -22,10 +22,10 @@ namespace CrowdedEarth.UI {
             };
         }
 
-        private void OnPointerEntered(VisualObject vo) {
+        private void OnPointerEntered(VisualObject<ICountry> vo) {
             m_InfoPanel.SetActive(true);
 
-            ICountry country = vo.Country;
+            ICountry country = vo.Data;
             IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
             // Set the flag with correct aspect ratio
@@ -36,7 +36,7 @@ namespace CrowdedEarth.UI {
             m_DensityText.text = $"Einwohner pro km²: {(info.PopulationTotal / country.Size).ToString("0")}";
         }
 
-        private void OnPointerExited(VisualObject vo) {
+        private void OnPointerExited(VisualObject<ICountry> vo) {
             m_InfoPanel.SetActive(false);
         }
     }

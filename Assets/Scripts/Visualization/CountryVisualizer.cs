@@ -1,5 +1,6 @@
 ﻿using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CrowdedEarth.Visualization {
@@ -8,26 +9,25 @@ namespace CrowdedEarth.Visualization {
 
         private static ICountry s_Country;
 
-        [SerializeField] private GameObject m_AgePillarPrefab;
-        [SerializeField] private Material m_AgePillarMaleMaterial;
-        [SerializeField] private Material m_AgePillarFemaleMaterial;
+        [SerializeField] private AgeVisualObject m_AgeVisualObjectPrefab;
+        [SerializeField] private Color m_MaleNormalColor;
+        [SerializeField] private Color m_MaleEmissonColor;
+        [SerializeField] private Color m_FemaleNormalColor;
+        [SerializeField] private Color m_FemaleEmissonColor;
 
         public ICountry Country => s_Country;
 
-        private GameObject m_Age0_14MalePillar;
-        private GameObject m_Age0_14FemalePillar;
-        private GameObject m_Age15_64MalePillar;
-        private GameObject m_Age15_64FemalePillar;
-        private GameObject m_Age65_AboveMalePillar;
-        private GameObject m_Age65_AboveFemalePillar;
+        private List<AgeVisualObject> m_AgeVisualObjects;
 
         private void Start() {
+            m_AgeVisualObjects = new List<AgeVisualObject>();
+
             // This is just so we can start the scene normally
             if (s_Country == null) {
                 s_Country = DataLoader.GetCountries().Find(c => c.ID == "Germany");
             }
 
-            CreateAgePillars();
+            CreateAgeVisualObjects();
         }
 
         public static void SetCountry(ICountry country) {
@@ -39,55 +39,65 @@ namespace CrowdedEarth.Visualization {
 
             iTween.Stop();
 
-            SetScaleForPillars();
+            foreach (AgeVisualObject vo in m_AgeVisualObjects) {
+                SetScaleForVisualObject(vo);
+            }
         }
 
-        private void CreateAgePillars() {
+        private void CreateAgeVisualObjects() {
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
-            m_Age0_14MalePillar       = CreatePillar(0, m_AgePillarMaleMaterial, info.Age0_14MaleAbsolute);
-            m_Age0_14FemalePillar     = CreatePillar(0.5f, m_AgePillarFemaleMaterial, info.Age0_14FemaleAbsolute);
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(0, AgeGroup.Age_0To14_Male, info.Age0_14MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(0.5f, AgeGroup.Age_0To14_Female, info.Age0_14FemaleAbsolute));
 
-            m_Age15_64MalePillar      = CreatePillar(2, m_AgePillarMaleMaterial, info.Age15_64MaleAbsolute);
-            m_Age15_64FemalePillar    = CreatePillar(2.5f, m_AgePillarFemaleMaterial, info.Age15_64FemaleAbsolute);
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(2, AgeGroup.Age_15To64_Male, info.Age15_64MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(2.5f, AgeGroup.Age_15To64_Female, info.Age15_64FemaleAbsolute));
 
-            m_Age65_AboveMalePillar   = CreatePillar(4, m_AgePillarMaleMaterial, info.Age64_AboveMaleAbsolute);
-            m_Age65_AboveFemalePillar = CreatePillar(4.5f, m_AgePillarFemaleMaterial, info.Age64_AboveFemaleAbsolute);
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(4, AgeGroup.Age_65AndAbove_Male, info.Age64_AboveMaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(4.5f, AgeGroup.Age_65AndAbove_Female, info.Age64_AboveFemaleAbsolute));
         }
 
-        private GameObject CreatePillar(float x, Material material, int age) {
-            GameObject go = Instantiate(m_AgePillarPrefab, transform);
-            go.transform.position = new Vector3(x, 0, 0);
+        private AgeVisualObject CreateAgeVisualObject(float x, AgeGroup group, int age) {
+            AgeVisualObject vo = Instantiate(m_AgeVisualObjectPrefab, transform);
+            vo.transform.position = new Vector3(x, 0, 0);
 
-            go.GetComponent<Renderer>().material = material;
+            vo.Data = group;
+
+            // Set right color
+            if (group == AgeGroup.Age_0To14_Male || group == AgeGroup.Age_15To64_Male || group == AgeGroup.Age_65AndAbove_Male) {
+                vo.SetColor(m_MaleNormalColor, m_MaleEmissonColor);
+            } else {
+                vo.SetColor(m_FemaleNormalColor, m_FemaleEmissonColor);
+            }
 
             // Animate scaling
-            Vector3 scale = go.transform.localScale;
+            Vector3 scale = vo.transform.localScale;
             scale.z = GetScale(age);
-            iTween.ScaleTo(go, scale, 1.0f);
+            iTween.ScaleTo(vo.gameObject, scale, 1.0f);
             scale.z = 0;
-            go.transform.localScale = scale;
+            vo.transform.localScale = scale;
 
-            return go;
+            return vo;
         }
 
-        private void SetScaleForPillars() {
-            IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
+        private void SetScaleForVisualObject(AgeVisualObject vo) {
+            int GetAge() {
+                IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
-            SetScaleForPillar(m_Age0_14MalePillar, info.Age0_14MaleAbsolute);
-            SetScaleForPillar(m_Age0_14FemalePillar, info.Age0_14FemaleAbsolute);
+                switch (vo.Data) {
+                    case AgeGroup.Age_0To14_Male: return info.Age0_14MaleAbsolute;
+                    case AgeGroup.Age_0To14_Female: return info.Age0_14FemaleAbsolute;
+                    case AgeGroup.Age_15To64_Male: return info.Age15_64MaleAbsolute;
+                    case AgeGroup.Age_15To64_Female: return info.Age15_64FemaleAbsolute;
+                    case AgeGroup.Age_65AndAbove_Male: return info.Age64_AboveMaleAbsolute;
+                    case AgeGroup.Age_65AndAbove_Female: return info.Age64_AboveFemaleAbsolute;
+                    default: return 0;
+                }
+            }
 
-            SetScaleForPillar(m_Age15_64MalePillar, info.Age15_64MaleAbsolute);
-            SetScaleForPillar(m_Age15_64FemalePillar, info.Age15_64FemaleAbsolute);
-
-            SetScaleForPillar(m_Age65_AboveMalePillar, info.Age64_AboveMaleAbsolute);
-            SetScaleForPillar(m_Age65_AboveFemalePillar, info.Age64_AboveFemaleAbsolute);
-        }
-
-        private void SetScaleForPillar(GameObject go, int age) {
-            Vector3 localScale = go.transform.localScale;
-            localScale.z = GetScale(age);
-            go.transform.localScale = localScale;
+            Vector3 localScale = vo.transform.localScale;
+            localScale.z = GetScale(GetAge());
+            vo.transform.localScale = localScale;
         }
 
         private float GetScale(int age) {

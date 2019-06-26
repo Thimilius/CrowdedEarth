@@ -1633,12 +1633,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdd67eb750976184e919ff0a60b67873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgePillarPrefab: {fileID: 13920104168596694, guid: f0ca4e221f35d9e49b3778f7b6c2d636,
+  m_AgeVisualObjectPrefab: {fileID: -2189873325213097197, guid: f0ca4e221f35d9e49b3778f7b6c2d636,
     type: 3}
-  m_AgePillarMaleMaterial: {fileID: 2100000, guid: c388828dcb3408949bd1043a26465765,
-    type: 2}
-  m_AgePillarFemaleMaterial: {fileID: 2100000, guid: ef573467c7b109746bd82fdf5dd47720,
-    type: 2}
+  m_MaleNormalColor: {r: 0, g: 0.65882355, b: 1, a: 1}
+  m_MaleEmissonColor: {r: 0, g: 0.009277297, b: 0.4980391, a: 1}
+  m_FemaleNormalColor: {r: 1, g: 0.38823533, b: 0.10980393, a: 1}
+  m_FemaleEmissonColor: {r: 0.43529415, g: 0.050980397, b: 0, a: 1}
 --- !u!4 &821589152
 Transform:
   m_ObjectHideFlags: 0

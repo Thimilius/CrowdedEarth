@@ -1,19 +1,13 @@
 ﻿using UnityEngine;
-using CrowdedEarth.Data.Model;
 using UnityEngine.EventSystems;
 using System;
 
 namespace CrowdedEarth.Visualization {
-    public class VisualObject : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
+    public abstract class VisualObject<T> : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
         [SerializeField] private Color m_HighlightColor;
         [SerializeField] private Color m_HighlightEmissionColor;
 
-        public VisualObjectType Type { get; set; }
-
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
-
-        public ICountry Country { get; set; }
+        public T Data { get; set; }
 
         public event Action OnPointerEntered;
         public event Action OnPointerClicked;
