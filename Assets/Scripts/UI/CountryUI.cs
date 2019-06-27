@@ -20,14 +20,10 @@ namespace CrowdedEarth.UI {
         [SerializeField] private GameObject m_MaleFemalePercentageInfo;
         [SerializeField] private TMP_Text m_MalePercentageText;
         [SerializeField] private TMP_Text m_FemalePercentageText;
-        [SerializeField] private Image m_MalePercentageImage;
-        [SerializeField] private Image m_FemalePercentageImage;
         [Header("Urban/Rural Info")]
         [SerializeField] private GameObject m_UrbanRuralPercentageInfo;
         [SerializeField] private TMP_Text m_UrbanPercentageText;
         [SerializeField] private TMP_Text m_RuralPercentageText;
-        [SerializeField] private Image m_UrbanPercentageImage;
-        [SerializeField] private Image m_RuralPercentageImage;
 
         private void Start() {
             m_BackToEarthButton.onClick.AddListener(() => {
@@ -56,7 +52,6 @@ namespace CrowdedEarth.UI {
                 m_MaleFemalePercentageInfo.SetActive(true);
                 m_MalePercentageText.text = $"\uf222 {info.MalePercentage.ToString("0.00")} %";
                 m_FemalePercentageText.text = $"\uf221 {info.FemalePercentage.ToString("0.00")} %";
-                m_MalePercentageImage.fillAmount = info.MalePercentage / 100.0f;
             } else {
                 m_MaleFemalePercentageInfo.SetActive(false);
             }
@@ -66,7 +61,6 @@ namespace CrowdedEarth.UI {
                 m_UrbanRuralPercentageInfo.SetActive(true);
                 m_UrbanPercentageText.text = $"\uf64f {info.UrbanPercentage.ToString("0.00")} %";
                 m_RuralPercentageText.text = $"\uf4d8 {info.RuralPercentage.ToString("0.00")} %";
-                m_UrbanPercentageImage.fillAmount = info.UrbanPercentage / 100.0f;
             } else {
                 m_UrbanRuralPercentageInfo.SetActive(false);
             }

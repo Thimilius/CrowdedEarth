@@ -14,7 +14,8 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private Color m_MaleEmissonColor;
         [SerializeField] private Color m_FemaleNormalColor;
         [SerializeField] private Color m_FemaleEmissonColor;
-        [SerializeField] private MeshFilter m_MeshFilter;
+        [SerializeField] private MeshFilter m_MalePercentageMeshFilter;
+        [SerializeField] private MeshFilter m_UrbanPercentageMeshFilter;
 
         public ICountry Country => s_Country;
 
@@ -28,8 +29,7 @@ namespace CrowdedEarth.Visualization {
                 s_Country = DataLoader.GetCountries().Find(c => c.ID == "Germany");
             }
 
-            m_MeshFilter.mesh = MeshBuilder.BuildNewCylinder(0.5f);
-
+            CreatePieCharts();
             CreateAgeVisualObjects();
         }
 
@@ -46,7 +46,7 @@ namespace CrowdedEarth.Visualization {
                 SetScaleForVisualObject(vo);
             }
 
-            m_MeshFilter.mesh = MeshBuilder.BuildNewCylinder(s_Country.PopulationInfo[GetYearIndex()].UrbanPercentage / 100.0f);
+            CreatePieCharts();
         }
 
         private void CreateAgeVisualObjects() {
@@ -60,6 +60,12 @@ namespace CrowdedEarth.Visualization {
 
             m_AgeVisualObjects.Add(CreateAgeVisualObject(4, AgeGroup.Age_65AndAbove_Male, info.Age64_AboveMaleAbsolute));
             m_AgeVisualObjects.Add(CreateAgeVisualObject(4.5f, AgeGroup.Age_65AndAbove_Female, info.Age64_AboveFemaleAbsolute));
+        }
+
+        private void CreatePieCharts() {
+            IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
+            m_MalePercentageMeshFilter.mesh = MeshBuilder.BuildNewCylinder(info.MalePercentage / 100.0f);
+            m_UrbanPercentageMeshFilter.mesh = MeshBuilder.BuildNewCylinder(info.UrbanPercentage / 100.0f);
         }
 
         private AgeVisualObject CreateAgeVisualObject(float x, AgeGroup group, int age) {
