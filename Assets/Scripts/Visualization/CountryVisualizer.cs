@@ -1,8 +1,9 @@
-﻿using CrowdedEarth.Data;
-using CrowdedEarth.Data.Model;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using CrowdedEarth.Data;
+using CrowdedEarth.Data.Model;
 
 namespace CrowdedEarth.Visualization {
     public class CountryVisualizer : Visualizer {
@@ -20,6 +21,8 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private MeshFilter m_UrbanPercentageMeshFilter;
 
         public ICountry Country => s_Country;
+
+        public event Action<VisualObject<AgeGroup>> OnVisualObjectCreated;
 
         private List<AgeVisualObject> m_AgeVisualObjects;
         private int m_PopulationMax;
@@ -61,6 +64,20 @@ namespace CrowdedEarth.Visualization {
             CreatePieCharts();
         }
 
+        public int GetAge(VisualObject<AgeGroup> vo) {
+            IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
+
+            switch (vo.Data) {
+                case AgeGroup.Age_0To14_Male: return info.Age0_14MaleAbsolute;
+                case AgeGroup.Age_0To14_Female: return info.Age0_14FemaleAbsolute;
+                case AgeGroup.Age_15To64_Male: return info.Age15_64MaleAbsolute;
+                case AgeGroup.Age_15To64_Female: return info.Age15_64FemaleAbsolute;
+                case AgeGroup.Age_65AndAbove_Male: return info.Age64_AboveMaleAbsolute;
+                case AgeGroup.Age_65AndAbove_Female: return info.Age64_AboveFemaleAbsolute;
+                default: return 0;
+            }
+        }
+
         private void CreateAgeVisualObjects() {
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
@@ -100,26 +117,14 @@ namespace CrowdedEarth.Visualization {
             scale.z = 0;
             vo.transform.localScale = scale;
 
+            OnVisualObjectCreated?.Invoke(vo);
+
             return vo;
         }
 
         private void SetScaleForVisualObject(AgeVisualObject vo) {
-            int GetAge() {
-                IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
-
-                switch (vo.Data) {
-                    case AgeGroup.Age_0To14_Male: return info.Age0_14MaleAbsolute;
-                    case AgeGroup.Age_0To14_Female: return info.Age0_14FemaleAbsolute;
-                    case AgeGroup.Age_15To64_Male: return info.Age15_64MaleAbsolute;
-                    case AgeGroup.Age_15To64_Female: return info.Age15_64FemaleAbsolute;
-                    case AgeGroup.Age_65AndAbove_Male: return info.Age64_AboveMaleAbsolute;
-                    case AgeGroup.Age_65AndAbove_Female: return info.Age64_AboveFemaleAbsolute;
-                    default: return 0;
-                }
-            }
-
             Vector3 localScale = vo.transform.localScale;
-            localScale.z = GetScale(GetAge());
+            localScale.z = GetScale(GetAge(vo));
             vo.transform.localScale = localScale;
         }
 

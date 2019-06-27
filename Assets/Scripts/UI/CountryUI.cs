@@ -24,6 +24,18 @@ namespace CrowdedEarth.UI {
         [SerializeField] private GameObject m_UrbanRuralPercentageInfo;
         [SerializeField] private TMP_Text m_UrbanPercentageText;
         [SerializeField] private TMP_Text m_RuralPercentageText;
+        [Header("Age Info")]
+        [SerializeField] private TMP_Text m_0_14AgeGroupInfo;
+        [SerializeField] private TMP_Text m_15_64AgeGroupInfo;
+        [SerializeField] private TMP_Text m_64_AboveAgeGroupInfo;
+
+        private void Awake() {
+            m_Visualizer.OnYearChanged += OnYearChanged;
+            m_Visualizer.OnVisualObjectCreated += vo => {
+                vo.OnPointerEntered += () => OnPointerEntered(vo);
+                vo.OnPointerExited += () => OnPointerExited(vo);
+            };
+        }
 
         private void Start() {
             m_BackToEarthButton.onClick.AddListener(() => {
@@ -32,8 +44,6 @@ namespace CrowdedEarth.UI {
 
             ICountry country = m_Visualizer.Country;
             m_CountryFlag.sprite = SpriteManager.GetFlag(country.Flag);
-
-            m_Visualizer.OnYearChanged += OnYearChanged;
 
             OnYearChanged();
         }
@@ -64,6 +74,45 @@ namespace CrowdedEarth.UI {
             } else {
                 m_UrbanRuralPercentageInfo.SetActive(false);
             }
+        }
+
+        private void OnPointerEntered(VisualObject<AgeGroup> vo) {
+            string text;
+            if (vo.Data == AgeGroup.Age_0To14_Male || vo.Data == AgeGroup.Age_15To64_Male || vo.Data == AgeGroup.Age_65AndAbove_Male) {
+                text = "Männlich: ";
+            } else {
+                text = "Weiblich: ";
+            }
+            text = text + m_Visualizer.GetAge(vo).ToString("N0", new CultureInfo("de-DE")); 
+
+            m_0_14AgeGroupInfo.gameObject.SetActive(false);
+            m_15_64AgeGroupInfo.gameObject.SetActive(false);
+            m_64_AboveAgeGroupInfo.gameObject.SetActive(false);
+
+            switch (vo.Data) {
+                case AgeGroup.Age_0To14_Male:
+                case AgeGroup.Age_0To14_Female:
+                    m_0_14AgeGroupInfo.gameObject.SetActive(true);
+                    m_0_14AgeGroupInfo.text = text;
+                    break;
+                case AgeGroup.Age_15To64_Male:
+                case AgeGroup.Age_15To64_Female:
+                    m_15_64AgeGroupInfo.gameObject.SetActive(true);
+                    m_15_64AgeGroupInfo.text = text;
+                    break;
+                case AgeGroup.Age_65AndAbove_Male:
+                case AgeGroup.Age_65AndAbove_Female:
+                    m_64_AboveAgeGroupInfo.gameObject.SetActive(true);
+                    m_64_AboveAgeGroupInfo.text = text;
+                    break;
+                default: break;
+            }
+        }
+
+        private void OnPointerExited(VisualObject<AgeGroup> vo) {
+            m_0_14AgeGroupInfo.gameObject.SetActive(false);
+            m_15_64AgeGroupInfo.gameObject.SetActive(false);
+            m_64_AboveAgeGroupInfo.gameObject.SetActive(false);
         }
     }
 }
