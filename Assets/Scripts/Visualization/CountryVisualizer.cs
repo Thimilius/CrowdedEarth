@@ -1,11 +1,13 @@
 ﻿using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CrowdedEarth.Visualization {
     public class CountryVisualizer : Visualizer {
         private const float SCALE_NORMALIZATION = 20000000.0f;
+        private const float SCALE_MAX = 2.0f;
 
         private static ICountry s_Country;
 
@@ -20,6 +22,7 @@ namespace CrowdedEarth.Visualization {
         public ICountry Country => s_Country;
 
         private List<AgeVisualObject> m_AgeVisualObjects;
+        private int m_PopulationMax;
 
         private void Start() {
             m_AgeVisualObjects = new List<AgeVisualObject>();
@@ -28,6 +31,15 @@ namespace CrowdedEarth.Visualization {
             if (s_Country == null) {
                 s_Country = DataLoader.GetCountries().Find(c => c.ID == "Germany");
             }
+
+            m_PopulationMax = new List<int>(6) {
+                s_Country.PopulationInfo.Max(i => i.Age0_14MaleAbsolute),
+                s_Country.PopulationInfo.Max(i => i.Age0_14FemaleAbsolute),
+                s_Country.PopulationInfo.Max(i => i.Age15_64MaleAbsolute),
+                s_Country.PopulationInfo.Max(i => i.Age15_64FemaleAbsolute),
+                s_Country.PopulationInfo.Max(i => i.Age64_AboveMaleAbsolute),
+                s_Country.PopulationInfo.Max(i => i.Age64_AboveFemaleAbsolute)
+            }.Max();
 
             CreatePieCharts();
             CreateAgeVisualObjects();
@@ -112,7 +124,7 @@ namespace CrowdedEarth.Visualization {
         }
 
         private float GetScale(int age) {
-            return age / SCALE_NORMALIZATION;
+            return (float)age / ((float)m_PopulationMax) * SCALE_MAX;
         }
     }
 }
