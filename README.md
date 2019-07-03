@@ -5,10 +5,12 @@
 	- Roboto
 	- Open Sans
 	- Quicksand
+- Add additional age groups that can be optionally turned on/off with checkboxes (Altersverteilung)
+- Add limits labels to timeline
 - Put headers under pie charts
 - Try different layout?
 	- Change layout of detail view header (right/left align)
-- Add additional age groups that can be optionally turned on/off with checkboxes (Altersverteilung)
+- Save camera position?
 
 # Resources
 - https://databank.worldbank.org/data/reports.aspx?source=Health%20Nutrition%20and%20Population%20Statistics:%20Population%20estimates%20and%20projections
