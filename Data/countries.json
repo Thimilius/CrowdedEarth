@@ -24,14 +24,6 @@
     "Flag": "algeria-flag-large"
   },
   {
-    "ID": "Andorra",
-    "Name": "Andorra",
-    "Latitude": 42.54072,
-    "Longitude": 1.573203,
-	"Size": 470,
-    "Flag": "andorra-flag-large"
-  },
-  {
     "ID": "Angola",
     "Name": "Angola",
     "Latitude": -11.87758,
@@ -384,14 +376,6 @@
     "Flag": "djibouti-flag-large"
   },
   {
-    "ID": "Dominica",
-    "Name": "Dominica",
-    "Latitude": 15.41131,
-    "Longitude": -61.36536,
-	"Size": 750,
-    "Flag": "dominica-flag-large"
-  },
-  {
     "ID": "Dominican Republic",
     "Name": "Dominikanische Republik",
     "Latitude": 19.0974,
@@ -720,14 +704,6 @@
     "Flag": "north-korea-flag-large"
   },
   {
-    "ID": "Kosovo",
-    "Name": "Kosovo",
-    "Latitude": 42.58696,
-    "Longitude": 20.90212,
-	"Size": 10908,
-    "Flag": "kosovo-flag-large"
-  },
-  {
     "ID": "Lao PDR",
     "Name": "Laos",
     "Latitude": 19.85627,
@@ -774,14 +750,6 @@
     "Longitude": 18.12367,
 	"Size": 1759540,
     "Flag": "libya-flag-large"
-  },
-  {
-    "ID": "Liechtenstein",
-    "Name": "Liechtenstein",
-    "Latitude": 47.14163,
-    "Longitude": 9.553153,
-	"Size": 160,
-    "Flag": "liechtenstein-flag-large"
   },
   {
     "ID": "Lithuania",
@@ -848,14 +816,6 @@
     "Flag": "malta-flag-large"
   },
   {
-    "ID": "Marshall Islands",
-    "Name": "Marshallinseln",
-    "Latitude": 6.951874,
-    "Longitude": 170.9985,
-	"Size": 180,
-    "Flag": "marshall-islands-flag-large"
-  },
-  {
     "ID": "Mauritania",
     "Name": "Mauretanien",
     "Latitude": 20.25404,
@@ -886,14 +846,6 @@
     "Longitude": 28.51102,
 	"Size": 32908,
     "Flag": "moldova-flag-large"
-  },
-  {
-    "ID": "Monaco",
-    "Name": "Monaco",
-    "Latitude": 43.73114,
-    "Longitude": 7.419757,
-	"Size": 2,
-    "Flag": "monaco-flag-large"
   },
   {
     "ID": "Mongolia",
@@ -942,14 +894,6 @@
     "Longitude": 17.32311,
 	"Size": 823290,
     "Flag": "namibia-flag-large"
-  },
-  {
-    "ID": "Nauru",
-    "Name": "Nauru",
-    "Latitude": -0.5252306,
-    "Longitude": 166.9324,
-	"Size": 20,
-    "Flag": "nauru-flag-large"
   },
   {
     "ID": "Nepal",
@@ -1030,14 +974,6 @@
     "Longitude": 71.2475,
 	"Size": 770880,
     "Flag": "pakistan-flag-large"
-  },
-  {
-    "ID": "Palau",
-    "Name": "Palau",
-    "Latitude": 6.097367,
-    "Longitude": 133.3136,
-	"Size": 460,
-    "Flag": "palau-flag-large"
   },
   {
     "ID": "Panama",
@@ -1134,14 +1070,6 @@
     "Longitude": -172.1201,
 	"Size": 2830,
     "Flag": "samoa-flag-large"
-  },
-  {
-    "ID": "San Marino",
-    "Name": "San Marino",
-    "Latitude": 43.94586,
-    "Longitude": 12.45831,
-	"Size": 60,
-    "Flag": "san-marino-flag-large"
   },
   {
     "ID": "Sao Tome and Principe",
@@ -1254,14 +1182,6 @@
     "Longitude": 80.71378,
 	"Size": 62710,
     "Flag": "sri-lanka-flag-large"
-  },
-  {
-    "ID": "St. Kitts and Nevis",
-    "Name": "St. Kitts und Nevis",
-    "Latitude": 17.34623,
-    "Longitude": -62.76873,
-	"Size": 260,
-    "Flag": "saint-kitts-and-nevis-flag-large"
   },
   {
     "ID": "St. Lucia",
@@ -1400,14 +1320,6 @@
     "Flag": "turkmenistan-flag-large"
   },
   {
-    "ID": "Tuvalu",
-    "Name": "Tuvalu",
-    "Latitude": -7.768959,
-    "Longitude": 178.1168,
-	"Size": 30,
-    "Flag": "tuvalu-flag-large"
-  },
-  {
     "ID": "Uganda",
     "Name": "Uganda",
     "Latitude": 1.533355,
@@ -1478,29 +1390,5 @@
     "Longitude": 108.4265,
 	"Size": 310070,
     "Flag": "vietnam-flag-large"
-  },
-  {
-    "ID": "Yemen, Rep.",
-    "Name": "Jemen",
-    "Latitude": 15.5527267,
-    "Longitude": 48.5163879,
-	"Size": 527970,
-    "Flag": "yemen-flag-large"
-  },
-  {
-    "ID": "Zambia",
-    "Name": "Sambia",
-    "Latitude": -14.51862,
-    "Longitude": 27.55992,
-	"Size": 743390,
-    "Flag": "zambia-flag-large"
-  },
-  {
-    "ID": "Zimbabwe",
-    "Name": "Zimbabwe",
-    "Latitude": -18.4555,
-    "Longitude": 29.74684,
-	"Size": 386850,
-    "Flag": "zimbabwe-flag-large"
   }
 ]

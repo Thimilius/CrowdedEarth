@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using CrowdedEarth.Data;
 using CrowdedEarth.Data.Model;
+using System.Linq;
 
 namespace CrowdedEarth.Visualization {
     public class EarthVisualizer : Visualizer {
@@ -31,6 +32,47 @@ namespace CrowdedEarth.Visualization {
             m_CountryVisualObjects = new List<CountryVisualObject>();
 
             List<ICountry> countries = DataLoader.GetCountries();
+
+            var insufficient = countries.Where(c => {
+                foreach (var info in c.PopulationInfo) {
+                    if (info.MalePercentage < 0) {
+                        return true;
+                    }
+                    if (info.FemalePercentage < 0) {
+                        return true;
+                    }
+                    if (info.UrbanPercentage < 0) {
+                        return true;
+                    }
+                    if (info.RuralPercentage < 0) {
+                        return true;
+                    }
+                    if (info.Age0_14FemaleAbsolute < 0) {
+                        return true;
+                    }
+                    if (info.Age0_14MaleAbsolute < 0) {
+                        return true;
+                    }
+                    if (info.Age15_64FemaleAbsolute < 0) {
+                        return true;
+                    }
+                    if (info.Age15_64MaleAbsolute < 0) {
+                        return true;
+                    }
+                    if (info.Age64_AboveFemaleAbsolute < 0) {
+                        return true;
+                    }
+                    if (info.Age64_AboveMaleAbsolute < 0) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+
+            foreach (var country in insufficient) {
+                Debug.Log(country.Name);
+            }
+
             foreach (var country in countries) {
                 CountryVisualObject co = CreateCountryVisualObject(country);
                 m_CountryVisualObjects.Add(co);
