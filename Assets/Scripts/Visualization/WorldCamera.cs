@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -50,7 +49,6 @@ namespace CrowdedEarth.Visualization {
         }
 
         public void RotateTo(float latitude, float longitude) {
-            // HACK: Cut and paste
             if (m_RotationCoroutine != null) {
                 StopCoroutine(m_RotationCoroutine);
                 if (m_AnimatingRotation) {

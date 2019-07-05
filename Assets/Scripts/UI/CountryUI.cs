@@ -78,7 +78,7 @@ namespace CrowdedEarth.UI {
 
         private void OnPointerEntered(VisualObject<AgeGroup> vo) {
             string text;
-            if (vo.Data == AgeGroup.Age_0To14_Male || vo.Data == AgeGroup.Age_15To64_Male || vo.Data == AgeGroup.Age_65AndAbove_Male) {
+            if (m_Visualizer.IsAgeGroupMale(vo.Data)) {
                 text = "Männlich: ";
             } else {
                 text = "Weiblich: ";
@@ -90,18 +90,18 @@ namespace CrowdedEarth.UI {
             m_64_AboveAgeGroupInfo.gameObject.SetActive(false);
 
             switch (vo.Data) {
-                case AgeGroup.Age_0To14_Male:
-                case AgeGroup.Age_0To14_Female:
+                case AgeGroup.Age_0To9_Male:
+                case AgeGroup.Age_0To9_Female:
                     m_0_14AgeGroupInfo.gameObject.SetActive(true);
                     m_0_14AgeGroupInfo.text = text;
                     break;
-                case AgeGroup.Age_15To64_Male:
-                case AgeGroup.Age_15To64_Female:
+                case AgeGroup.Age_10To19_Male:
+                case AgeGroup.Age_10To19_Female:
                     m_15_64AgeGroupInfo.gameObject.SetActive(true);
                     m_15_64AgeGroupInfo.text = text;
                     break;
-                case AgeGroup.Age_65AndAbove_Male:
-                case AgeGroup.Age_65AndAbove_Female:
+                case AgeGroup.Age_20To29_Male:
+                case AgeGroup.Age_20To29_Female:
                     m_64_AboveAgeGroupInfo.gameObject.SetActive(true);
                     m_64_AboveAgeGroupInfo.text = text;
                     break;

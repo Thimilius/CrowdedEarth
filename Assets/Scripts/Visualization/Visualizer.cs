@@ -15,10 +15,10 @@ namespace CrowdedEarth.Visualization {
         }
 
         public int GetYearIndex() {
+            // Those hardcoded limits are bad but work
             const int YEAR_LIMIT_MIN = 1960;
             const int YEAR_LIMIT_MAX = 2050;
 
-            // HACK: Hardcoded!
             int year = Mathf.Clamp(s_Year, YEAR_LIMIT_MIN, YEAR_LIMIT_MAX);
             return year - YEAR_LIMIT_MIN;
         }
