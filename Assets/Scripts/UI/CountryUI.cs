@@ -13,15 +13,13 @@ namespace CrowdedEarth.UI {
         [Header("General Info")]
         [SerializeField] private Image m_CountryFlag;
         [SerializeField] private TMP_Text m_CountryNameText;
-        [Header("Size")]
+        [SerializeField] private TMP_Text m_PopulationText;
         [SerializeField] private TMP_Text m_SizeText;
         [SerializeField] private TMP_Text m_DensityText;
         [Header("Male/Female Info")]
-        [SerializeField] private GameObject m_MaleFemalePercentageInfo;
         [SerializeField] private TMP_Text m_MalePercentageText;
         [SerializeField] private TMP_Text m_FemalePercentageText;
         [Header("Urban/Rural Info")]
-        [SerializeField] private GameObject m_UrbanRuralPercentageInfo;
         [SerializeField] private TMP_Text m_UrbanPercentageText;
         [SerializeField] private TMP_Text m_RuralPercentageText;
         [Header("Age Info")]
@@ -52,28 +50,15 @@ namespace CrowdedEarth.UI {
             ICountry country = m_Visualizer.Country;
             IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
-            m_CountryNameText.text = $"{country.Name} - Bevölkerung: {info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"))}";
+            m_CountryNameText.text = country.Name;
+            m_PopulationText.text = info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"));
+            m_SizeText.text = country.Size.ToString("N0", new CultureInfo("de-DE"));
+            m_DensityText.text = (info.PopulationTotal / country.Size).ToString("0");
 
-            m_SizeText.text = $"Größe in km²: {country.Size.ToString("N0", new CultureInfo("de-DE"))}";
-            m_DensityText.text = $"Einwohner pro km²: {(info.PopulationTotal / country.Size).ToString("0")}";
-
-            // Set male/female percentage
-            if (info.MalePercentage > 0 && info.FemalePercentage > 0) {
-                m_MaleFemalePercentageInfo.SetActive(true);
-                m_MalePercentageText.text = $"\uf222 {info.MalePercentage.ToString("0.00")} %";
-                m_FemalePercentageText.text = $"\uf221 {info.FemalePercentage.ToString("0.00")} %";
-            } else {
-                m_MaleFemalePercentageInfo.SetActive(false);
-            }
-
-            // Set urban/rural percentage
-            if (info.UrbanPercentage >= 0 && info.RuralPercentage >= 0) {
-                m_UrbanRuralPercentageInfo.SetActive(true);
-                m_UrbanPercentageText.text = $"\uf64f {info.UrbanPercentage.ToString("0.00")} %";
-                m_RuralPercentageText.text = $"\uf4d8 {info.RuralPercentage.ToString("0.00")} %";
-            } else {
-                m_UrbanRuralPercentageInfo.SetActive(false);
-            }
+            m_MalePercentageText.text = info.MalePercentage.ToString("0.00");
+            m_FemalePercentageText.text = info.FemalePercentage.ToString("0.00");
+            m_UrbanPercentageText.text = info.UrbanPercentage.ToString("0.00");
+            m_RuralPercentageText.text = info.RuralPercentage.ToString("0.00");
         }
 
         private void OnPointerEntered(VisualObject<AgeGroup> vo) {

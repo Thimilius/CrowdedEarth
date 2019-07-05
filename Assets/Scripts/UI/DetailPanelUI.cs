@@ -32,8 +32,8 @@ namespace CrowdedEarth.UI {
             m_CountryFlag.sprite = SpriteManager.GetFlag(country.Flag);
 
             m_CountryText.text = country.Name;
-            m_PopulationText.text = $"Bevölkerung: {info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"))}";
-            m_DensityText.text = $"Einwohner pro km²: {(info.PopulationTotal / country.Size).ToString("0")}";
+            m_PopulationText.text = info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"));
+            m_DensityText.text = (info.PopulationTotal / country.Size).ToString("0");
         }
 
         private void OnPointerExited(VisualObject<ICountry> vo) {

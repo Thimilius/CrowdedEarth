@@ -1,15 +1,8 @@
 # Crowded Earth
 
 # Todo
-- Try different font for labels
-	- Roboto
-	- Open Sans
-	- Quicksand
 - Add additional age groups that can be optionally turned on/off with checkboxes (Altersverteilung)
 	- Combine data sets to have age groups that span over 10 years
-- Put headers under pie charts
-- Try different layout?
-	- Change layout of detail view header (right/left align)
 - Save camera position?
 
 # Resources
