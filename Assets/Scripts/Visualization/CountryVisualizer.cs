@@ -57,6 +57,16 @@ namespace CrowdedEarth.Visualization {
             CreatePieCharts();
         }
 
+        public void ToggleAgeGroup(AgeGroup maleGroup, AgeGroup femaleGroup) {
+            AgeVisualObject maleVo = m_AgeVisualObjects.Find(vo => vo.Data == maleGroup);
+            AgeVisualObject femaleVo = m_AgeVisualObjects.Find(vo => vo.Data == femaleGroup);
+
+            if (maleVo != null && femaleVo != null) {
+                maleVo.gameObject.SetActive(!maleVo.gameObject.activeSelf);
+                femaleVo.gameObject.SetActive(!femaleVo.gameObject.activeSelf);
+            }
+        }
+
         public int GetAge(VisualObject<AgeGroup> vo) {
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
@@ -111,13 +121,31 @@ namespace CrowdedEarth.Visualization {
             IPopulationInfo info = s_Country.PopulationInfo[GetYearIndex()];
 
             m_AgeVisualObjects.Add(CreateAgeVisualObject(0, AgeGroup.Age_0To9_Male, info.Age0_9MaleAbsolute));
-            m_AgeVisualObjects.Add(CreateAgeVisualObject(0.5f, AgeGroup.Age_0To9_Female, info.Age0_9FemaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(0.3f, AgeGroup.Age_0To9_Female, info.Age0_9FemaleAbsolute));
             
-            m_AgeVisualObjects.Add(CreateAgeVisualObject(2, AgeGroup.Age_10To19_Male, info.Age10_19MaleAbsolute));
-            m_AgeVisualObjects.Add(CreateAgeVisualObject(2.5f, AgeGroup.Age_10To19_Female, info.Age10_19FemaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(1, AgeGroup.Age_10To19_Male, info.Age10_19MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(1.3f, AgeGroup.Age_10To19_Female, info.Age10_19FemaleAbsolute));
             
-            m_AgeVisualObjects.Add(CreateAgeVisualObject(4, AgeGroup.Age_20To29_Male, info.Age20_29MaleAbsolute));
-            m_AgeVisualObjects.Add(CreateAgeVisualObject(4.5f, AgeGroup.Age_20To29_Female, info.Age20_29FemaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(2, AgeGroup.Age_20To29_Male, info.Age20_29MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(2.3f, AgeGroup.Age_20To29_Female, info.Age20_29FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(3, AgeGroup.Age_30To39_Male, info.Age30_39MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(3.3f, AgeGroup.Age_30To39_Female, info.Age30_39FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(4, AgeGroup.Age_40To49_Male, info.Age40_49MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(4.3f, AgeGroup.Age_40To49_Female, info.Age40_49FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(5, AgeGroup.Age_50To59_Male, info.Age50_59MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(5.3f, AgeGroup.Age_50To59_Female, info.Age50_59FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(6, AgeGroup.Age_60To69_Male, info.Age60_69MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(6.3f, AgeGroup.Age_60To69_Female, info.Age60_69FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(7, AgeGroup.Age_70To79_Male, info.Age70_79MaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(7.3f, AgeGroup.Age_70To79_Female, info.Age70_79FemaleAbsolute));
+
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(8, AgeGroup.Age_80AndAbove_Male, info.Age80_AboveMaleAbsolute));
+            m_AgeVisualObjects.Add(CreateAgeVisualObject(8.3f, AgeGroup.Age_80AndAbove_Female, info.Age80_AboveFemaleAbsolute));
         }
 
         private void CreatePieCharts() {

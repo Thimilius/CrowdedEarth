@@ -23,9 +23,7 @@ namespace CrowdedEarth.UI {
         [SerializeField] private TMP_Text m_UrbanPercentageText;
         [SerializeField] private TMP_Text m_RuralPercentageText;
         [Header("Age Info")]
-        [SerializeField] private TMP_Text m_0_14AgeGroupInfo;
-        [SerializeField] private TMP_Text m_15_64AgeGroupInfo;
-        [SerializeField] private TMP_Text m_64_AboveAgeGroupInfo;
+        [SerializeField] private TMP_Text m_AgeGroupInfo;
 
         private void Awake() {
             m_Visualizer.OnYearChanged += OnYearChanged;
@@ -63,41 +61,25 @@ namespace CrowdedEarth.UI {
 
         private void OnPointerEntered(VisualObject<AgeGroup> vo) {
             string text;
+            string tag = "<size=18><color=#233C46>";
             if (m_Visualizer.IsAgeGroupMale(vo.Data)) {
-                text = "Männlich: ";
+                text = $"\uf222 {tag}";
             } else {
-                text = "Weiblich: ";
+                text = $"\uf221 {tag}";
             }
-            text = text + m_Visualizer.GetAge(vo).ToString("N0", new CultureInfo("de-DE")); 
+            text += $"{m_Visualizer.GetAge(vo).ToString("N0", new CultureInfo("de-DE"))}</color></size>";
 
-            m_0_14AgeGroupInfo.gameObject.SetActive(false);
-            m_15_64AgeGroupInfo.gameObject.SetActive(false);
-            m_64_AboveAgeGroupInfo.gameObject.SetActive(false);
+            Vector3 position = vo.transform.position;
+            position.y += vo.transform.localScale.z + 0.35f;
+            Vector3 screenPoint = Camera.main.WorldToScreenPoint(position);
 
-            switch (vo.Data) {
-                case AgeGroup.Age_0To9_Male:
-                case AgeGroup.Age_0To9_Female:
-                    m_0_14AgeGroupInfo.gameObject.SetActive(true);
-                    m_0_14AgeGroupInfo.text = text;
-                    break;
-                case AgeGroup.Age_10To19_Male:
-                case AgeGroup.Age_10To19_Female:
-                    m_15_64AgeGroupInfo.gameObject.SetActive(true);
-                    m_15_64AgeGroupInfo.text = text;
-                    break;
-                case AgeGroup.Age_20To29_Male:
-                case AgeGroup.Age_20To29_Female:
-                    m_64_AboveAgeGroupInfo.gameObject.SetActive(true);
-                    m_64_AboveAgeGroupInfo.text = text;
-                    break;
-                default: break;
-            }
+            m_AgeGroupInfo.transform.position = screenPoint;
+            m_AgeGroupInfo.text = text;
+            m_AgeGroupInfo.gameObject.SetActive(true);
         }
 
         private void OnPointerExited(VisualObject<AgeGroup> vo) {
-            m_0_14AgeGroupInfo.gameObject.SetActive(false);
-            m_15_64AgeGroupInfo.gameObject.SetActive(false);
-            m_64_AboveAgeGroupInfo.gameObject.SetActive(false);
+            m_AgeGroupInfo.gameObject.SetActive(false);
         }
     }
 }

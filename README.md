@@ -1,8 +1,6 @@
 # Crowded Earth
 
 # Todo
-- Add additional age groups that can be optionally turned on/off with checkboxes (Altersverteilung)
-	- Combine data sets to have age groups that span over 10 years
 - Save camera position?
 
 # Resources
