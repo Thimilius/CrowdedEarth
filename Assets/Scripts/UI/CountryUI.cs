@@ -24,6 +24,7 @@ namespace CrowdedEarth.UI {
         [SerializeField] private TMP_Text m_RuralPercentageText;
         [Header("Age Info")]
         [SerializeField] private TMP_Text m_AgeGroupInfo;
+        [SerializeField] private float m_HoverY;
 
         private void Awake() {
             m_Visualizer.OnYearChanged += OnYearChanged;
@@ -70,7 +71,7 @@ namespace CrowdedEarth.UI {
             text += $"{m_Visualizer.GetAge(vo).ToString("N0", new CultureInfo("de-DE"))}</color></size>";
 
             Vector3 position = vo.transform.position;
-            position.y += vo.transform.localScale.z + 0.35f;
+            position.y = m_HoverY;
             Vector3 screenPoint = Camera.main.WorldToScreenPoint(position);
 
             m_AgeGroupInfo.transform.position = screenPoint;

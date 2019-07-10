@@ -496,7 +496,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: SS2019 Jan Storm 735908
+  m_text: SS2019 Jan Storm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2735fd53cf056ae44ab3965d140b8acf, type: 2}
   m_sharedMaterial: {fileID: -6467759499960420273, guid: 2735fd53cf056ae44ab3965d140b8acf,

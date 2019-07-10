@@ -29,7 +29,11 @@ namespace CrowdedEarth.UI {
             IPopulationInfo info = country.PopulationInfo[m_Visualizer.GetYearIndex()];
 
             // Set the flag with correct aspect ratio
-            m_CountryFlag.sprite = SpriteManager.GetFlag(country.Flag);
+            Sprite flag = SpriteManager.GetFlag(country.Flag);
+            float aspectRatio = flag.rect.width / flag.rect.height;
+            float height = m_CountryFlag.rectTransform.sizeDelta.y;
+            m_CountryFlag.sprite = flag;
+            m_CountryFlag.rectTransform.sizeDelta = new Vector2(aspectRatio * height, height);
 
             m_CountryText.text = country.Name;
             m_PopulationText.text = info.PopulationTotal.ToString("N0", new CultureInfo("de-DE"));
