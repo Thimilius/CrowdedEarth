@@ -72,7 +72,7 @@ namespace CrowdedEarth.Data {
             const int YEAR_COUNT = 90;
 
             // Load general country information
-            string json = File.ReadAllText(DataLocations.COUNTRIES_PATH);
+            string json = Resources.Load<TextAsset>(DataLocations.COUNTRIES_PATH).text;
             List<Country> countries = JsonConvert.DeserializeObject<List<Country>>(json);
 
             var populationAge20_24MaleAbsolute = ReadDataWithProperties<PopulationAbsoluteLayout>(DataLocations.POPULATION_AGE_20_24_MALE_ABSOLUTE_PATH);
@@ -192,19 +192,16 @@ namespace CrowdedEarth.Data {
         }
 
         private static ReadDataResult<T> ReadData<T>(string path) where T : DataLayout {
-            using (var reader = new StreamReader(path)) {
+            TextAsset asset = Resources.Load<TextAsset>(path);
+
+            using (TextReader reader = new StringReader(asset.text)) {
                 using (var csv = new CsvReader(reader)) {
-                    csv.Configuration.MissingFieldFound = (headers, index, context) => FailHandler(headers, index, context, path);
                     csv.Configuration.Delimiter = ",";
                     var entries = csv.GetRecords<T>();
                     var data = entries.ToDictionary(l => l.Country);
                     return new ReadDataResult<T>() { Data = data };
                 }
             }
-        }
-
-        private static void FailHandler(string[] headers, int index, ReadingContext context, string path) {
-            Debug.Log($"{path} - {context.RawRow}");
         }
 
         private static ReadDataResult<T> ReadDataWithProperties<T>(string path) where T : DataLayout {
