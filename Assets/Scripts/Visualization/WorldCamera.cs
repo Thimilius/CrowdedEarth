@@ -16,6 +16,9 @@ namespace CrowdedEarth.Visualization {
         [SerializeField] private float m_ZoomMax;
         [SerializeField] private float m_ZoomStart;
 
+        private static Vector3 m_SavedPosition = new Vector3(60, 0, 0);
+        private static Vector3 m_SavedRotation = new Vector3(0, -90, 0);
+
         private Camera m_Camera;
         private Transform m_Transform;
 
@@ -37,15 +40,20 @@ namespace CrowdedEarth.Visualization {
             m_ZoomTarget = m_ZoomStart;
             m_Zoom = m_Transform.position.x;
 
-            Vector3 angles = m_Transform.eulerAngles;
-            m_RotationYAxis = angles.y;
-            m_RotationXAxis = angles.x;
-            m_AnimatedRotation = Quaternion.Euler(angles);
+            m_Transform.position = m_SavedPosition;
+            m_RotationYAxis = m_SavedRotation.y;
+            m_RotationXAxis = m_SavedRotation.x;
+            m_AnimatedRotation = Quaternion.Euler(m_SavedRotation);
         }
 
         private void Update() {
             UpdateRotationAndZoom();
             UpdateClickToRotate();
+        }
+
+        private void OnDestroy() {
+            m_SavedPosition = m_Transform.position;
+            m_SavedRotation = m_Transform.eulerAngles;
         }
 
         public void RotateTo(float latitude, float longitude) {
