@@ -1,5 +1,11 @@
 # Crowded Earth
 
+<div align="center">
+    <img src="preview.png" alt="Preview" width="100%"/>
+</div>
+
+## Overview
+
 An interactive 3D visualization tool demonstrating global population growth over time.
 
 ## Data Resources
