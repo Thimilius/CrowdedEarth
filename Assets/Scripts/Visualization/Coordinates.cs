@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public static class Coordinates {
         private const float RADIUS = 20.2f;
 

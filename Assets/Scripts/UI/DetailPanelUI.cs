@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CrowdedEarth.Visualization;
-using CrowdedEarth.Data.Model;
+using InhabitedEarth.Data.Model;
+using InhabitedEarth.Visualization;
 
-namespace CrowdedEarth.UI {
+namespace InhabitedEarth.UI {
     public class DetailPanelUI : MonoBehaviour {
         [SerializeField] private EarthVisualizer m_Visualizer;
         [SerializeField] private GameObject m_InfoPanel;

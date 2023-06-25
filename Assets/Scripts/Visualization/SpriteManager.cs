@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public static class SpriteManager {
         private static Dictionary<string, Sprite> m_Sprites;
 

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using CrowdedEarth.Visualization;
-using CrowdedEarth.Data.Model;
+using InhabitedEarth.Data.Model;
+using InhabitedEarth.Visualization;
 
-namespace CrowdedEarth.UI {
+namespace InhabitedEarth.UI {
     public class AgeUI : MonoBehaviour {
         [SerializeField] private CountryVisualizer m_Visualizer;
         [Header("Toggles")]

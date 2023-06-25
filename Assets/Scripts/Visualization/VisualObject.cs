@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using System;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public abstract class VisualObject<T> : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler {
         [SerializeField] private Color m_HighlightColor;
         [SerializeField] private Color m_HighlightEmissionColor;

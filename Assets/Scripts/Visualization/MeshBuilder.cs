@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public static class MeshBuilder {
         public static Mesh BuildNewCylinder(float fill) {
             Mesh mesh = new Mesh();

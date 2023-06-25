@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public abstract class Visualizer : MonoBehaviour {
         public event Action OnYearChanged;
 

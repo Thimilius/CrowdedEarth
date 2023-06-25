@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using CrowdedEarth.Data;
-using CrowdedEarth.Data.Model;
+using InhabitedEarth.Data;
+using InhabitedEarth.Data.Model;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public class CountryVisualizer : Visualizer {
         private const float SCALE_NORMALIZATION = 20000000.0f;
         private const float SCALE_MAX = 2.0f;

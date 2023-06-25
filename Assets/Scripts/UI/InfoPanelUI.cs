@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CrowdedEarth.UI {
+namespace InhabitedEarth.UI {
     public class InfoPanelUI : MonoBehaviour {
         [SerializeField] private GameObject m_InfoPanel;
         [SerializeField] private Button m_InfoButton;

@@ -1,6 +1,6 @@
-﻿using CrowdedEarth.Data.Model;
+﻿using InhabitedEarth.Data.Model;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public class CountryVisualObject : VisualObject<ICountry> {
         public float Latitude { get; set; }
         public float Longitude { get; set; }

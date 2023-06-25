@@ -1,4 +1,4 @@
-﻿namespace CrowdedEarth.Data.Model {
+﻿namespace InhabitedEarth.Data.Model {
     public interface IPopulationInfo {
         int PopulationTotal { get; }
 

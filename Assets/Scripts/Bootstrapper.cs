@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using CrowdedEarth.Data;
-using CrowdedEarth.Visualization;
+using InhabitedEarth.Data;
+using InhabitedEarth.Visualization;
 
-namespace CrowdedEarth {
+namespace InhabitedEarth {
     public static class Bootstrapper {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Bootstrap() {

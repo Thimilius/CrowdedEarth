@@ -1,0 +1,17 @@
+{
+    "name": "InhabitedEarth",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro",
+        "InhabitedEarth.Plugins"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using CrowdedEarth.Visualization;
-using CrowdedEarth.Data.Model;
+using InhabitedEarth.Data.Model;
+using InhabitedEarth.Visualization;
 
-namespace CrowdedEarth.UI {
+namespace InhabitedEarth.UI {
     public class CountryUI : MonoBehaviour {
         [SerializeField] private CountryVisualizer m_Visualizer;
         [SerializeField] private Button m_BackToEarthButton;

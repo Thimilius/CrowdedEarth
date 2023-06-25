@@ -5,10 +5,10 @@ using System.Reflection;
 using UnityEngine;
 using Newtonsoft.Json;
 using CsvHelper;
-using CrowdedEarth.Data.Model;
-using CrowdedEarth.Data.Layout;
+using InhabitedEarth.Data.Layout;
+using InhabitedEarth.Data.Model;
 
-namespace CrowdedEarth.Data {
+namespace InhabitedEarth.Data {
     public static class DataLoader {
         private class Country : ICountry {
             public string ID { get; set; }

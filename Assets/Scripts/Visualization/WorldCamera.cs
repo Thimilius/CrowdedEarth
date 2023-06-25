@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public class WorldCamera : MonoBehaviour {
         [Header("Rotation")]
         [SerializeField] private float m_RotationXSpeed;

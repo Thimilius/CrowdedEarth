@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace CrowdedEarth.Data {
+namespace InhabitedEarth.Data {
     public static class DataLocations {
         private static readonly string DATA_PATH = "Data";
 

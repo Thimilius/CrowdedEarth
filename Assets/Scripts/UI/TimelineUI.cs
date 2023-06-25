@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using CrowdedEarth.Visualization;
+using InhabitedEarth.Visualization;
 
-namespace CrowdedEarth.UI {
+namespace InhabitedEarth.UI {
     public class TimelineUI : MonoBehaviour {
         [SerializeField] private Visualizer m_Visualizer;
         [SerializeField] private Slider m_TimelineSlider;

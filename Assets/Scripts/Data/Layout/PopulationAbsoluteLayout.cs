@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace CrowdedEarth.Data.Layout {
+namespace InhabitedEarth.Data.Layout {
     public class PopulationAbsoluteLayout : DataLayout {
         [Index(2)]  public override string Country { get; set; }
         [Index(4)]  public int Value1960 { get; set; }

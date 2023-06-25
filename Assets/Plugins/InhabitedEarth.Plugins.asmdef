@@ -1,10 +1,7 @@
 {
-    "name": "CrowdedEarth",
-    "references": [
-        "Unity.TextMeshPro",
-        "CrowdedEarth.Plugins"
-    ],
-    "optionalUnityReferences": [],
+    "name": "InhabitedEarth.Plugins",
+    "rootNamespace": "",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -12,5 +9,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

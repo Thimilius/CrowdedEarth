@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CrowdedEarth.Data;
-using CrowdedEarth.Data.Model;
+using InhabitedEarth.Data;
+using InhabitedEarth.Data.Model;
 
-namespace CrowdedEarth.Visualization {
+namespace InhabitedEarth.Visualization {
     public class EarthVisualizer : Visualizer {
         private const float SCALE_NORMALIZATION = 20000000.0f;
 

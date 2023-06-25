@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CrowdedEarth.Data.Model {
+namespace InhabitedEarth.Data.Model {
     public interface ICountry {
         string ID { get; }
         string Name { get; }

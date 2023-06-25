@@ -1,4 +1,4 @@
-﻿namespace CrowdedEarth.Data.Model {
+﻿namespace InhabitedEarth.Data.Model {
     public enum AgeGroup {
         Age_0To9_Male,
         Age_10To19_Male,
